@@ -2,32 +2,24 @@
 <?php
 include('config.php');
 $idRegistros = $_REQUEST['id'];
-$nombre      = $_REQUEST['nombre'];
-$especie 	 = $_REQUEST['especie'];
-$edad 	 = $_REQUEST['edad'];
-$sexo 	 = $_REQUEST['sexo'];
-$color 	 = $_REQUEST['color'];
-$tam 	 = $_REQUEST['tam'];
-$descripcion 	 = $_REQUEST['descripcion'];
+$nombreSolicitante      = $_REQUEST['nombreSolicitante'];
+$celular =$_REQUEST['celular'];
+$edad =$_REQUEST['edad'];
+$motivo =$_REQUEST['motivo'];
 
-$update = ("UPDATE mascotas1 
+$update = ("UPDATE solicitudadopcion
 	SET 
-	nombre  ='" .$nombre. "',
-	especie  ='" .$especie. "',
+	nombreSolicitante  ='" .$nombreSolicitante. "',
+	celular  ='" .$celular. "',
 	edad ='" .$edad. "', 
-	sexo ='" .$sexo. "', 
-	color ='" .$color. "', 
-	tam='" .$tam. "', 
-	descripcion ='" .$descripcion. "'
-
-
+	motivo ='" .$motivo. "'
 
 WHERE id='" .$idRegistros. "'
 ");
 $result_update = mysqli_query($con, $update);
 
 echo "<script type='text/javascript'> 
-        window.location='tablaMascota.php';
+        window.location='tablaNotificacion.php';
     </script>";
 
 ?>
