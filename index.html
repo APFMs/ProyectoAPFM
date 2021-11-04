@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.87.0">
+  <title>INICIO SOY TU VOZ</title>
+
+  <link rel="canonical" href="css/carousel/">
+
+
+
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="css/carousel.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Soy Tú Voz</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+
+            <li class="nav-item" style="margin: 5px;">
+              <a class="btn btn-header btn-outline-warning" href="subirimagenes/galeria.php" tabindex="-1"
+                aria-disabled="true">Galeria</a>
+
+            </li>
+            <br>
+
+            <li class="nav-item" style="margin: 5px;">
+              <a class="btn btn-header btn-outline-warning" href="ventanas/informacion.php" tabindex="-1"
+                aria-disabled="true">Requisitos Para Adoptar</a>
+
+            </li>
+            <br>
+            <li class="nav-item" style="margin: 5px;">
+              <a class="btn btn-header btn-outline-warning" href="login.html" tabindex="-1"
+                aria-disabled="true">Ingresar</a>
+
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+            <button type="button" class="btn btn-outline-warning">Buscar</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+          aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <svg class="bd-placeholder-img" width="100%" height="10%" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <rect width="100%" height="100%" fill="#777" />
+          </svg>
+          <img src="img/mascota3.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption text-start">
+              <h1>Adopta, que esperan por tí.</h1>
+              <p>No vamos a cambiar el mundo ayudando a un animal, pero al menos el mundo habrá cambiado para él.</p>
+              <button type="button" class="btn btn-lg btn-outline-dark">Encuentralos aquí</button>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <rect width="100%" height="100%" fill="#777" />
+          </svg>
+          <img src="img/mascota02.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Requisitos para adoptar.</h1>
+              <p>Al cumplir estas condiciones, llevaras al mejor ser querido.</p>
+              <a type="button" class="btn btn-lg btn-outline-warning"
+                href="http://localhost:9092/f/Proyecto/ventanas/informacion.php">Más Información</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <rect width="100%" height="100%" fill="#777" />
+          </svg>
+          <img src="img/mascota4.jpg" alt="">
+
+          <div class="container">
+            <div class="carousel-caption text-end">
+              <h1>Realizamos un seguimiento.</h1>
+              <p>Como cada mascota encontro a su familia. que esperas para seguir el ejemplo.</p>
+              <button type="button" class="btn btn-lg btn-outline-secondary">Vealos Aquí</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">55555</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">66666</span>
+      </button>
+    </div>
+
+
+    <!-- Marketing messaging and featurettes
+  ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-4">
+          <img src="img/mascota05.jpg" class="img-thumbnail" alt="...">
+          <h2>Presume a tú mascota</h2>
+          <p>A muchos nos gustaria presumir a nuestra mascota adoptada, pero ahora puedes hacerlo.</p>
+          <p><a class="btn btn-secondary" href="#">Más detalles &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img src="img/mascota6.jpg" class="img-thumbnail" alt="...">
+
+          <h2>Requisitos para adoptar</h2>
+          <p>Para adoptar a una mascota se debe cumplir los requisitos que se te pide.</p>
+          <p><a class="btn btn-secondary" href="#">Ver más detalles &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img src="img/mascota03.jpg" class="img-thumbnail" alt="...">
+
+          <h2>Busca a tu mascota</h2>
+          <p>Ellos esperan que les des una oprtunidad.</p>
+          <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Salva una vida. <span class="text-muted">Y mejora tu vida, de una forma mucho
+              mas sencilla.</span></h2>
+          <p class="lead">Ellos esperan por ti! Adopta a tu mascota, nos especializamos en ayudarte a conseguirlo.</p>
+        </div>
+        <div class="col-md-5">
+          <img src="img/mascota8.jpg" class="img-thumbnail" alt="...">
+
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+          <h2 class="featurette-heading">¿Que tan importante es Adoptar?. <span class="text-muted">¿Por que deberia
+              adoptar a una mascota?.</span></h2>
+          <p class="lead">Las mascotas te brindan amor incondicional.Que pase lo que pase ellos jamas te abandonarian.
+          </p>
+        </div>
+        <div class="col-md-5 order-md-1">
+          <img src="img/mascota7.jpg" class="img-thumbnail" alt="...">
+
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Hasta que no hayas amado a un animal, <span class="text-muted">una parte de tu
+              alma permanecera dormida.</span></h2>
+          <p class="lead">Ya que pasar una vida con una mascota, hace que tu vida sea más increíble.</p>
+        </div>
+        <div class="col-md-5">
+
+          <img src="img/mascota5.jpg" class="img-thumbnail" alt="...">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+    </div><!-- /.container -->
+
+
+    <!-- FOOTER -->
+    <footer class="container">
+      <p class="float-end"><a href="#">INICIO</a></p>
+      <p class="mt-5 mb-3 text-muted">&copy; Soy Tu Voz CBBA-2021</p>
+    </footer>
+  </main>
+
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>
