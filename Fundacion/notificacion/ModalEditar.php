@@ -19,228 +19,27 @@
 
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Nombre :</label>
-            <input type="text" name="nombre" class="form-control" value="<?php echo $dataCliente['nombre']; ?>" required="true">
-          </div>
-          <br>
-          <div class="from-group" data-validate="Usuario incorrecto">
-            <label for="">Especie:</label>
-            <select class="input100" name="especie" value="<?php echo $dataCliente['especie']; ?>" id="especie">
-              <?php
-              if ($dataCliente['especie'] == "Perro") {
-              ?>
-                <option value="Perro" selected>Perro</option>
-              <?php
-              } else {
-              ?>
-                <option value="Perro">Perro</option>
-              <?php
-              }
-              ?>
-              <?php
-              if ($dataCliente['especie'] == "Gato") {
-              ?>
-                <option value="Gato" selected>Gato</option>
-              <?php
-              } else {
-              ?>
-                <option value="Gato">Gato</option>
-              <?php
-              }
-              ?>
-              <?php
-              if ($dataCliente['especie'] == "Otro") {
-              ?>
-                <option value="Otro" selected>Otro</option>
-              <?php
-              } else {
-              ?>
-                <option value="Otro">Otro</option>
-              <?php
-              }
-              ?>
-            </select>
-
+            <input type="text" name="nombreSolicitante" class="form-control" value="<?php echo $dataCliente['nombreSolicitante']; ?>" required="true">
           </div>
           <br>
 
           <div class="col-md-12 mt-2">
-            <label for="celular" class="form-label">Edad</label>
+            <label for="celular" class="form-label">Telefono</label>
+            <input type="number" class="form-control" name="celular" value="<?php echo $dataCliente['celular']; ?>" required='true'>
+          </div>
+          <br>
+
+
+          <div class="col-md-12 mt-2">
+            <label for="edad" class="form-label">Edad</label>
             <input type="number" class="form-control" name="edad" value="<?php echo $dataCliente['edad']; ?>" required='true'>
-          </div>
-          <br>
-
-          <div class="from-group" data-validate="Usuario incorrecto">
-            <label for="">Sexo:</label>
-            <select class="input100" name="sexo" value="<?php echo $dataCliente['sexo']; ?>" id="sexo">
-              <?php
-              if ($dataCliente['sexo'] == "Macho") {
-              ?>
-                <option value="Macho" selected>Macho</option>
-              <?php
-              } else {
-              ?>
-                <option value="Macho">Macho</option>
-              <?php
-              }
-              ?>
-              <?php
-              if ($dataCliente['sexo'] == "Hembra") {
-              ?>
-                <option value="Hembra" selected>Hembra</option>
-              <?php
-              } else {
-              ?>
-                <option value="Hembra">Hembra</option>
-              <?php
-              }
-              ?>
-           </select>
-          </div>
-          <br>
-
-          <div class="from-group" data-validate="Usuario incorrecto">
-            <label for="">Color:</label>
-            <select class="input100" name="color" value="<?php echo $dataCliente['color']; ?>" id="color">
-              <?php
-              if ($dataCliente['color'] == "Negro") {
-              ?>
-                <option value="Negro" selected>Negro</option>
-              <?php
-              } else {
-              ?>
-                <option value="Negro">Negro</option>
-              <?php
-              }
-              ?>
-              <?php
-              if ($dataCliente['color'] == "Blanco") {
-              ?>
-                <option value="Balnco" selected>Blanco</option>
-              <?php
-              } else {
-              ?>
-                <option value="Blanco">Blanco</option>
-              <?php
-              }
-              ?>
-              <?php
-              if ($dataCliente['color'] == "Café") {
-              ?>
-                <option value="Café" selected>Café</option>
-              <?php
-              } else {
-              ?>
-                <option value="Café">Café</option>
-              <?php
-              }
-              ?>
-              <?php
-              if ($dataCliente['especie'] == "Plomo") {
-              ?>
-                <option value="Plomo" selected>Plomo</option>
-              <?php
-              } else {
-              ?>
-                <option value="Plomo">Plomo</option>
-              <?php
-              }
-              ?>
-              <?php
-              if ($dataCliente['especie'] == "Naranja") {
-              ?>
-                <option value="Naranja" selected>Naranja</option>
-              <?php
-              } else {
-              ?>
-                <option value="Naranja">Naranja</option>
-              <?php
-              }
-              ?>
-              <?php
-              if ($dataCliente['especie'] == "Blanco con Negro") {
-              ?>
-                <option value="Blanco con Negro" selected>Blanco con Negro</option>
-              <?php
-              } else {
-              ?>
-                <option value="Blanco con Negro">Blanco con Negro</option>
-              <?php
-              }
-              ?>
-                       <?php
-              if ($dataCliente['especie'] == "Blanco con café") {
-              ?>
-                <option value="Blanco con café" selected>Blanco con café</option>
-              <?php
-              } else {
-              ?>
-                <option value="Blanco con café">Blanco con café</option>
-              <?php
-              }
-              ?>
-              <?php
-              if ($dataCliente['especie'] == "Otro") {
-              ?>
-                <option value="Otro" selected>Otro</option>
-              <?php
-              } else {
-              ?>
-                <option value="Otro">Otro</option>
-              <?php
-              }
-              ?>
-            </select>
-
-          </div>
-          <br>
-
-
-
-          <div class="from-group" data-validate="Usuario incorrecto">
-            <label for="">Tamaño:</label>
-            <select class="input100" name="tam" value="<?php echo $dataCliente['tam']; ?>" id="tam">
-              <?php
-              if ($dataCliente['tam'] == "Grande") {
-              ?>
-                <option value="Grande" selected>Grande</option>
-              <?php
-              } else {
-              ?>
-                <option value="Grande">Grande</option>
-              <?php
-              }
-              ?>
-              <?php
-              if ($dataCliente['tam'] == "Mediano") {
-              ?>
-                <option value="Mediano" selected>Mediano</option>
-              <?php
-              } else {
-              ?>
-                <option value="Mediano">Mediano</option>
-              <?php
-              }
-              ?>
-              <?php
-              if ($dataCliente['tam'] == "Pequeño") {
-              ?>
-                <option value="Pequeño" selected>Pequeño</option>
-              <?php
-              } else {
-              ?>
-                <option value="Pequeño">Pequeño</option>
-              <?php
-              }
-              ?>
-           </select>
-
           </div>
           <br>
 
 
           <div class="col-md-12 mt-2">
             <label for="" class="form-label">Descripción</label>
-            <input type="text" class="form-control" name="descripcion" value="<?php echo $dataCliente['descripcion']; ?>"required='true'>
+            <input type="text" class="form-control" name="motivo" value="<?php echo $dataCliente['motivo']; ?>"required='true'>
           </div>
     
 
