@@ -252,15 +252,6 @@
             <div class="col-sm-6">
               <h1><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
               <br>
-
-              <tr>
-                <td>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insertChildresn">
-                    Agregar Fundación
-                  </button>
-                  <?php include('ModalInsertar.php'); ?>
-                </td>
-              </tr>
               </form>
             </div>
 
