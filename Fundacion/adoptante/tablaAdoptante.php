@@ -229,12 +229,7 @@
               <br>
 
               <tr>
-                <td>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insertChildresn">
-                    Agregar Adoptante
-                  </button>
-                  <?php include('ModalInsertar.php'); ?>
-                </td>
+
               </tr>
               </form>
             </div>
@@ -327,10 +322,12 @@
                                   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
                                     Publicar
                                   </button>
-
-                                  <button type="button" class="btn btn-yy" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
-                                    Llenar Datos
+                                
+                                  <button type="button" class="btn btn-yy" data-toggle="modal" data-target="#insertChildresn">
+                                    Agregar Adoptante
                                   </button>
+
+                              
                                 </td>
                               </tr>
                               <!--Ventana Modal para Actualizar--->
@@ -341,6 +338,8 @@
 
                               <!--Ventana Modal para la Alerta de Eliminar--->
                               <?php include('ModalDetalles.php'); ?>
+
+                              <?php include('ModalInsertar.php'); ?>
 
 
 
