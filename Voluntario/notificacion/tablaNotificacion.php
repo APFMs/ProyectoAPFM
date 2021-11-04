@@ -251,14 +251,13 @@
         <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT S.id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota'
+        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota'
         FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
-        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND F.persona_id=" . $_SESSION['idPersona'] . "
+        INNER JOIN voluntario V ON V.id=M.fundaciones_id AND V.persona_id=" . $_SESSION['idPersona'] . "
         ORDER BY S.id DESC ");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>
-
 
 
         <div class="row text-center" style="background-color: #ffc66c">
@@ -313,7 +312,7 @@
                                     <?PHP
                                   } else {
                                     if ($dataCliente['aprobada'] == 2) { ?>
-                                      <button type="button" class="btn btn-df" data-toggle="modal" >
+                                      <button type="button" class="btn btn-df" data-toggle="modal">
                                         RECHAZADA
                                       </button>
                                     <?PHP
