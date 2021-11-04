@@ -271,7 +271,7 @@
         <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT S.id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota'
+        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota'
         FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
         INNER JOIN fundacion F ON F.id=M.fundaciones_id AND F.persona_id=" . $_SESSION['idPersona'] . "
         ORDER BY S.id DESC ");
@@ -322,6 +322,14 @@
 
                                 <td>
 
+                                <button title="EDITAR" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fa fa-book"></i>
+                                  </button>
+
+                                  <button title="ELIMINAR" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fa fa-times"></i>
+                                  </button>
+
                                   <button type="button" class="btn btn-ds" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
                                     Información
                                   </button>
@@ -333,7 +341,7 @@
                                     <?PHP
                                   } else {
                                     if ($dataCliente['aprobada'] == 2) { ?>
-                                      <button type="button" class="btn btn-danger" data-toggle="modal" >
+                                      <button type="button" class="btn btn-danger" data-toggle="modal">
                                         RECHAZADA
                                       </button>
                                     <?PHP
@@ -360,6 +368,7 @@
                               <!--Ventana Modal para la Alerta de Eliminar--->
                               <?php include('ModalEliminar.php'); ?>
 
+                              <?php include('ModalEditar.php'); ?>
 
                               <!--Ventana Modal para la Alerta de Eliminar--->
                               <?php include('ModalDetalles.php'); ?>
@@ -461,7 +470,7 @@
             url: url,
             data: dataString,
             success: function(data) {
-              window.location.href = "tablaMascota.php";
+              window.location.href = "tablaNotificacion.php";
               $('#respuesta').html(data);
             }
           });
