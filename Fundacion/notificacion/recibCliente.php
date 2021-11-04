@@ -1,32 +1,23 @@
 <?php
 include('config.php');
-$nombre  = $_REQUEST['nombre'];
-$especie = $_REQUEST['especie'];
-$edad 	 = $_REQUEST['edad'];
-$sexo 	 = $_REQUEST['sexo'];
-$color 	 = $_REQUEST['color'];
-$tam 	 = $_REQUEST['tam'];
-$descripcion = $_REQUEST['descripcion'];
+$nombre      = $_REQUEST['nombre'];
+$celular =$_REQUEST['celular'];
+$edad =$_REQUEST['edad'];
+$motivo =$_REQUEST['motivo'];
 
-$QueryInsert = ("INSERT INTO mascota(
+$QueryInsert = ("INSERT INTO solicitudadopcion(
     nombre,
-    especie,
+    celular,
     edad,
-    sexo,
-    color,
-    tam,
-    descripcion
+    motivo
 )
 VALUES (
     '".$nombre. "',
-    '".$especie. "',
+    '".$celular. "',
     '".$edad."',
-    '".$sexo."',
-    '".$color."',
-    '".$tam."',
-    '".$descripcion."'
+    '".$motivo."'
 )");
 $inserInmueble = mysqli_query($con, $QueryInsert);
 
-header("location:tablaMascota.php");
+header("location:tablaNotificacion.php");
 ?>
