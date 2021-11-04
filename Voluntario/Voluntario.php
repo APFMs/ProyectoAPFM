@@ -49,7 +49,7 @@
 
 <body class="hold-transition sidebar-mini">
   <?php
-  $paginaMascota = "mascota/tablaMascota.php";
+
   $paginaMascotaEnAdopcion = "mascotaAdopcion/tablamascotaAdopcion.php";
   $paginaAdotantes = "adoptante/tablaAdoptante.php";
   $paginaSeguimientos = "seguimiento/tablaSeguimiento.php";
@@ -139,16 +139,6 @@
                with font-awesome or any other icon font library -->
 
 
-
-
-            <li class="nav-item">
-              <a href=<?php echo $paginaMascota ?> class="nav-link">
-                <i class="fa fa-paw"></i>
-                <p>
-                  Mascotas
-                </p>
-              </a>
-            </li>
 
 
 
