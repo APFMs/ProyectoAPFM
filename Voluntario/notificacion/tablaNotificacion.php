@@ -174,17 +174,6 @@
 
 
 
-            <li class="nav-item">
-              <a href=<?php echo $paginaMascota ?> class="nav-link">
-                <i class="fa fa-paw"></i>
-                <p>
-                  Mascotas
-                </p>
-              </a>
-            </li>
-
-
-
 
             <li class="nav-item">
               <a href=<?php echo $paginaMascotaEnAdopcion ?> class="nav-link">
