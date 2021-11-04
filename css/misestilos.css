@@ -1,0 +1,33 @@
+.estilocontenedor{
+
+    background-color: yellow;
+}
+.izquierdo{
+background-color: red;
+}
+.derecho{
+background-color: blue;
+}
+
+.colorcolumna{
+    background-color: coral;
+
+
+}
+
+.color1{
+    background-color: cyan;
+}
+
+.color2{
+ background-color: darkkhaki;
+}
+.color3{
+    background-color: crimson;
+}
+.color4{
+    background-color: darkgreen;
+}
+body{
+    background: linear-gradient(to right, #e5b785, #f5dbb4);
+}

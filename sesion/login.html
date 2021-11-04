@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="esp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">    
+    <meta name="generator" content="Hugo 0.87.0">
+    <title>Login</title>
+
+    <link rel="canonical" href="css/sign-in/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/estiloerror.css" rel="stylesheet">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+
+<script>
+     
+  function ingresar(){
+
+    $(document).ready(function(){ 
+      var correo = $('#inputEmail').val();
+      var contra = $('#inputPassword').val();
+      $.post('verificar.php',{valor1:correo,valor2:contra},function(result){
+          $('#valores').html(result); 
+    });
+
+   });
+  }
+
+</script>
+
+
+
+    
+    <!-- Custom styles for this template -->
+    <link href="css/signin.css" rel="stylesheet">
+  </head>
+  <body class="text-center">
+
+    
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Soy Tú Voz</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="btn btn-header btn-outline-warning" href="index.php" tabindex="-1" aria-disabled="true">Inicio</a>
+  
+              </li>
+              <li class="nav-item">
+              <a class="btn btn-header btn-outline-warning" href="login.html" tabindex="-1" aria-disabled="true">Mascotas</a>
+      
+              </li>
+              <li class="nav-item">
+                <a class="btn btn-header btn-outline-warning" href="login.html" tabindex="-1" aria-disabled="true">Ingresar</a>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    
+<main class="form-signin">
+  <form>
+    <img class="rounded-circle" src="img/logo2.png" alt="" width="150" height="150">
+    <h1 class="h3 mb-3 fw-normal">Ingresar</h1>
+    <div id="valores"></div>
+
+    <div class="wrap-input100" data-validate = "Usuario incorrecto">
+      <label for="">Nombre:</label>
+      <input class="input100" type="text" id="nombre" name="Nombre" placeholder="Tu nombre completo" pattern="[A-Za-z]{2,}" title="Nombre incorrecto" tabindex="1" required="required">
+      <span class="focus-efecto"></span>
+    </div>
+
+    <div class="form-floating">
+      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+      <label for="floatingPassword">Contraseña</label>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Recordar
+      </label>
+    </div>
+    <button type="button" class="w-100 btn btn-lg btn-outline-dark" onclick="ingresar()">Ingresar</button>
+    <a class="w-100 btn btn-lg btn-outline-dark" href="mascotas.html" tabindex="-1" aria-disabled="true">Registrar</a>
+
+    <p class="mt-5 mb-3 text-muted">&copy; Soy Tu Voz CBBA-2021</p>
+  </form>
+</main>
+
+<script src="lib/jquery.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="lib/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+    
+  </body>
+</html>
