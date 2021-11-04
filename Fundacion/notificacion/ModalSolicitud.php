@@ -1,17 +1,17 @@
 <style>
-      .btn-df {
-      color: #fff;
-      background-color: #53b311;
-      border-color: #53b311;
-      box-shadow: none;
-    }
+  .btn-df {
+    color: #fff;
+    background-color: #53b311;
+    border-color: #53b311;
+    box-shadow: none;
+  }
 
-    .btn-ff {
-      color: #fff;
-      background-color: #53b311;
-      border-color: #53b311;
-      box-shadow: none;
-    }
+  .btn-ff {
+    color: #fff;
+    background-color: #53b311;
+    border-color: #53b311;
+    box-shadow: none;
+  }
 </style>
 
 <!--ventana para Update--->
@@ -28,8 +28,9 @@
       </div>
 
 
-      <form method="POST" action="recib_Update.php">
+      <form method="POST" action="recib_Solicitud.php">
         <label type="hidden" name="id" value="<?php echo $dataCliente['id']; ?>">
+
 
           <div class="modal-body" id="cont_modal">
             <div class="form-group">
@@ -42,16 +43,12 @@
               <label for="">Información: <?php echo $dataCliente['nombreSolicitante']; ?></label>
               <br>
             </div>
-
- 
-
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-df" data-dismiss="modal">Aprobar</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Rechazar</button>
+            <button type="submit" class="btn btn-df" data-dismiss="modal">Aprobar</button>
+            <button type="submit" class="btn btn-danger" data-dismiss="modal">Rechazar</button>
           </div>
       </form>
-
     </div>
   </div>
 </div>
