@@ -154,18 +154,6 @@
 
 
 
-
-            <li class="nav-item">
-              <a href=<?php echo $paginaMascotaEnAdopcion ?> class="nav-link">
-                <i class="fa fa-paw"></i>
-                <p>
-                  Mascotas en Adopción
-                </p>
-              </a>
-            </li>
-
-
-
             <li class="nav-item">
               <a href=<?php echo $paginaAdotantes ?> class="nav-link">
                 <i class="fa fa-address-book"></i>
