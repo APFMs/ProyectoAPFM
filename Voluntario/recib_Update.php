@@ -1,26 +1,25 @@
 
 <?php
 include('config.php');
+session_start();
 $idRegistros = $_REQUEST['id'];
-$nombre      = $_REQUEST['nombre'];
-$apllpat 	 = $_REQUEST['apllpat'];
-$apllmat 	 = $_REQUEST['apllmat'];
-$edad 	 = $_REQUEST['edad'];
+$nombre  = $_REQUEST['nombre'];
+$apllpat = $_REQUEST['apllpat'];
+$apllmat = $_REQUEST['apllmat'];
 $sexo 	 = $_REQUEST['sexo'];
-$ci 	 = $_REQUEST['ci'];
-$nomusu 	 = $_REQUEST['nomusu'];
-$contr 	 = $_REQUEST['contr'];
+$ci	     = $_REQUEST['ci'];
+$fechaNac	 = $_REQUEST['fechaNac'];
+$idUsuarioMod	 =$_SESSION['id'] ;
 
-$update = ("UPDATE voluntarios 
+$update = ("UPDATE persona
 	SET 
 	nombre  ='" .$nombre. "',
 	apllpat  ='" .$apllpat. "',
 	apllmat ='" .$apllmat. "', 
-	edad ='" .$edad. "', 
-	sexo ='" .$sexo. "', 
-	ci ='" .$ci. "', 
-	nomusu='" .$nomusu. "', 
-	contr ='" .$contr. "'
+	sexo ='" .$sexo. "',
+	ci ='" .$ci. "',
+	fechaNac ='" .$fechaNac. "',
+	idUsuarioMod='" .$idUsuarioMod. "'
 
 
 

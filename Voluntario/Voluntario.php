@@ -222,7 +222,7 @@
         <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT * FROM persona WHERE id=" . $_SESSION["id"] . " ORDER BY id DESC ");
+        $sqlCliente   = ("SELECT P.id, P.nombre, P.apllpat, P.apllmat, P.sexo, P.ci, P.fechaNac, P.fechaCreacion, P.fechaActualizacion, U.nombreUsuario, P.idUsuarioMod, UU.nombreUsuario as 'usuarioMod', U.id as 'idUsuario', U.rol FROM persona P INNER JOIN usuario U ON P.id=U.persona_id and P.estado=1 and U.id=" . $_SESSION["id"] . " INNER JOIN usuario UU on UU.id=P.idUsuarioMod;");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>
@@ -271,12 +271,13 @@
 
                                 <td>
 
-                                  <button type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
-                                    Ver
+
+                                  <button title="VER" type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fa fa-eye"></i>
                                   </button>
 
-                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataCliente['id']; ?>">
-                                    Modificar
+                                  <button title="EDITAR" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fa fa-book"></i>
                                   </button>
                                 </td>
                               </tr>

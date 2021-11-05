@@ -129,7 +129,7 @@
             <img src="img/user.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="Administrador.php" class="d-block"><?php echo $_SESSION["nombreUsuario"] ?></a>
+            <a href="../Voluntario.php" class="d-block"><?php echo $_SESSION["nombreUsuario"] ?></a>
           </div>
         </div>
 

@@ -1,28 +1,14 @@
 
 <?php
 include('config.php');
-$idRegistros = $_REQUEST['id'];
-$nombre      = $_REQUEST['nombre'];
-$especie 	 = $_REQUEST['especie'];
-$edad 	 = $_REQUEST['edad'];
-$sexo 	 = $_REQUEST['sexo'];
-$color 	 = $_REQUEST['color'];
-$tam 	 = $_REQUEST['tam'];
-$descripcion 	 = $_REQUEST['descripcion'];
+$id = $_REQUEST['id'];
+$mascota_id      = $_REQUEST['mascota_id'];
+$info 	 = $_REQUEST['info'];
 
-$update = ("UPDATE mascotas1 
+$update = ("UPDATE solicitudadopcion
 	SET 
-	nombre  ='" .$nombre. "',
-	especie  ='" .$especie. "',
-	edad ='" .$edad. "', 
-	sexo ='" .$sexo. "', 
-	color ='" .$color. "', 
-	tam='" .$tam. "', 
-	descripcion ='" .$descripcion. "'
-
-
-
-WHERE id='" .$idRegistros. "'
+	info ='hola'
+WHERE id=11 and mascota_id=43
 ");
 $result_update = mysqli_query($con, $update);
 

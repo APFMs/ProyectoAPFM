@@ -80,7 +80,7 @@
 
 <body class="hold-transition sidebar-mini">
   <?php
-
+  $paginaVoluntario = "../voluntario/tablaVoluntario.php";
   $paginaMascota = "../mascota/tablaMascota.php";
   $paginaMascotaEnAdopcion = "../mascotaAdopcion/tablamascotaAdopcion.php";
   $paginaAdotantes = "../adoptante/tablaAdoptante.php";
@@ -96,7 +96,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="../Fundacion.php" class="nav-link">Volver</a>
+          <a href="../Voluntario.php" class="nav-link">Volver</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="../../index.html" class="nav-link">Cerrar sesión</a>
@@ -160,7 +160,7 @@
             <img src="img/user.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="../Fundacion.php" class="d-block"><?php echo $_SESSION["nombreUsuario"] ?></a>
+            <a href="../Voluntario.php" class="d-block"><?php echo $_SESSION["nombreUsuario"] ?></a>
           </div>
         </div>
 
@@ -171,8 +171,6 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-
-
 
 
             <li class="nav-item">
@@ -253,11 +251,11 @@
 
         $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota'
         FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
-        INNER JOIN voluntario V ON V.id=M.fundaciones_id AND V.persona_id=" . $_SESSION['idPersona'] . "
-        ORDER BY S.id DESC ");
+        INNER JOIN fundacion F ON F.id=M.fundaciones_id and M.idVoluntario=" . $_SESSION["idPersona"] . " ORDER BY S.id DESC ");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>
+
 
 
         <div class="row text-center" style="background-color: #ffc66c">
@@ -301,37 +299,24 @@
 
                                 <td>
 
+                                  <button title="EDITAR" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fa fa-book"></i>
+                                  </button>
+
+                                  <button title="ELIMINAR" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fa fa-times"></i>
+                                  </button>
+
                                   <button type="button" class="btn btn-ds" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
                                     Información
                                   </button>
-                                  <?php
-                                  if ($dataCliente['aprobada'] == 1) { ?>
-                                    <button type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
-                                      APROBADO
-                                    </button>
-                                    <?PHP
-                                  } else {
-                                    if ($dataCliente['aprobada'] == 2) { ?>
-                                      <button type="button" class="btn btn-df" data-toggle="modal">
-                                        RECHAZADA
-                                      </button>
-                                    <?PHP
-                                    } else { ?>
-                                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
-                                        SIN VERIFICAR
-                                      </button>
-                                  <?php
-                                    }
-                                  }
-                                  ?>
-
-                                </td>
-                                <td>
-                                  <button type="button" class="btn btn-ss" data-toggle="modal" data-target="#solicitudChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fa fa-envelope"></i>
-
+                                  <button type="button" class="btn btn-danger" data-toggle="modal">
+                                    RECHAZADA
                                   </button>
 
+                                  <button type="button" class="btn btn-df" data-toggle="modal" data-target="#infoChildresn<?php echo $dataCliente['id']; ?>">
+                                    APROBADO
+                                  </button>
                                 </td>
                               </tr>
 
@@ -339,11 +324,14 @@
                               <!--Ventana Modal para la Alerta de Eliminar--->
                               <?php include('ModalEliminar.php'); ?>
 
+                              <?php include('ModalEditar.php'); ?>
 
                               <!--Ventana Modal para la Alerta de Eliminar--->
                               <?php include('ModalDetalles.php'); ?>
 
                               <?php include('ModalSolicitud.php'); ?>
+
+                              <?php include('ModalInsertar.php'); ?>
 
 
                             <?php } ?>
@@ -440,7 +428,7 @@
             url: url,
             data: dataString,
             success: function(data) {
-              window.location.href = "tablaMascota.php";
+              window.location.href = "tablaNotificacion.php";
               $('#respuesta').html(data);
             }
           });

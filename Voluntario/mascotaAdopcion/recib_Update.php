@@ -10,7 +10,7 @@ $color 	 = $_REQUEST['color'];
 $tam 	 = $_REQUEST['tam'];
 $descripcion 	 = $_REQUEST['descripcion'];
 
-$update = ("UPDATE mascota 
+$update = ("UPDATE mascota
 	SET 
 	nombre  ='" .$nombre. "',
 	especie  ='" .$especie. "',

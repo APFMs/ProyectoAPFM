@@ -68,7 +68,7 @@
         <a href="../Voluntario.php" class="nav-link">Volver</a>
       </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="../index.html" class="nav-link">Cerrar sesión</a>
+          <a href="../../index.html" class="nav-link">Cerrar sesión</a>
           <?php
           session_start(); // para usar las variables de sesion                 
           ?>
@@ -219,7 +219,7 @@
         <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT * FROM mascota WHERE adoptable=1 ORDER BY id DESC ");
+        $sqlCliente   = ("SELECT * FROM mascota WHERE adoptable=1 and idVoluntario=".$_SESSION['idPersona'] ." ORDER BY id DESC ");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>
