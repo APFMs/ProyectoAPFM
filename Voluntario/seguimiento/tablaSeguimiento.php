@@ -262,11 +262,7 @@
                           <thead>
                             <tr>
                               <th scope="col">Nombre</th>
-                              <th scope="col">Especie</th>
-                              <th scope="col">Edad</th>
-                              <th scope="col">Sexo</th>
-                              <th scope="col">Color</th>
-                              <th scope="col">Tamaño</th>
+                              <th scope="col">Mascota</th>
                               <th scope="col">Descripción</th>
                             </tr>
                           </thead>
@@ -276,10 +272,6 @@
                               <tr>
                                 <td><?php echo $dataCliente['nombre']; ?></td>
                                 <td><?php echo $dataCliente['especie']; ?></td>
-                                <td><?php echo $dataCliente['edad']; ?></td>
-                                <td><?php echo $dataCliente['sexo']; ?></td>
-                                <td><?php echo $dataCliente['color']; ?></td>
-                                <td><?php echo $dataCliente['tam']; ?></td>
                                 <td><?php echo $dataCliente['descripcion']; ?></td>
 
                                 <td>
