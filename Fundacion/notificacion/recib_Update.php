@@ -9,7 +9,7 @@ $motivo =$_REQUEST['motivo'];
 
 $update = ("UPDATE solicitudadopcion
 	SET 
-	nombreSolicitante  ='" .$nombreSolicitante. "',
+	nombre  ='" .$nombreSolicitante. "',
 	celular  ='" .$celular. "',
 	edad ='" .$edad. "', 
 	motivo ='" .$motivo. "'
