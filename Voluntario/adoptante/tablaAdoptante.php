@@ -227,10 +227,13 @@
 
       <div class="container mt-1 p-1">
 
-        <?php
+
+      <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT * FROM adoptante ORDER BY id DESC ");
+        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info, M.fundaciones_id,S.adoptante_id
+        FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
+        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 ORDER BY S.id DESC ");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>
@@ -263,7 +266,7 @@
                               <th scope="col">Adoptante</th>
                               <th scope="col"> Mascota</th>
                               <th scope="col"> Teléfono</th>
-                              <th scope="col">Estado</th>
+
 
   
                             </tr>
@@ -272,12 +275,9 @@
                             <?php
                             while ($dataCliente = mysqli_fetch_array($queryCliente)) { ?>
                               <tr>
-                                <td><?php echo $dataCliente['nombre']; ?></td>
-                                <td><?php echo $dataCliente['apllpat']; ?></td>
-                                <td><?php echo $dataCliente['apllmat']; ?></td>
-                                <td><?php echo $dataCliente['num']; ?></td>
-                        
-
+                              <td><?php echo $dataCliente['nombreSolicitante']; ?></td>
+                                <td><?php echo $dataCliente['nombreMascota']; ?></td>
+                                <td><?php echo $dataCliente['celular']; ?></td>
                                 <td>
 
                                 <button type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">

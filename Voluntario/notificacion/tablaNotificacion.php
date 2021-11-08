@@ -55,6 +55,13 @@
       border-color: #ff7567;
       box-shadow: none;
     }
+
+    .btn-zz {
+      color: #fff;
+      background-color: #e30a6e;
+      border-color: #e30a6e;
+      box-shadow: none;
+    }
   </style>
 
   <script>
@@ -249,7 +256,7 @@
         <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota'
+        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota', S.info
         FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
         INNER JOIN fundacion F ON F.id=M.fundaciones_id and M.idVoluntario=" . $_SESSION["idPersona"] . " ORDER BY S.id DESC ");
         $queryCliente = mysqli_query($con, $sqlCliente);
@@ -299,10 +306,6 @@
 
                                 <td>
 
-                                  <button title="EDITAR" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fa fa-book"></i>
-                                  </button>
-
                                   <button title="ELIMINAR" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fa fa-times"></i>
                                   </button>
@@ -310,13 +313,37 @@
                                   <button type="button" class="btn btn-ds" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
                                     Información
                                   </button>
-                                  <button type="button" class="btn btn-danger" data-toggle="modal">
-                                    RECHAZADA
-                                  </button>
+                                  <?php
+                                  if ($dataCliente['aprobada'] == 0) { ?>
+                                    <button type="button" class="btn btn-ss" data-toggle="modal" data-target="#infoChildresn<?php echo $dataCliente['id']; ?>">
+                                      Enviar Solicitud
+                                    </button>
+                                    <?php
+                                  } else { // aprobado por voluntario
+                                    if ($dataCliente['aprobada'] == 1) { ?>
+                                      <button type="button" class="btn btn-zz" data-toggle="modal">
+                                        Solicitud enviada
+                                      </button>
+                                      <?php
+                                    } else { //aprobado por fundacion
+                                      if ($dataCliente['aprobada'] == 2) { ?>
+                                        <button type="button" class="btn btn-df" data-toggle="modal">
+                                          APROBADA
+                                        </button>
+                                        <?php
+                                      } else {
+                                        if ($dataCliente['aprobada'] == 3) { ?>
+                                          <button type="button" class="btn btn-danger" data-toggle="modal">
+                                            RECHAZADO
+                                          </button>
+                                        <?php
+                                        } ?>
+                                  <?php
+                                      }
+                                    }
+                                  }
+                                  ?>
 
-                                  <button type="button" class="btn btn-df" data-toggle="modal" data-target="#infoChildresn<?php echo $dataCliente['id']; ?>">
-                                    APROBADO
-                                  </button>
                                 </td>
                               </tr>
 

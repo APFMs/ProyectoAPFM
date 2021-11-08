@@ -68,7 +68,7 @@
         <a href="../Voluntario.php" class="nav-link">Volver</a>
       </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="../index.html" class="nav-link">Cerrar sesión</a>
+          <a href="../../index.html" class="nav-link">Cerrar sesión</a>
           <?php
           session_start(); // para usar las variables de sesion                 
           ?>
@@ -261,9 +261,10 @@
                         <table class="table table-bordered table-striped table-hover">
                           <thead>
                             <tr>
-                              <th scope="col">Nombre</th>
                               <th scope="col">Mascota</th>
-                              <th scope="col">Descripción</th>
+                              <th scope="col">Adpotante</th>
+                              <th scope="col">Seguimientos</th>
+                              <th scope="col">Proxima Visita</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -273,19 +274,20 @@
                                 <td><?php echo $dataCliente['nombre']; ?></td>
                                 <td><?php echo $dataCliente['especie']; ?></td>
                                 <td><?php echo $dataCliente['descripcion']; ?></td>
+                                <td><?php echo $dataCliente['descripcion']; ?></td>
 
                                 <td>
 
-                                  <button type="button" class="btn btn-df" data-toggle="modal" data-target="#<?php echo $dataCliente['id']; ?>">
-                                    Ver
+                                  <button type="agendarChildresn" class="btn btn-df" data-toggle="modal" data-target="#<?php echo $dataCliente['id']; ?>">
+                                    Agendar
                                   </button>
 
-                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataCliente['id']; ?>">
-                                    Modificar
+                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insertChildresn<?php echo $dataCliente['id']; ?>">
+                                    Registro
                                   </button>
 
-                                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
-                                    Eliminar
+                                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
+                                    Historial
                                   </button>
                                 </td>
                               </tr>

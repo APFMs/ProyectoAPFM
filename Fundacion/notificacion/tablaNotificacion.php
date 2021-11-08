@@ -55,6 +55,13 @@
       border-color: #ff7567;
       box-shadow: none;
     }
+
+    .btn-zz {
+      color: #fff;
+      background-color: #e30a6e;
+      border-color: #e30a6e;
+      box-shadow: none;
+    }
   </style>
 
   <script>
@@ -271,7 +278,7 @@
         <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota'
+        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info, M.fundaciones_id
         FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
         INNER JOIN fundacion F ON F.id=M.fundaciones_id AND F.persona_id=" . $_SESSION['idPersona'] . "
         ORDER BY S.id DESC ");
@@ -322,7 +329,7 @@
 
                                 <td>
 
-                                <button title="EDITAR" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataCliente['id']; ?>">
+                                  <button title="EDITAR" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fa fa-book"></i>
                                   </button>
 
@@ -334,32 +341,45 @@
                                     Información
                                   </button>
                                   <?php
-                                  if ($dataCliente['aprobada'] == 1) { ?>
-                                    <button type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
+                                  if ($dataCliente['aprobada'] == 2) { ?>
+                                    <button type="button" class="btn btn-df" data-toggle="modal">
                                       APROBADO
                                     </button>
                                     <?PHP
                                   } else {
-                                    if ($dataCliente['aprobada'] == 2) { ?>
+                                    if ($dataCliente['aprobada'] == 3) { ?>
                                       <button type="button" class="btn btn-danger" data-toggle="modal">
                                         RECHAZADA
                                       </button>
-                                    <?PHP
-                                    } else { ?>
-                                      <button type="button" class="btn btn-ss" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
-                                        SIN VERIFICAR
-                                      </button>
+                                      <?PHP
+                                    } else {
+                                      if ($dataCliente['aprobada'] == 1 && $dataCliente['aprobada'] == 0) { ?>
+                                        <button type="button" class="btn btn-ss" data-toggle="modal">
+                                          Pendiente
+                                        </button>
                                   <?php
+                                      }
                                     }
                                   }
                                   ?>
 
                                 </td>
                                 <td>
-                                  <button type="button" class="btn btn-ss" data-toggle="modal" data-target="#solicitudChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fa fa-envelope"></i>
-
-                                  </button>
+                                  <?php
+                                  if ($dataCliente['aprobada'] == 1) { ?>
+                                    <button type="button" class="btn btn-zz" data-toggle="modal" data-target="#solicitudChildresn<?php echo $dataCliente['id']; ?>">
+                                      <i class="fa fa-envelope"></i>
+                                    </button>
+                                  <?php
+                                  }else {
+                                    if ($dataCliente['aprobada'] == 2 || $dataCliente['aprobada'] == 3) { ?>
+                                      <button type="button" class="btn btn-ss" data-toggle="modal" >
+                                      <i class="fa fa-envelope-open" ></i>
+                                    </button>
+                                    <?php
+                                    }
+                                  }
+                                  ?>
 
                                 </td>
                               </tr>

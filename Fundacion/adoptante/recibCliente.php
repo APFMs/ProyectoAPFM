@@ -1,6 +1,6 @@
 <?php
 include('config.php');
-$nombre  = $_REQUEST['nombre'];
+/*$nombre  = $_REQUEST['nombre'];
 $apllpat = $_REQUEST['apllpat'];
 $apllmat = $_REQUEST['apllmat'];
 $edad    = $_REQUEST['edad'];
@@ -11,34 +11,9 @@ $casa    = $_REQUEST['casa'];
 $fami    = $_REQUEST['fami'];
 $ci      = $_REQUEST['ci'];
 $recibo  = $_REQUEST['recibo'];
-
-$QueryInsert = ("INSERT INTO adoptante(
-    nombre,
-    apllpat,
-    apllmat,
-    edad,
-    sexo,
-    num,
-    depa,
-    casa,
-    fami,
-    ci,
-    recibo
-)
-VALUES (
-    '".$nombre. "',
-    '".$apllpat. "',
-    '".$apllmat."',
-    '".$edad."',
-    '".$sexo."',
-    '".$num."',
-    '".$depa."',
-    '".$casa."',
-    '".$fami."',
-    '".$ci."',
-    '".$recibo."'
-)");
-$inserInmueble = mysqli_query($con, $QueryInsert);
+*/
+$update = ("INSERT INTO adoptante (depa, persona_id) VALUES ('Cochabamba', 32);");
+$result_update = mysqli_query($con, $update);
 
 header("location:tablaAdoptante.php");
 ?>

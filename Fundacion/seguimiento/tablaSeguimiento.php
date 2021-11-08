@@ -305,9 +305,10 @@
                         <table class="table table-bordered table-striped table-hover">
                           <thead>
                             <tr>
-                              <th scope="col">Adoptante</th>
                               <th scope="col">Mascota</th>
+                              <th scope="col">Adoptante</th>
                               <th scope="col">Voluntario</th>
+                              <th scope="col">Seguimientos</th>
                               <th scope="col">Fecha de Creación</th>
                               <th scope="col">Fecha de Actualización</th>
 
@@ -318,6 +319,7 @@
                             while ($dataCliente = mysqli_fetch_array($queryCliente)) { ?>
                               <tr>
                                 <td><?php echo $dataCliente['nombre']; ?></td>
+                                <td><?php echo $dataCliente['num']; ?></td>
                                 <td><?php echo $dataCliente['num']; ?></td>
                                 <td><?php echo $dataCliente['num']; ?></td>
                                 <td><?php echo $dataCliente['fechaCreacion']; ?></td>
