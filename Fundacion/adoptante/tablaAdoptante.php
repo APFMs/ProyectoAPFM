@@ -42,10 +42,38 @@
       box-shadow: none;
     }
 
+    .btn-HH {
+      color: #fff;
+      background-color: #f8cf8f;
+      border-color: #f8cf8f;
+      box-shadow: none;
+    }
+
     .btn-yy {
       color: #fff;
       background-color: #8353db;
       border-color: #8353db;
+      box-shadow: none;
+    }
+
+    .btn-Q {
+      color: #fff;
+      background-color: #e35c71;
+      border-color: #e35c71;
+      box-shadow: none;
+    }
+
+    .btn-W {
+      color: #fff;
+      background-color: #ebb812;
+      border-color: #ebb812;
+      box-shadow: none;
+    }
+
+    .btn-E {
+      color: #fff;
+      background-color: #19af9e;
+      border-color: #19af9e;
       box-shadow: none;
     }
   </style>
@@ -293,7 +321,7 @@
                               <th scope="col">CI</th>
                               <th scope="col">Boleta de pago</th>
                               <th scope="col">Casa</th>
-                              <th scope="col">Fecha de Creación</th> -->
+                            <!--  <th scope="col">Fecha de Creación</th> -->
 
                             </tr>
                           </thead>
@@ -312,14 +340,17 @@
                                 <td><?php echo $dataCliente['nombreMascota']; ?></td>
                                 <td><?php echo $dataCliente['celular']; ?></td>
                                 <td><?php echo $dataCliente3['nombre']; ?></td>
-                                <td> <button title="FOTO DE CI" type="button" class="btn-df" data-toggle="modal" data-target="#foto2Childresn<?php echo $dataCliente['id']; ?>">
-                                <img src="img/<?php echo $dataCliente['fotoCi']; ?>" height="40"></i>
+                                <td> <button  type="button" class="btn-HH" data-toggle="modal" data-target="#DCIChildresn<?php echo $dataCliente['id']; ?>">
+                                <img src="img/<?php echo $dataCliente['fotoCi']; ?>" height="35"></i>
                                   </button></td>
-                                <td><img src="img/<?php echo $dataCliente['fotoCi']; ?>" height="40"> </td>
-                                <td><img src="img/<?php echo $dataCliente['fotoLuz']; ?>" height="40"> </td>
-                                <td><img src="img/<?php echo $dataCliente['fotoCasa']; ?>" height="40"> </td>
 
+                                  <td> <button type="button" class="btn-HH" data-toggle="modal" data-target="#DLUZChildresn<?php echo $dataCliente['id']; ?>">
+                                  <img src="img/<?php echo $dataCliente['fotoLuz']; ?>" height="35"></i>
+                                  </button></td>
 
+                                  <td> <button  type="button" class="btn-HH" data-toggle="modal" data-target="#DCASAChildresn<?php echo $dataCliente['id']; ?>">
+                                  <img src="img/<?php echo $dataCliente['fotoCasa']; ?>" height="35"> </i>
+                                  </button></td>
                                 <td>
 
                                   <button title="VER" type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
@@ -334,13 +365,13 @@
                                     <i class="fa fa-times"></i>
                                   </button>
 
-                                  <button title="FOTO DE CI" type="button" class="btn btn-df" data-toggle="modal" data-target="#foto2Childresn<?php echo $dataCliente['id']; ?>">
+                                  <button title="FOTO DE CI" type="button" class="btn btn-Q" data-toggle="modal" data-target="#foto2Childresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fas fa-address-card"></i>
                                   </button>
-                                  <button title="FOTO DE BOLETA DE PAGO" type="button" class="btn btn-yy" data-toggle="modal" data-target="#fotoChildresn<?php echo $dataCliente['id']; ?>">
+                                  <button title="FOTO DE BOLETA DE PAGO" type="button" class="btn btn-W" data-toggle="modal" data-target="#fotoChildresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fas fa-file-invoice-dollar"></i>
                                   </button>
-                                  <button title="FOTO DE LA CASA" type="button" class="btn btn-danger" data-toggle="modal" data-target="#foto1Childresn<?php echo $dataCliente['id']; ?>">
+                                  <button title="FOTO DE LA CASA" type="button" class="btn btn-E" data-toggle="modal" data-target="#foto1Childresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fas fa-house-user"></i>
                                   </button>
 
@@ -369,10 +400,13 @@
                               <?php include('ModalInsertar.php'); ?>
 
                               <?php include('ModalIC.php'); ?>
+                              <?php include('ModalDCI.php'); ?>
 
                               <?php include('ModalLuz.php'); ?>
+                              <?php include('ModalDLUZ.php'); ?>
 
                               <?php include('ModalCasa.php'); ?>
+                              <?php include('ModalDCASA.php'); ?>
 
 
 

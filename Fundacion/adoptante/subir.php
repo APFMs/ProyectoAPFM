@@ -14,7 +14,7 @@ if (isset($_POST['Guardar'])) {
         if (!((strpos($tipo, 'gif') || strpos($tipo, 'jpeg')))) {
             $_SESSION['mensaje'] = 'solo se permite archivos jpeg, gif';
             $_SESSION['tipo'] = 'danger';
-            header("location:tablaMascota.php");
+            header("location:tablaAdoptante.php");
         } else {
             $query = "UPDATE adoptante SET fotoCi='" . $imagen."' WHERE id=".$adoptante_id.";";
             $resultado = mysqli_query($con, $query);
@@ -31,4 +31,4 @@ if (isset($_POST['Guardar'])) {
     }
 }
 
-header("location:tablaMascota.php");
+header("location:tablaAdoptante.php");

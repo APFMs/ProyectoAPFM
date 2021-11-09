@@ -11,7 +11,7 @@ $resultado = mysqli_query($con, $query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Galeria</title>
     <!-- Custom styles for this template -->
     <link href="../css/carousel.css" rel="stylesheet">
 
@@ -107,7 +107,7 @@ $resultado = mysqli_query($con, $query);
                         <br>
 
                         <li class="nav-item" style="margin: 5px;">
-                            <a class="btn btn-header btn-outline-warning" href="../subirimagenes/index.php" tabindex="-1" aria-disabled="true">Galeria</a>
+                            <a class="btn btn-header btn-outline-warning" href="../login.html" tabindex="-1" aria-disabled="true">Ingresar</a>
 
                         </li>
                         <br>

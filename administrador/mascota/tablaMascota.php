@@ -276,6 +276,7 @@
                               <th scope="col">Fecha Creacion</th>
                               <th scope="col">Fecha Actualización</th>
                               <th scope="col">Fundacion</th>
+                              <th scope="col">Fundacion</th>
 
                             </tr>
                           </thead>
@@ -289,6 +290,7 @@
                                 <td><?php echo $dataCliente['fechaCreacion']; ?></td>
                                 <td><?php echo $dataCliente['fechaActualizacion']; ?></td>
                                 <td><?php echo $dataCliente['nombreFundacion']; ?></td>
+                                <td><img src="../../Fundacion/mascota/img/<?php echo $dataCliente['imagen']; ?>" height="60" > </td>
 
 
                                 <td>
