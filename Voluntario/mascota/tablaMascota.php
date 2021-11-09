@@ -48,7 +48,6 @@
       border-color: #6f3dbf;
       box-shadow: none;
     }
-
   </style>
 
   <script>
@@ -90,8 +89,8 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-        <a href="../Voluntario.php" class="nav-link">Volver</a>
-      </li>
+          <a href="../Voluntario.php" class="nav-link">Volver</a>
+        </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="../../index.html" class="nav-link">Cerrar sesión</a>
           <?php
@@ -237,7 +236,7 @@
               <h1><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
               <br>
 
- <!--             <tr>
+              <!--             <tr>
                 <td>
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insertChildresn">
                     Agregar Mascota
@@ -245,14 +244,6 @@
                 </td>
               </tr>
               </form>-->
-            </div>
-
-
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Salir</a></li>
-
-              </ol>
             </div>
           </div>
         </div><!-- /.container-fluid -->
@@ -267,19 +258,20 @@
         <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT * FROM mascota WHERE adoptable=0 AND idVoluntario=".$_SESSION['idPersona']);
+        $sqlCliente   = ("SELECT * FROM mascota WHERE adoptable=0 AND idVoluntario=" . $_SESSION['idPersona']);
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>
 
 
 
-        <div class="row text-center" style="background-color: #cecece">
+        <div class="row text-center" style="background-color: #ffc66c">
 
-          <div class="col-md-6">
+          <div class="col-md-11">
             <strong>Lista de Mascotas <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
           </div>
         </div>
+
 
 
         <div class="row clearfix">
@@ -319,25 +311,25 @@
                                 <td><?php echo $dataCliente['color']; ?></td>
                                 <td><?php echo $dataCliente['fechaCreacion']; ?></td>
                                 <td><?php echo $dataCliente['fechaActualizacion']; ?></td>
-                                
+
 
                                 <td>
 
                                   <button type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
                                     Ver Detalles
                                   </button>
-                            
+
                                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataCliente['id']; ?>">
                                     Modificar
                                   </button>
-                             
+
                                   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
                                     Eliminar
                                   </button>
                                 </td>
-                                  <td>
+                                <td>
                                   <button type="button" class="btn btn-ds" data-toggle="modal" data-target="#adopChildresn<?php echo $dataCliente['id']; ?>">
-                                    Listo 
+                                    Listo
                                   </button>
                                 </td>
                               </tr>
@@ -349,7 +341,7 @@
 
                               <!--Ventana Modal para la Alerta de Eliminar--->
                               <?php include('ModalInsertar.php'); ?>
-                             
+
                               <!--Ventana Modal para la Alerta de Eliminar--->
                               <?php include('ModalAdoptable.php'); ?>
                               <!--Ventana Modal para la Alerta de Eliminar--->

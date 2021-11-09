@@ -4,14 +4,15 @@
     <div class="modal-content">
       <div class="modal-header" style="background-color: #f39c12 !important;">
         <h6 class="modal-title" style="color: #fff; text-align: center;">
-          Registrar Adoptante
+          Agregar Nuevo Voluntario
         </h6>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <form method="POST" action="recibCliente.php">
-        <input type="hidden" name="id" value="">
+        <input type="hidden" name="id" value="<?php echo $dataCliente['id']; ?>">
+        <input type="hidden" name="mascota_id" value="<?php echo $dataCliente['mascota_id']; ?>">
 
         <div class="modal-body" id="cont_modal">
 
@@ -19,33 +20,42 @@
             <label for="recipient-name" class="col-form-label">Nombre :</label>
             <input type="text" name="nombre" class="form-control" required="true">
           </div>
-          
+
 
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Apellido Paterno :</label>
             <input type="text" name="apllpat" class="form-control" required="true">
           </div>
-          
+
 
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Apellido Materno :</label>
-            <input type="text" name="apllmat" class="form-control" required="true">
+            <input type="text" name="apllmat" class="form-control">
           </div>
 
 
-          <div class="col-md-12 mt-2">
-            <label for="celular" class="form-label">Edad</label>
-            <input type="number" class="form-control" name="edad" required='true'>
-          </div>
 
           <div class="from-group" data-validate="Usuario incorrecto">
             <label for="">Sexo:</label>
             <select class="input100" name="sexo" id="tam">
+              <option value="Masculino">Masculino</option>
               <option value="Femenino">Femenino</option>
-              <option value="masculino">Masculino</option>
             </select>
           </div>
 
+
+
+
+          <div class="col-md-12 mt-2">
+            <label for="ci" class="form-label">CI:</label>
+            <input type="number" class="form-control" name="ci" required='true'>
+          </div>
+
+
+          <div>
+            <label for="start">Fecha de Nacimiento:</label>
+            <input type="date" id="start" name="fechaNac" value="2003-07-22" min="1960-01-01" max="2003-12-31">
+          </div>
 
           <div class="col-md-12 mt-2">
             <label for="celular" class="form-label">Teléfono</label>
@@ -87,64 +97,15 @@
             </select>
           </div>
 
-
-
-          <div class="modal-body">
-        <strong style="text-align: center !important">
-          <form action="subir.php" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="my-input">Fotocopia de CI</label>
-              <input id="my-input" type="file" name="imagen">
-            </div>
-
-            <div class="form-group">              
-              <input id="my-input" class="form-control" type="hidden" name="titulo" value="<?php echo $dataCliente['id']?>">
-            </div>
-            
-            <?php if (isset($_SESSION['mensaje'])) { ?>
-              <div class="alert alert-<?php echo $_SESSION['tipo'] ?> alert-dismissible fade show" role="alert">
-                <strong><?php echo $_SESSION['mensaje']; ?></strong>
-              </div>
-            <?php session_unset();
-            } ?>
-          </form>
-        </strong>
-      </div>v>
-
-
-
-
-          <div class="modal-body">
-        <strong style="text-align: center !important">
-          <form action="subir.php" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="my-input">Fot. de Boleta luz</label>
-              <input id="my-input" type="file" name="imagen">
-            </div>
-
-            <div class="form-group">              
-              <input id="my-input" class="form-control" type="hidden" name="titulo" value="<?php echo $dataCliente['id']?>">
-            </div>
-            
-            <?php if (isset($_SESSION['mensaje'])) { ?>
-              <div class="alert alert-<?php echo $_SESSION['tipo'] ?> alert-dismissible fade show" role="alert">
-                <strong><?php echo $_SESSION['mensaje']; ?></strong>
-           <!--     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>  -->
-              </div>
-            <?php session_unset();
-            } ?>
-  <!--         <input type="submit" value="Guardar" class="btn btn-primary" name="Guardar"> -->
-          </form>
-        </strong>
-      </div>
+          <div class="col-md-12 mt-2">
+            <label for="" class="form-label">Dirección :</label>
+            <input type="text" class="form-control" name="direccion" required='true'>
+          </div>
 
         </div>
-    
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="submit" class="btn btn-primary">Crear Voluntario</button>
         </div>
       </form>
 

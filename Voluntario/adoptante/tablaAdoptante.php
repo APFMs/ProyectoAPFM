@@ -65,8 +65,8 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-        <a href="../Voluntario.php" class="nav-link">Volver</a>
-      </li>
+          <a href="../Voluntario.php" class="nav-link">Volver</a>
+        </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="../../index.html" class="nav-link">Cerrar sesión</a>
           <?php
@@ -116,7 +116,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="../index.html" class="brand-link">
+      <a href="../../index.html" class="brand-link">
         <img src="../img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Somos Tu Voz</span>
       </a>
@@ -129,7 +129,7 @@
             <img src="../img/user.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="Administrador.php" class="d-block"><?php echo $_SESSION["nombreUsuario"] ?></a>
+            <a href="../Voluntario.php" class="d-block"><?php echo $_SESSION["nombreUsuario"] ?></a>
           </div>
         </div>
 
@@ -198,24 +198,7 @@
             <div class="col-sm-6">
               <h1><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
               <br>
-
-              <tr>
-                <td>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insertChildresn">
-                    Agregar Adoptante
-                  </button>
-                  <?php include('ModalInsertar.php'); ?>
-                </td>
-              </tr>
               </form>
-            </div>
-
-
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="../../index.html">Salir</a></li>
-
-              </ol>
             </div>
           </div>
         </div><!-- /.container-fluid -->
@@ -228,7 +211,7 @@
       <div class="container mt-1 p-1">
 
 
-      <?php
+        <?php
         include('config.php');
 
         $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info, M.fundaciones_id,S.adoptante_id
@@ -240,12 +223,13 @@
 
 
 
-        <div class="row text-center" style="background-color: #cecece">
+        <div class="row text-center" style="background-color: #ffc66c">
 
-          <div class="col-md-6">
-            <strong>Lista de Adoptantes <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
+          <div class="col-md-11">
+            <strong>Adoptantes <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
           </div>
         </div>
+
 
 
         <div class="row clearfix">
@@ -268,19 +252,19 @@
                               <th scope="col"> Teléfono</th>
 
 
-  
+
                             </tr>
                           </thead>
                           <tbody>
                             <?php
                             while ($dataCliente = mysqli_fetch_array($queryCliente)) { ?>
                               <tr>
-                              <td><?php echo $dataCliente['nombreSolicitante']; ?></td>
+                                <td><?php echo $dataCliente['nombreSolicitante']; ?></td>
                                 <td><?php echo $dataCliente['nombreMascota']; ?></td>
                                 <td><?php echo $dataCliente['celular']; ?></td>
                                 <td>
 
-                                <button type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
+                                  <button type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
                                     Ver Detalles
                                   </button>
 
@@ -301,7 +285,7 @@
 
                               <!--Ventana Modal para la Alerta de Eliminar--->
                               <?php include('ModalInsertar.php'); ?>
-                              
+
                               <!--Ventana Modal para la Alerta de Eliminar--->
                               <?php include('ModalDetalles.php'); ?>
 

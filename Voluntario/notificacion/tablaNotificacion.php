@@ -268,9 +268,10 @@
         <div class="row text-center" style="background-color: #ffc66c">
 
           <div class="col-md-11">
-            <strong>Lista de Mascotas <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
+            <strong>Notificación <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
           </div>
         </div>
+
 
 
         <div class="row clearfix">

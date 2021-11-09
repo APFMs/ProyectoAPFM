@@ -202,14 +202,6 @@
               <br>
               </form>
             </div>
-
-
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="../../index.html">Salir</a></li>
-
-              </ol>
-            </div>
           </div>
         </div><!-- /.container-fluid -->
       </section>

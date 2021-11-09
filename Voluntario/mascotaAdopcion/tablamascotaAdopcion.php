@@ -65,8 +65,8 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-        <a href="../Voluntario.php" class="nav-link">Volver</a>
-      </li>
+          <a href="../Voluntario.php" class="nav-link">Volver</a>
+        </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="../../index.html" class="nav-link">Cerrar sesión</a>
           <?php
@@ -143,7 +143,7 @@
                with font-awesome or any other icon font library -->
 
 
-               
+
 
             <li class="nav-item">
               <a href=<?php echo $paginaMascotaEnAdopcion ?> class="nav-link">
@@ -219,19 +219,20 @@
         <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT * FROM mascota WHERE adoptable=1 and idVoluntario=".$_SESSION['idPersona'] ." ORDER BY id DESC ");
+        $sqlCliente   = ("SELECT * FROM mascota WHERE adoptable=1 and idVoluntario=" . $_SESSION['idPersona'] . " ORDER BY id DESC ");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>
 
 
 
-        <div class="row text-center" style="background-color: #cecece">
+        <div class="row text-center" style="background-color: #ffc66c">
 
-          <div class="col-md-6">
-            <strong>Lista de Clientes <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
+          <div class="col-md-11">
+            <strong>Mascotas en Adopción <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
           </div>
         </div>
+
 
 
         <div class="row clearfix">

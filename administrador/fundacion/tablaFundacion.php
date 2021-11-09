@@ -316,7 +316,7 @@
                                   </button>
 
                                   <button title="EDITAR" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fa fa-book"></i>
+                                    <i class="fas fa-edit"></i>
                                   </button>
 
                                   <button title="ELIMINAR" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">

@@ -254,14 +254,6 @@
               <br>
               </form>
             </div>
-
-
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Salir</a></li>
-
-              </ol>
-            </div>
           </div>
         </div><!-- /.container-fluid -->
       </section>
@@ -285,7 +277,7 @@
         <div class="row text-center" style="background-color: #ffc66c">
 
           <div class="col-md-11">
-            <strong>Fundaciones <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
+            <strong>Seguimientos <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
           </div>
         </div>
 
@@ -333,7 +325,7 @@
                                   </button>
 
                                   <button title="EDITAR" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fa fa-book"></i>
+                                    <i class="fas fa-edit"></i>
                                   </button>
 
                                   <button title="ELIMINAR" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">

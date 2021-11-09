@@ -206,12 +206,6 @@
               <br>
 
             </div>
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="../index.html">Salir</a></li>
-
-              </ol>
-            </div>
           </div>
         </div><!-- /.container-fluid -->
       </section>
@@ -287,7 +281,7 @@
                                   </button>
 
                                   <button title="EDITAR" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fa fa-book"></i>
+                                    <i class="fas fa-edit"></i>
                                   </button>
 
 

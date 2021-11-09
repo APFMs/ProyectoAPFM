@@ -291,7 +291,7 @@
         <div class="row text-center" style="background-color: #ffc66c">
 
           <div class="col-md-11">
-            <strong>Lista de Mascotas <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
+            <strong>Notificaciones <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
           </div>
         </div>
 
@@ -328,10 +328,6 @@
 
 
                                 <td>
-
-                                  <button title="EDITAR" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fa fa-book"></i>
-                                  </button>
 
                                   <button title="ELIMINAR" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fa fa-times"></i>
@@ -387,8 +383,6 @@
 
                               <!--Ventana Modal para la Alerta de Eliminar--->
                               <?php include('ModalEliminar.php'); ?>
-
-                              <?php include('ModalEditar.php'); ?>
 
                               <!--Ventana Modal para la Alerta de Eliminar--->
                               <?php include('ModalDetalles.php'); ?>

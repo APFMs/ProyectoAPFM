@@ -181,7 +181,7 @@
                 </p>
               </a>
             </li>
-            
+
 
           </ul>
         </nav>
@@ -200,14 +200,6 @@
               <h1><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
               <br>
               </form>
-            </div>
-
-
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Salir</a></li>
-
-              </ol>
             </div>
           </div>
         </div><!-- /.container-fluid -->
@@ -229,12 +221,13 @@
 
 
 
-        <div class="row text-center" style="background-color: #cecece">
+        <div class="row text-center" style="background-color: #ffc66c">
 
-          <div class="col-md-6">
-            <strong>Mi Registro <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
+          <div class="col-md-11">
+            <strong>Datos Personales  <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
           </div>
         </div>
+
 
 
         <div class="row clearfix">
