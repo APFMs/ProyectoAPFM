@@ -65,8 +65,8 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-        <a href="../Voluntario.php" class="nav-link">Volver</a>
-      </li>
+          <a href="../Voluntario.php" class="nav-link">Volver</a>
+        </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="../../index.html" class="nav-link">Cerrar sesión</a>
           <?php
@@ -147,7 +147,7 @@
 
             <li class="nav-item">
               <a href=<?php echo $paginaMascotaEnAdopcion ?> class="nav-link">
-                <i class="fa fa-paw"></i>
+                <i class="fas fa-bone"></i>
                 <p>
                   Mascotas en Adopción
                 </p>
@@ -278,8 +278,8 @@
 
                                 <td>
 
-                                  <button type="agendarChildresn" class="btn btn-df" data-toggle="modal" data-target="#<?php echo $dataCliente['id']; ?>">
-                                    Agendar
+                                  <button title="AGENDAR" type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarChildresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fa fa-calendar"></i>
                                   </button>
 
                                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insertChildresn<?php echo $dataCliente['id']; ?>">
@@ -299,6 +299,8 @@
 
                               <!--Ventana Modal para la Alerta de Eliminar--->
                               <?php include('ModalInsertar.php'); ?>
+
+                              <?php include('ModalAgendar.php'); ?>
 
 
                             <?php } ?>

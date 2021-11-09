@@ -32,15 +32,11 @@
             } ?>
             <input type="submit" value="Guardar" class="btn btn-primary" name="Guardar">
           </form>
-        </strong>
-
-        
-
+        </strong>       
       </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-danger btnActualizar" data-dismiss="modal" id="<?php echo $dataCliente['id']; ?>">Listo</button>
       </div>
     </div>
   </div>

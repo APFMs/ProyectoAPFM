@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header" style="background-color: #f39c12 !important;">
         <h6 class="modal-title" style="color: #fff; text-align: center;">
-          Dstos del adoptante
+          Datos del adoptante
         </h6>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -36,11 +36,11 @@
               <br>
               <label for="">¿Cuenta con casa propia?: <?php echo $dataCliente['casa']; ?></label>
               <br>
-              <label for="">La familia esta de acuerdo con la apoción : <?php echo $dataCliente['depa']; ?></label>
+              <label for="">La familia esta de acuerdo con la apoción : <?php echo $dataCliente['fami']; ?></label>
               <br>
-              <label for="">CI: <?php echo $dataCliente['ci']; ?></label>
+              <label for="">CI: <?php echo $dataCliente['']; ?></label>
               <br>
-              <label for="">Recibo de pago de Luz: <?php echo $dataCliente['recibo']; ?></label>
+              <label for="">Recibo de pago de Luz: <?php echo $dataCliente['']; ?></label>
               <br>
 
 

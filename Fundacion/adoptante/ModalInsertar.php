@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header" style="background-color: #f39c12 !important;">
         <h6 class="modal-title" style="color: #fff; text-align: center;">
-          Agregar Nuevo Registro
+          Registrar Adoptante
         </h6>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -19,26 +19,24 @@
             <label for="recipient-name" class="col-form-label">Nombre :</label>
             <input type="text" name="nombre" class="form-control" required="true">
           </div>
-          <br>
+          
 
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Apellido Paterno :</label>
             <input type="text" name="apllpat" class="form-control" required="true">
           </div>
-          <br>
+          
 
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Apellido Materno :</label>
             <input type="text" name="apllmat" class="form-control" required="true">
           </div>
-          <br>
 
 
           <div class="col-md-12 mt-2">
             <label for="celular" class="form-label">Edad</label>
             <input type="number" class="form-control" name="edad" required='true'>
           </div>
-          <br>
 
           <div class="from-group" data-validate="Usuario incorrecto">
             <label for="">Sexo:</label>
@@ -47,14 +45,12 @@
               <option value="masculino">Masculino</option>
             </select>
           </div>
-          <br>
 
 
           <div class="col-md-12 mt-2">
             <label for="celular" class="form-label">Teléfono</label>
             <input type="number" class="form-control" name="num" required='true'>
           </div>
-          <br>
 
           <div class="from-group" data-validate="Usuario incorrecto">
             <label for="">Departamento:</label>
@@ -74,53 +70,78 @@
           <br>
 
 
-
           <div class="from-group" data-validate="Usuario incorrecto">
             <label for="">Tiene casa propia:</label>
-            <select class="input100" name="casa" id="tam">
+            <select class="input100" name="casa" id="casa">
               <option value="Si">si</option>
               <option value="No">No</option>
-
-
-
             </select>
-
           </div>
           <br>
-
-
 
           <div class="from-group" data-validate="Usuario incorrecto">
             <label for="">La familia esta de acuerdo con la adopción:</label>
-            <select class="input100" name="fami" id="tam">
+            <select class="input100" name="fami" id="fami">
               <option value="Si">si</option>
               <option value="No">No</option>
-
-
-
             </select>
-
           </div>
-          <br>
 
 
 
-          <div class="wrap-input100" data-validate="Usuario incorrecto">
-            <label for="">Fotocopia CI:</label>
-            <input class="input100" type="text" id="nombre" name="ci" placeholder="Apellido Materno">
-            <span class="focus-efecto"></span>
-          </div>
-          <br>
+          <div class="modal-body">
+        <strong style="text-align: center !important">
+          <form action="subir.php" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="my-input">Fotocopia de CI</label>
+              <input id="my-input" type="file" name="imagen">
+            </div>
+
+            <div class="form-group">              
+              <input id="my-input" class="form-control" type="hidden" name="titulo" value="<?php echo $dataCliente['id']?>">
+            </div>
+            
+            <?php if (isset($_SESSION['mensaje'])) { ?>
+              <div class="alert alert-<?php echo $_SESSION['tipo'] ?> alert-dismissible fade show" role="alert">
+                <strong><?php echo $_SESSION['mensaje']; ?></strong>
+              </div>
+            <?php session_unset();
+            } ?>
+          </form>
+        </strong>
+      </div>v>
 
 
-          <div class="wrap-input100" data-validate="Usuario incorrecto">
-            <label for="">Fotocopia de Recibo de Luz:</label>
-            <input class="input100" type="text" id="nombre" name="recibo" placeholder="Apellido Materno">
-            <span class="focus-efecto"></span>
-          </div>
+
+
+          <div class="modal-body">
+        <strong style="text-align: center !important">
+          <form action="subir.php" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="my-input">Fot. de Boleta luz</label>
+              <input id="my-input" type="file" name="imagen">
+            </div>
+
+            <div class="form-group">              
+              <input id="my-input" class="form-control" type="hidden" name="titulo" value="<?php echo $dataCliente['id']?>">
+            </div>
+            
+            <?php if (isset($_SESSION['mensaje'])) { ?>
+              <div class="alert alert-<?php echo $_SESSION['tipo'] ?> alert-dismissible fade show" role="alert">
+                <strong><?php echo $_SESSION['mensaje']; ?></strong>
+           <!--     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>  -->
+              </div>
+            <?php session_unset();
+            } ?>
+  <!--         <input type="submit" value="Guardar" class="btn btn-primary" name="Guardar"> -->
+          </form>
+        </strong>
+      </div>
 
         </div>
-        <br>
+    
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
           <button type="submit" class="btn btn-primary">Guardar</button>

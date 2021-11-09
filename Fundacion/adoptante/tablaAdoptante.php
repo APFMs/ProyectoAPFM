@@ -173,7 +173,7 @@
 
             <li class="nav-item">
               <a href=<?php echo $paginaMascotaEnAdopcion ?> class="nav-link">
-                <i class="fa fa-paw"></i>
+                <i class="fas fa-bone"></i>
                 <p>
                   Mascotas en Adopción
                 </p>
@@ -317,10 +317,6 @@
 
                                   <button title="ELIMINAR" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fa fa-times"></i>
-                                  </button>
-
-                                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
-                                    Publicar
                                   </button>
 
                                   <?php
