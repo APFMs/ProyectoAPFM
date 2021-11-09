@@ -158,6 +158,7 @@ $resultado = mysqli_query($con, $query);
                         <option value="Perro">Perro</option>
                         <option value="Gato">Gato</option>
                         <option value="Otro">Otro</option>
+                        <option value="Todos">Todos</option>
                     </select>
 
                     <label for="">Tamaño:</label>
@@ -165,6 +166,7 @@ $resultado = mysqli_query($con, $query);
                         <option value="Grande">Grande </option>
                         <option value="Mediano">Mediano</option>
                         <option value="Pequeño">Pequeño</option>
+                        <option value="Todos">Todos</option>
                     </select>
 
                     <label for="">Color:</label>
@@ -177,6 +179,7 @@ $resultado = mysqli_query($con, $query);
                         <option value="Blanco con Negro">Blanco con Negro</option>
                         <option value="Blanco con café">Blanco con café</option>
                         <option value="Otro">Otro</option>
+                        <option value="Todos">Todos</option>
                     </select>
                     <button type="submit" class="btn btn-primary">Buscar</button>
                 </div>

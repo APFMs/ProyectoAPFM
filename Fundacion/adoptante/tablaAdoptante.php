@@ -254,9 +254,9 @@
         <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info, M.fundaciones_id,S.adoptante_id
+        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info, M.fundaciones_id,S.adoptante_id,A.fotoCi,A.fotoLuz,A.fotoCasa
         FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
-        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 ORDER BY S.id DESC ");
+        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 INNER JOIN adoptante A ON A.id=S.adoptante_id ORDER BY S.id DESC ");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>
@@ -289,20 +289,35 @@
                               <th scope="col">Adoptante</th>
                               <th scope="col">Mascota</th>
                               <th scope="col">Teléfono</th>
-                              <!---  <th scope="col">Nivel</th>
                               <th scope="col">Voluntario</th>
+                              <th scope="col">CI</th>
+                              <th scope="col">Boleta de pago</th>
+                              <th scope="col">Casa</th>
                               <th scope="col">Fecha de Creación</th> -->
 
                             </tr>
                           </thead>
                           <tbody>
                             <?php
-                            while ($dataCliente = mysqli_fetch_array($queryCliente)) { ?>
+                            while ($dataCliente = mysqli_fetch_array($queryCliente)) {
+
+                              $sqlCliente3   = ("SELECT P.nombre 
+                                FROM persona P WHERE P.id=" . $dataCliente['idVoluntario'] . ";");
+                              $queryCliente3 = mysqli_query($con, $sqlCliente3);
+                              $dataCliente3 = mysqli_fetch_array($queryCliente3);
+
+                            ?>
                               <tr>
                                 <td><?php echo $dataCliente['nombreSolicitante']; ?></td>
                                 <td><?php echo $dataCliente['nombreMascota']; ?></td>
                                 <td><?php echo $dataCliente['celular']; ?></td>
-
+                                <td><?php echo $dataCliente3['nombre']; ?></td>
+                                <td> <button title="FOTO DE CI" type="button" class="btn-df" data-toggle="modal" data-target="#foto2Childresn<?php echo $dataCliente['id']; ?>">
+                                <img src="img/<?php echo $dataCliente['fotoCi']; ?>" height="40"></i>
+                                  </button></td>
+                                <td><img src="img/<?php echo $dataCliente['fotoCi']; ?>" height="40"> </td>
+                                <td><img src="img/<?php echo $dataCliente['fotoLuz']; ?>" height="40"> </td>
+                                <td><img src="img/<?php echo $dataCliente['fotoCasa']; ?>" height="40"> </td>
 
 
                                 <td>
@@ -317,6 +332,16 @@
 
                                   <button title="ELIMINAR" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fa fa-times"></i>
+                                  </button>
+
+                                  <button title="FOTO DE CI" type="button" class="btn btn-df" data-toggle="modal" data-target="#foto2Childresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fas fa-address-card"></i>
+                                  </button>
+                                  <button title="FOTO DE BOLETA DE PAGO" type="button" class="btn btn-yy" data-toggle="modal" data-target="#fotoChildresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fas fa-file-invoice-dollar"></i>
+                                  </button>
+                                  <button title="FOTO DE LA CASA" type="button" class="btn btn-danger" data-toggle="modal" data-target="#foto1Childresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fas fa-house-user"></i>
                                   </button>
 
                                   <?php
@@ -342,6 +367,12 @@
                               <?php include('ModalDetalles.php'); ?>
 
                               <?php include('ModalInsertar.php'); ?>
+
+                              <?php include('ModalIC.php'); ?>
+
+                              <?php include('ModalLuz.php'); ?>
+
+                              <?php include('ModalCasa.php'); ?>
 
 
 

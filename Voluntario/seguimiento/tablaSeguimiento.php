@@ -37,8 +37,22 @@
 
     .btn-df {
       color: #fff;
-      background-color: #53b311;
-      border-color: #53b311;
+      background-color: #e35c71;
+      border-color: #e35c71;
+      box-shadow: none;
+    }
+
+    .btn-ff {
+      color: #fff;
+      background-color: #ebb812;
+      border-color: #ebb812;
+      box-shadow: none;
+    }
+
+    .btn-ss {
+      color: #fff;
+      background-color: #19af9e;
+      border-color: #19af9e;
       box-shadow: none;
     }
   </style>
@@ -212,10 +226,12 @@
 
       <div class="container mt-1 p-1">
 
-        <?php
+      <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT * FROM mascotas1 ORDER BY id DESC ");
+        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info, M.fundaciones_id,S.adoptante_id
+        FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
+        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 ORDER BY S.id DESC ");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>
@@ -254,21 +270,21 @@
                             <?php
                             while ($dataCliente = mysqli_fetch_array($queryCliente)) { ?>
                               <tr>
-                                <td><?php echo $dataCliente['nombre']; ?></td>
-                                <td><?php echo $dataCliente['especie']; ?></td>
-                                <td><?php echo $dataCliente['descripcion']; ?></td>
-                                <td><?php echo $dataCliente['descripcion']; ?></td>
+                                <td><?php echo $dataCliente['nombreMascota']; ?></td>
+                                <td><?php echo $dataCliente['nombreSolicitante']; ?></td>
+                                <td><?php echo $dataCliente['nombreSolicitante']; ?></td>
+                                <td><?php echo $dataCliente['nombreSolicitante']; ?></td>
 
                                 <td>
 
-                                  <button title="AGENDAR" type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarChildresn<?php echo $dataCliente['id']; ?>">
+                                  <button title="AGENDAR" type="button" class="btn btn-ss" data-toggle="modal" data-target="#agendarChildresn<?php echo $dataCliente['id']; ?>">
                                   <i class="fas fa-calendar-alt"></i>                                  </button>
 
-                                  <button title="REGISTRAR" type="button" class="btn btn-primary" data-toggle="modal" data-target="#insertChildresn<?php echo $dataCliente['id']; ?>">
+                                  <button title="REGISTRAR" type="button" class="btn btn-df" data-toggle="modal" data-target="#insertChildresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fas fa-keyboard"></i>
                                   </button>
 
-                                  <button title="HISTORIAL" type="button" class="btn btn-danger" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
+                                  <button title="HISTORIAL" type="button" class="btn btn-ff" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fas fa-folder"></i>
                                   </button>
                                 </td>

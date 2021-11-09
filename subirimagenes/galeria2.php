@@ -199,6 +199,17 @@ $color        = $_REQUEST['color'];
                         <?php
                         }
                         ?>
+                        <?php
+                        if ($especie == "Todos") {
+                        ?>
+                            <option value="Todos" selected>Todos</option>
+                        <?php
+                        } else {
+                        ?>
+                            <option value="Todos">Todos</option>
+                        <?php
+                        }
+                        ?>
                     </select>
                     <label for="">Tamaño:</label>
                     <select class="input100" name="tam" id="tam">
@@ -232,6 +243,17 @@ $color        = $_REQUEST['color'];
                         } else {
                         ?>
                             <option value="Pequeño">Pequeño</option>
+                        <?php
+                        }
+                        ?>
+                        <?php
+                        if ($especie == "Todos") {
+                        ?>
+                            <option value="Todos" selected>Todos</option>
+                        <?php
+                        } else {
+                        ?>
+                            <option value="Todos">Todos</option>
                         <?php
                         }
                         ?>
@@ -327,6 +349,17 @@ $color        = $_REQUEST['color'];
                         <?php
                         }
                         ?>
+                        <?php
+                        if ($especie == "Todos") {
+                        ?>
+                            <option value="Todos" selected>Todos</option>
+                        <?php
+                        } else {
+                        ?>
+                            <option value="Todos">Todos</option>
+                        <?php
+                        }
+                        ?>
                     </select>
 
 
@@ -343,7 +376,20 @@ $color        = $_REQUEST['color'];
             <hr>
             <div class="card-columns">
                 <?php
+                $query = "SELECT I.imagen, I.idMascota, M.id, M.nombre, M.especie, M.edad, M.sexo, M.color, M.tam,  M.descripcion FROM imagenes I INNER JOIN mascota M ON I.idMascota=M.id AND M.adoptable=1 and M.estado=1 ";
 
+                if ($especie != "Todos") {
+                    $query = $query . "and M.especie='" . $especie . "' ";
+                }
+                if ($tam != "Todos") {
+                    $query = $query . "and M.tam='" . $tam . "' ";
+                }
+                if ($color != "Todos") {
+                    $query = $query . " and M.color='" . $color . "' ";
+                }
+                $resultado = mysqli_query($con, $query);
+                $cantidad     = mysqli_num_rows($resultado);
+                /*
                 if ($color == "Otro") {
                     $query = "SELECT I.imagen, I.idMascota, M.id, M.nombre, M.especie, M.edad, M.sexo, M.color, M.tam,  M.descripcion FROM imagenes I INNER JOIN mascota M ON I.idMascota=M.id AND M.adoptable=1 and M.estado=1 and M.especie='" . $especie . "' and M.tam='" . $tam . "';";
                     $resultado = mysqli_query($con, $query);
@@ -356,6 +402,7 @@ $color        = $_REQUEST['color'];
                     $resultado = mysqli_query($con, $query);
                     $cantidad     = mysqli_num_rows($resultado);
                 }
+                */
                 foreach ($resultado as $dataCliente) { ?>
 
                     <div class="card">

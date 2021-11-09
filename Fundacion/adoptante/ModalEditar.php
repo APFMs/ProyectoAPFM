@@ -14,6 +14,7 @@
 
       <form method="POST" action="recib_Update.php">
         <input type="hidden" name="id" value="<?php echo $dataCliente['id']; ?>">
+        <input type="hidden" name="mascota_id" value="<?php echo $dataCliente['mascota_id']; ?>">
 
         <div class="modal-body" id="cont_modal">
 

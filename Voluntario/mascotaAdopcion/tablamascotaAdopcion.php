@@ -219,7 +219,7 @@
         <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT * FROM mascota WHERE adoptable=1 and idVoluntario=" . $_SESSION['idPersona'] . " ORDER BY id DESC ");
+        $sqlCliente   = ("SELECT * FROM mascota M INNER JOIN imagenes I ON I.idMascota=M.id and M.adoptable=1 and M.idVoluntario=" . $_SESSION['idPersona'] . " ORDER BY id DESC ");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>

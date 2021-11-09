@@ -57,7 +57,7 @@
               <label for="">Descripción: <?php echo $dataCliente['descripcion']; ?></label>
             </div>
             <div class="img-contenedor" id="derecha">
-              <img src="img/<?php echo $dataCliente['imagen']; ?>" class="card-img-top" alt="Image" height="20" width="26" class="img-rounded">
+              <img src="../../Fundacion/mascota/img/<?php echo $dataCliente['imagen']; ?>" class="card-img-top" alt="Image" height="20" width="26" class="img-rounded">
             </div>
           </div>
           <div class="modal-footer">

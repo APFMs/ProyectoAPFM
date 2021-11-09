@@ -282,7 +282,7 @@
                               <th scope="col">Edad</th>
                               <th scope="col">Sexo</th>
                               <th scope="col">Tamaño</th>
-                              <th scope="col">Descripción</th>
+                              <th scope="col">Mascota</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -294,7 +294,7 @@
                                 <td><?php echo $dataCliente['edad']; ?></td>
                                 <td><?php echo $dataCliente['sexo']; ?></td>
                                 <td><?php echo $dataCliente['tam']; ?></td>
-                                <td><?php echo $dataCliente['descripcion']; ?></td>
+                                <td><img src="../mascota/img/<?php echo $dataCliente['imagen']; ?>" height="60" > </td>
 
                                 <td>
 

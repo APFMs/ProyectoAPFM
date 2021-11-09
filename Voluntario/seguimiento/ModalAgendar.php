@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header" style="background-color: #f39c12 !important;">
         <h6 class="modal-title" style="color: #fff; text-align: center;">
-          Actualizar Información
+          Agendar Fecha
         </h6>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -17,7 +17,7 @@
 
         <div class="modal-body" id="cont_modal">
         <div>
-            <label for="start">Fecha de Nacimiento:</label>
+            <label for="start">Agendar Fecha para la visita :</label>
             <input type="date" id="start" name="fechaNac" value="2003-07-22" min="1960-01-01" max="2003-12-31">
           </div>
        

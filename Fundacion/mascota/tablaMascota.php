@@ -293,7 +293,7 @@
         <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT M.id, M.nombre, M.especie, M.edad, M.sexo, M.color, M.tam,  M.descripcion, M.fechaCreacion, M.fechaActualizacion, M.fundaciones_id, F.nombre as 'nombreFundacion', I.imagen, F.id as 'idFundacion', IFNULL(M.idVoluntario,'nn') as 'voluntario' FROM mascota M INNER JOIN fundacion F ON F.id=M.fundaciones_id and adoptable=0 and F.persona_id=" . $_SESSION["idPersona"] . " LEFT JOIN imagenes I ON I.idMascota=M.id");
+        $sqlCliente   = ("SELECT M.id, M.nombre, M.especie, M.edad, M.sexo, M.color, M.tam,  M.descripcion, M.fechaCreacion, M.fechaActualizacion, M.fundaciones_id, F.nombre as 'nombreFundacion', I.imagen, F.id as 'idFundacion', IFNULL(M.idVoluntario, 'nn') as 'voluntario' FROM mascota M INNER JOIN fundacion F ON F.id=M.fundaciones_id and adoptable=0 and F.persona_id=" . $_SESSION["idPersona"] . " LEFT JOIN imagenes I ON I.idMascota=M.id");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
 
@@ -303,6 +303,8 @@
         $queryCliente2 = mysqli_query($con, $sqlCliente2);
         $dataCliente2 = mysqli_fetch_array($queryCliente2);
         $_SESSION['idFundacion'] = $dataCliente2['id'];
+
+
         ?>
 
 
@@ -346,6 +348,18 @@
                             <?php
 
                             while ($dataCliente = mysqli_fetch_array($queryCliente)) {
+                              if ($dataCliente['voluntario'] != "nn") {
+                                $sqlCliente3   = ("SELECT P.nombre 
+                                FROM persona P WHERE P.id=" .$dataCliente['voluntario'].";");
+                                $queryCliente3 = mysqli_query($con, $sqlCliente3);
+                                $dataCliente3 = mysqli_fetch_array($queryCliente3);
+                              }
+                              else{
+                                $dataCliente3['nombre']="---";
+                              }
+
+
+
 
                             ?>
                               <tr>
@@ -354,7 +368,7 @@
                                 <td><?php echo $dataCliente['sexo']; ?></td>
                                 <td><?php echo $dataCliente['fechaCreacion']; ?></td>
                                 <td><?php echo $dataCliente['fechaActualizacion']; ?></td>
-                                <td><?php echo $dataCliente['nombre']; ?></td>
+                                <td><?php echo $dataCliente3['nombre']; ?></td>
                                 <td>
                                   <button title="VER" type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fa fa-eye"></i>

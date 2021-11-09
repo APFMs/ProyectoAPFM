@@ -10,29 +10,16 @@
 
       <div class="modal-body">
         <strong style="text-align: center !important">
-          <?php echo $dataCliente['nombre']; ?>
-          <form action="subir.php" method="post" enctype="multipart/form-data">
+
+          <form action="subirluz.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label for="my-input">Seleccione una Imagen</label>
               <input id="my-input" type="file" name="imagen">
+              <input type="hidden" name="adoptante_id" value="<?php echo $dataCliente['adoptante_id']; ?>">
             </div>
-
-            <div class="form-group">              
-              <input id="my-input" class="form-control" type="hidden" name="titulo" value="<?php echo $dataCliente['id']?>">
-            </div>
-            
-            <?php if (isset($_SESSION['mensaje'])) { ?>
-              <div class="alert alert-<?php echo $_SESSION['tipo'] ?> alert-dismissible fade show" role="alert">
-                <strong><?php echo $_SESSION['mensaje']; ?></strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-            <?php session_unset();
-            } ?>
             <input type="submit" value="Guardar" class="btn btn-primary" name="Guardar">
           </form>
-        </strong>       
+        </strong>
 
       </div>
 

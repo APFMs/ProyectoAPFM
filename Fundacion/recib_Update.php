@@ -25,6 +25,7 @@ $update = ("UPDATE persona
 	ci ='" . $ci . "',
 	fechaNac ='" . $fechaNac . "',
     idUsuarioMod='" . $idUsuarioMod . "'
+	)
 WHERE id='" . $idRegistros . "'
 ");
 $result_update = mysqli_query($con, $update);
