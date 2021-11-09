@@ -216,7 +216,7 @@
 
             <li class="nav-item">
               <a href=<?php echo $paginaMascotaEnAdopcion ?> class="nav-link">
-                <i class="fa fa-paw"></i>
+                <i class="fas fa-bone"></i>
                 <p>
                   Mascotas en Adopción
                 </p>
