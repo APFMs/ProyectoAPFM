@@ -33,7 +33,7 @@
 
           <div class="from-group">
             <label for="" class="form-label">Edad</label>
-            <input type="number" class="form-control" name="edad" required='true'>
+            <input type="text" class="form-control" name="edad" required='true'>
           </div>
           <br>
 

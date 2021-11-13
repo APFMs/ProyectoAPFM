@@ -333,7 +333,7 @@
                                 FROM persona P WHERE P.id=" . $dataCliente['idVoluntario'] . ";");
                               $queryCliente3 = mysqli_query($con, $sqlCliente3);
                               $dataCliente3 = mysqli_fetch_array($queryCliente3);
-
+                            
                             ?>
                               <tr>
                                 <td><?php echo $dataCliente['nombreSolicitante']; ?></td>

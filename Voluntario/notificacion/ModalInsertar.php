@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header" style="background-color: #f39c12 !important;">
         <h6 class="modal-title" style="color: #fff; text-align: center;">
-          Solicitud
+          Enviar Solicitud del Adoptante
         </h6>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -33,7 +33,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary">Enviar</button>
           </div>
       </form>
 

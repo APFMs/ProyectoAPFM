@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Voluntario </title>
+  <title>Fundación/Seguimiento </title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -37,8 +37,8 @@
 
     .btn-df {
       color: #fff;
-      background-color: #53b311;
-      border-color: #53b311;
+      background-color: #e35c71;
+      border-color: #e35c71;
       box-shadow: none;
     }
 
@@ -54,6 +54,13 @@
       color: #fff;
       background-color: #8a42c1;
       border-color: #8a42c1;
+      box-shadow: none;
+    }
+
+    .btn-ff {
+      color: #fff;
+      background-color: #ebb812;
+      border-color: #ebb812;
       box-shadow: none;
     }
   </style>
@@ -264,10 +271,12 @@
 
       <div class="container mt-1 p-1">
 
-        <?php
+      <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT * FROM fundacion WHERE estado=1 ORDER BY id DESC ");
+        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info, M.fundaciones_id,S.adoptante_id
+        FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
+        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 ORDER BY S.id DESC ");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>
@@ -301,8 +310,8 @@
                               <th scope="col">Adoptante</th>
                               <th scope="col">Voluntario</th>
                               <th scope="col">Seguimientos</th>
-                              <th scope="col">Fecha de Creación</th>
-                              <th scope="col">Fecha de Actualización</th>
+                              <th scope="col">Próxima Visita</th>
+                          <!--    <th scope="col">Fecha de Actualización</th>-->
 
                             </tr>
                           </thead>
@@ -310,27 +319,27 @@
                             <?php
                             while ($dataCliente = mysqli_fetch_array($queryCliente)) { ?>
                               <tr>
-                                <td><?php echo $dataCliente['nombre']; ?></td>
-                                <td><?php echo $dataCliente['num']; ?></td>
-                                <td><?php echo $dataCliente['num']; ?></td>
-                                <td><?php echo $dataCliente['num']; ?></td>
-                                <td><?php echo $dataCliente['fechaCreacion']; ?></td>
-                                <td><?php echo $dataCliente['fechaActualizacion']; ?></td>
+                              <td><?php echo $dataCliente['nombreMascota']; ?></td>
+                                <td><?php echo $dataCliente['nombreSolicitante']; ?></td>
+                                <td><?php echo $dataCliente['nombreSolicitante']; ?></td>
+                                <td>0</td>
+                                <td>00/00/000</td>
 
 
                                 <td>
 
-                                  <button title="VER" type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fa fa-eye"></i>
+
+                                  <button title="HISTORIAL" type="button" class="btn btn-ff" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fas fa-folder"></i>
                                   </button>
 
-                                  <button title="EDITAR" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fas fa-edit"></i>
+                                  <button title="REGISTRAR" type="button" class="btn btn-df" data-toggle="modal" data-target="#insertChildresn<?php echo $dataCliente['id']; ?>">
+                                  <i class="fas fa-comment"></i>
                                   </button>
 
-                                  <button title="ELIMINAR" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
+                                <!--  <button title="ELIMINAR" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fa fa-times"></i>
-                                  </button>
+                                  </button>-->
 
                                 </td>
 

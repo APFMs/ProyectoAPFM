@@ -301,9 +301,9 @@
 
 
 
-                                  <button title="ELIMINAR" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
+                                 <!-- <button title="ELIMINAR" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fa fa-times"></i>
-                                  </button>
+                                  </button>-->
                                 </td>
                                 <td>
 

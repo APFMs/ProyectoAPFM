@@ -314,7 +314,7 @@
                               <th scope="col">Mascota</th>
                               <th scope="col">Nombre del Solicitante</th>
                               <th scope="col">Teléfono</th>
-                              <th scope="col">Teléfono</th>
+                       <!--       <th scope="col">Teléfono</th>-->
 
                             </tr>
                           </thead>
@@ -325,7 +325,7 @@
                                 <td><?php echo $dataCliente['nombreMascota']; ?></td>
                                 <td><?php echo $dataCliente['nombreSolicitante']; ?></td>
                                 <td><?php echo $dataCliente['celular']; ?></td>
-                                <td><img src="../mascota/img/<?php echo $dataCliente['imagen']; ?>" height="60" > </td>
+                              <!--  <td><img src="../mascota/img/<?php echo $dataCliente['imagen']; ?>" height="60" > </td>-->
 
 
 

@@ -65,7 +65,7 @@
 
           <div class="col-md-12 mt-2">
             <label for="celular" class="form-label">Edad</label>
-            <input type="number" class="form-control" name="edad" value="<?php echo $dataCliente['edad']; ?>" required='true'>
+            <input type="text" class="form-control" name="edad" value="<?php echo $dataCliente['edad']; ?>" required='true'>
           </div>
           <br>
 

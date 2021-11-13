@@ -65,13 +65,13 @@
 
           <div class="col-md-12 mt-2">
             <label for="celular" class="form-label">Edad</label>
-            <input type="number" class="form-control" name="edad" value="<?php echo $dataCliente['especie']; ?>" required='true'>
+            <input type="text" class="form-control" name="edad" value="<?php echo $dataCliente['edad']; ?>" required='true'>
           </div>
           <br>
 
           <div class="from-group" data-validate="Usuario incorrecto">
             <label for="">Sexo:</label>
-            <select class="input100" name="sexo" id="tam">
+            <select class="input100" name="sexo" id="sexo">
               <option value="Macho">Macho</option>
               <option value="Hembra">Hembra</option>
 

@@ -19,7 +19,7 @@ if (isset($_POST['Guardar'])) {
             $query = "UPDATE adoptante SET fotoCi='" . $imagen."' WHERE id=".$adoptante_id.";";
             $resultado = mysqli_query($con, $query);
             if ($resultado) {
-                move_uploaded_file($temp, '../../Fundacion/adoptante/img/' . $imagen);
+                move_uploaded_file($temp, 'img/' . $imagen);
                 $_SESSION['mensaje'] = 'se ha subido correctamente';
                 $_SESSION['tipo'] = 'success';
                 header("location:tablaMascota.php");

@@ -41,6 +41,28 @@
       border-color: #53b311;
       box-shadow: none;
     }
+
+    
+    .btn-Q {
+      color: #fff;
+      background-color: #e35c71;
+      border-color: #e35c71;
+      box-shadow: none;
+    }
+
+    .btn-W {
+      color: #fff;
+      background-color: #ebb812;
+      border-color: #ebb812;
+      box-shadow: none;
+    }
+
+    .btn-E {
+      color: #fff;
+      background-color: #19af9e;
+      border-color: #19af9e;
+      box-shadow: none;
+    }
   </style>
 
 
@@ -211,12 +233,12 @@
       <div class="container mt-1 p-1">
 
 
-        <?php
+      <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info, M.fundaciones_id,S.adoptante_id
+        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info, M.fundaciones_id,S.adoptante_id,A.fotoCi,A.fotoLuz,A.fotoCasa
         FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
-        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 ORDER BY S.id DESC ");
+        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 INNER JOIN adoptante A ON A.id=S.adoptante_id ORDER BY S.id DESC ");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>
@@ -250,7 +272,9 @@
                               <th scope="col">Adoptante</th>
                               <th scope="col"> Mascota</th>
                               <th scope="col"> Teléfono</th>
-
+                              <th scope="col">CI</th>
+                              <th scope="col">Boleta de pago</th>
+                              <th scope="col">Casa</th>
 
 
                             </tr>
@@ -262,9 +286,30 @@
                                 <td><?php echo $dataCliente['nombreSolicitante']; ?></td>
                                 <td><?php echo $dataCliente['nombreMascota']; ?></td>
                                 <td><?php echo $dataCliente['celular']; ?></td>
+
+                                <td> <button type="button" class="btn-HH" data-toggle="modal" data-target="#DCIChildresn<?php echo $dataCliente['id']; ?>">
+                                    <img src="../../Fundacion/adoptante/img/<?php echo $dataCliente['fotoCi']; ?>" height="35"></i>
+                                  </button></td>
+
+                                <td> <button type="button" class="btn-HH" data-toggle="modal" data-target="#DLUZChildresn<?php echo $dataCliente['id']; ?>">
+                                    <img src="../../Fundacion/adoptante/img/<?php echo $dataCliente['fotoLuz']; ?>" height="35"></i>
+                                  </button></td>
+
+                                <td> <button type="button" class="btn-HH" data-toggle="modal" data-target="#DCASAChildresn<?php echo $dataCliente['id']; ?>">
+                                    <img src="../../Fundacion/adoptante/img/<?php echo $dataCliente['fotoCasa']; ?>" height="35"> </i>
+                                  </button></td>
                                 <td>
 
-                                  <button type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
+                                  <button title="FOTO DE CI" type="button" class="btn btn-Q" data-toggle="modal" data-target="#foto2Childresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fas fa-address-card"></i>
+                                  </button>
+                                  <button title="FOTO DE BOLETA DE PAGO" type="button" class="btn btn-W" data-toggle="modal" data-target="#fotoChildresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fas fa-file-invoice-dollar"></i>
+                                  </button>
+                                  <button title="FOTO DE LA CASA" type="button" class="btn btn-E" data-toggle="modal" data-target="#foto1Childresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fas fa-house-user"></i>
+                                  </button>
+                                      <button type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
                                     Ver Detalles
                                   </button>
 
@@ -274,7 +319,7 @@
 
                                   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
                                     Eliminar
-                                  </button>
+                                  </button>-->
                                 </td>
                               </tr>
                               <!--Ventana Modal para Actualizar--->
@@ -288,6 +333,15 @@
 
                               <!--Ventana Modal para la Alerta de Eliminar--->
                               <?php include('ModalDetalles.php'); ?>
+
+                              <?php include('ModalIC.php'); ?>
+                              <?php include('ModalDCI.php'); ?>
+
+                              <?php include('ModalLuz.php'); ?>
+                              <?php include('ModalDLUZ.php'); ?>
+
+                              <?php include('ModalCasa.php'); ?>
+                              <?php include('ModalDCASA.php'); ?>
 
 
 
