@@ -14,13 +14,12 @@
 
       <form method="POST" action="recib_Update.php">
         <input type="hidden" name="id" value="<?php echo $dataCliente['id']; ?>">
-        <input type="hidden" name="mascota_id" value="<?php echo $dataCliente['mascota_id']; ?>">
 
         <div class="modal-body" id="cont_modal">
 
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Nombre :</label>
-            <input type="text" name="nombre" class="form-control" value="<?php echo $dataCliente['nombre']; ?>" required="true">
+            <input type="text" name="nombre" class="form-control" value="<?php echo $dataCliente['nombreSolicitante']; ?>" required="true">
           </div>
           <br>
 
@@ -36,23 +35,44 @@
           </div>
           <br>
 
-
-          <div class="col-md-12 mt-2">
-            <label for="celular" class="form-label">Edad</label>
-            <input type="number" class="form-control" name="edad" value="<?php echo $dataCliente['edad']; ?>" required='true'>
+          <div class="form-group">
+            <label for="start" class="col-form-label">Fecha de Nacimiento :</label>
+            <input type="date" name="fechaNac" class="form-control" value="<?php echo $dataCliente['fechaNac']; ?>" required="true">
           </div>
-          <br>
-          
 
           <div class="from-group" data-validate="Usuario incorrecto">
-            <label for="">Sexo:</label>
-            <select class="input100" name="sexo" id="tam">
-              <option value="Macho">Femenino</option>
-              <option value="Hembra">Masculino</option>
-            </select>
+            <label for="">Sexo :</label>
+            <select class="input100" name="sexo" value="<?php echo $dataCliente['sexo']; ?>" id="sexo">
+              <?php
+              if ($dataCliente['sexo'] == "Masculino") {
+              ?>
+                <option value="Masculino" selected>Masculino</option>
+              <?php
+              } else {
+              ?>
+                <option value="Masculino">Masculino</option>
+              <?php
+              }
+              ?>
+              <?php
+              if ($dataCliente['sexo'] == "Femenino") {
+              ?>
+                <option value="Femenino" selected>Femenino</option>
+              <?php
+              } else {
+              ?>
+                <option value="Femenino">Femenino</option>
+              <?php
+              }
+              ?>
+           </select>
+          </div>
+          
+          <div class="col-md-12 mt-2">
+            <label for="celular" class="form-label">CI :</label>
+            <input type="number" class="form-control" name="ci" value="<?php echo $dataCliente['ci']; ?>" required='true'>
           </div>
           <br>
-
           <div class="col-md-12 mt-2">
             <label for="celular" class="form-label">Teléfono</label>
             <input type="number" class="form-control" name="num" value="<?php echo $dataCliente['num']; ?>" required='true'>
@@ -166,7 +186,6 @@
           </div>
           <br>
 
-  
 
           <div class="from-group" data-validate="Usuario incorrecto">
             <label for="">Cuenta con casa:</label>
@@ -196,55 +215,13 @@
            </select>
           </div>
           <br>
+  
 
-          <div class="from-group" data-validate="Usuario incorrecto">
-            <label for="">La familia esta de acuerdo con la adopción:</label>
-            <select class="input100" name="fami" value="<?php echo $dataCliente['fami']; ?>" id="fami">
-              <?php
-              if ($dataCliente['fami'] == "Si") {
-              ?>
-                <option value="Si" selected>Si</option>
-              <?php
-              } else {
-              ?>
-                <option value="Si">Si</option>
-              <?php
-              }
-              ?>
-              <?php
-              if ($dataCliente['fami'] == "No") {
-              ?>
-                <option value="No" selected>No</option>
-              <?php
-              } else {
-              ?>
-                <option value="No">No</option>
-              <?php
-              }
-              ?>
-           </select>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Dirección :</label>
+            <input type="text" name="direccion" class="form-control" value="<?php echo $dataCliente['direccion']; ?>" required="true">
           </div>
           <br>
-
-
-          <div class="from-group" data-validate="Usuario incorrecto">
-            <label for="">Tamaño:</label>
-            <select class="input100" name="tam" id="tam">
-              <option value="Grande">Grande</option>
-              <option value="Mediano">Mediano</option>
-              <option value="Pequeño">Pequeño</option>
-
-
-            </select>
-
-          </div>
-          <br>
-
-
-          <div class="col-md-12 mt-2">
-            <label for="" class="form-label">Descripción</label>
-            <input type="text" class="form-control" name="descripcion" required='true'>
-          </div>
 
         </div>
         <div class="modal-footer">

@@ -256,7 +256,7 @@
         <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota', S.info
+        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.apllpat, S.apllmat, S.fechaNac, S.sexo, S.ci, S.num, S.depa, S.casa, S.direccion, S.aprobada, M.nombre as 'nombreMascota', S.info
         FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
         INNER JOIN fundacion F ON F.id=M.fundaciones_id and M.idVoluntario=" . $_SESSION["idPersona"] . " ORDER BY S.id DESC ");
         $queryCliente = mysqli_query($con, $sqlCliente);
@@ -301,7 +301,7 @@
                               <tr>
                                 <td><?php echo $dataCliente['nombreMascota']; ?></td>
                                 <td><?php echo $dataCliente['nombreSolicitante']; ?></td>
-                                <td><?php echo $dataCliente['celular']; ?></td>
+                                <td><?php echo $dataCliente['num']; ?></td>
 
 
 

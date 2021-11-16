@@ -226,16 +226,17 @@
 
       <div class="container mt-1 p-1">
 
-      <?php
+        <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info, M.fundaciones_id,S.adoptante_id
+
+        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante',S.apllpat, S.apllmat, S.fechaNac, S.sexo, S.ci, S.num, S.depa, S.casa, S.direccion, S.fotoCi, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info,I.imagen, M.fundaciones_id
         FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
-        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 ORDER BY S.id DESC ");
+        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 AND M.idVoluntario=" . $_SESSION["idPersona"] . " LEFT JOIN imagenes I ON I.idMascota=M.id =" . $_SESSION['idPersona'] . "
+        ORDER BY S.id DESC ");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>
-
 
         <div class="row text-center" style="background-color: #ffc66c">
 
@@ -278,7 +279,7 @@
                                 <td>
 
                                   <button title="AGENDAR" type="button" class="btn btn-ss" data-toggle="modal" data-target="#agendarChildresn<?php echo $dataCliente['id']; ?>">
-                                  <i class="fas fa-calendar-alt"></i>                                  </button>
+                                    <i class="fas fa-calendar-alt"></i> </button>
 
                                   <button title="REGISTRAR" type="button" class="btn btn-df" data-toggle="modal" data-target="#insertChildresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fas fa-keyboard"></i>

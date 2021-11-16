@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header" style="background-color: #f39c12 !important;">
         <h6 class="modal-title" style="color: #fff; text-align: center;">
-          Solicitud del adoptante
+          Datos de la Solicitud del adoptante
         </h6>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -15,15 +15,27 @@
       <form method="POST" action="recib_Update.php">
         <label type="hidden" name="id" value="<?php echo $dataCliente['id']; ?>">
 
-          <div class="modal-body" id="cont_modal">
+        <div class="modal-body" id="cont_modal">
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Nombre : <?php echo $dataCliente['nombreSolicitante']; ?> </label>
               <br>
-              <label for="">Teléfono:<?php echo $dataCliente['celular']; ?></label>
+              <label for="">Apellido Paterno :<?php echo $dataCliente['apllpat']; ?></label>
               <br>
-              <label for="" class="form-label">Edad: <?php echo $dataCliente['edad']; ?></label>
+              <label for="">Apellido Materno :<?php echo $dataCliente['apllmat']; ?></label>
               <br>
-              <label for="">Motivo para la adopción: <?php echo $dataCliente['motivo']; ?></label>
+              <label for="" class="form-label">Fecha de Nacimiento : <?php echo $dataCliente['fechaNac']; ?></label>
+              <br>
+              <label for="">Sexo :<?php echo $dataCliente['sexo']; ?></label>
+              <br>
+              <label for="">CI :<?php echo $dataCliente['ci']; ?></label>
+              <br>
+              <label for="">Teléfono :<?php echo $dataCliente['num']; ?></label>
+              <br>
+              <label for="">Departamento :<?php echo $dataCliente['depa']; ?></label>
+              <br>
+              <label for="">¿Cuenta con casa propia? :<?php echo $dataCliente['casa']; ?></label>
+              <br>
+              <label for="">Dirección : <?php echo $dataCliente['direccion']; ?></label>
               <br>
             </div>
 

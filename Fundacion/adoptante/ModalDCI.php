@@ -41,7 +41,7 @@
 
           <div class="modal-body" id="cont_modal">
          
-              <img src="../../Fundacion/adoptante/img/ <?php echo $dataCliente['fotoCi']; ?>" class="card-img-top" alt="Image" height="300" width="26" class="img-rounded">
+              <img src="img/<?php echo $dataCliente['fotoCi']; ?>" class="card-img-top" alt="Image" height="300" width="26" class="img-rounded">
           
           </div>
           <div class="modal-footer">

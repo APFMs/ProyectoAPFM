@@ -19,11 +19,23 @@
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Nombre : <?php echo $dataCliente['nombreSolicitante']; ?> </label>
               <br>
-              <label for="">Teléfono:<?php echo $dataCliente['celular']; ?></label>
+              <label for="">Apellido Paterno :<?php echo $dataCliente['apllpat']; ?></label>
               <br>
-              <label for="" class="form-label">Edad: <?php echo $dataCliente['edad']; ?></label>
+              <label for="">Apellido Materno :<?php echo $dataCliente['apllmat']; ?></label>
               <br>
-              <label for="">Motivo para la adopción: <?php echo $dataCliente['motivo']; ?></label>
+              <label for="" class="form-label">Fecha de Nacimiento : <?php echo $dataCliente['fechaNac']; ?></label>
+              <br>
+              <label for="">Sexo :<?php echo $dataCliente['sexo']; ?></label>
+              <br>
+              <label for="">CI :<?php echo $dataCliente['ci']; ?></label>
+              <br>
+              <label for="">Teléfono :<?php echo $dataCliente['num']; ?></label>
+              <br>
+              <label for="">Departamento :<?php echo $dataCliente['depa']; ?></label>
+              <br>
+              <label for="">¿Cuenta con casa propia? :<?php echo $dataCliente['casa']; ?></label>
+              <br>
+              <label for="">Dirección : <?php echo $dataCliente['direccion']; ?></label>
               <br>
             </div>
 

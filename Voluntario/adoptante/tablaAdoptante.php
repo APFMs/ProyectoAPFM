@@ -42,7 +42,7 @@
       box-shadow: none;
     }
 
-    
+
     .btn-Q {
       color: #fff;
       background-color: #e35c71;
@@ -233,18 +233,24 @@
       <div class="container mt-1 p-1">
 
 
-      <?php
+        <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info, M.fundaciones_id,S.adoptante_id,A.fotoCi,A.fotoLuz,A.fotoCasa
+        /* $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.apllpat, S.apllmat, S.fechaNac, S.sexo, S.ci, S.num, S.depa, S.casa, S.direccion, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info, M.fundaciones_id,S.adoptante_id,A.fotoCi,A.fotoLuz,A.fotoCasa
         FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
         INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 INNER JOIN adoptante A ON A.id=S.adoptante_id ORDER BY S.id DESC ");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
+        ?>*/
+
+        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante',S.apllpat, S.apllmat, S.fechaNac, S.sexo, S.ci, S.num, S.depa, S.casa, S.direccion, S.fotoCi, S.aprobada, M.nombre as 'nombreMascota', S.info
+        FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
+        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 AND  M.idVoluntario=" . $_SESSION["idPersona"] . " LEFT JOIN imagenes I ON I.idMascota=M.id =" . $_SESSION['idPersona'] . "
+        ORDER BY S.id DESC ");
+        $queryCliente = mysqli_query($con, $sqlCliente);
+        $cantidad     = mysqli_num_rows($queryCliente);
         ?>
-
-
-
+        
         <div class="row text-center" style="background-color: #ffc66c">
 
           <div class="col-md-11">
@@ -285,7 +291,7 @@
                               <tr>
                                 <td><?php echo $dataCliente['nombreSolicitante']; ?></td>
                                 <td><?php echo $dataCliente['nombreMascota']; ?></td>
-                                <td><?php echo $dataCliente['celular']; ?></td>
+                                <td><?php echo $dataCliente['num']; ?></td>
 
                                 <td> <button type="button" class="btn-HH" data-toggle="modal" data-target="#DCIChildresn<?php echo $dataCliente['id']; ?>">
                                     <img src="../../Fundacion/adoptante/img/<?php echo $dataCliente['fotoCi']; ?>" height="35"></i>
@@ -309,18 +315,18 @@
                                   <button title="FOTO DE LA CASA" type="button" class="btn btn-E" data-toggle="modal" data-target="#foto1Childresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fas fa-house-user"></i>
                                   </button>
-                                      <button type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
-                                    Ver Detalles
+
+                                  <button title="VER" type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fa fa-eye"></i>
                                   </button>
 
-                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataCliente['id']; ?>">
-                                    Modificar
+                                  <button title="EDITAR" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fas fa-edit"></i>
                                   </button>
 
-                                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
-                                    Eliminar
-                                  </button>-->
-                                </td>
+                                  <button title="ELIMINAR" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fa fa-times"></i>
+                                  </button>
                               </tr>
                               <!--Ventana Modal para Actualizar--->
                               <?php include('ModalEditar.php'); ?>

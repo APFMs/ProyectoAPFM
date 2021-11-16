@@ -5,28 +5,27 @@ $idRegistros = $_REQUEST['id'];
 $nombre  = $_REQUEST['nombre'];
 $apllpat = $_REQUEST['apllpat'];
 $apllmat = $_REQUEST['apllmat'];
-$edad    = $_REQUEST['edad'];
+$fechaNac    = $_REQUEST['fechaNac'];
 $sexo 	 = $_REQUEST['sexo'];
+$ci      = $_REQUEST['ci'];
 $num	 = $_REQUEST['num'];
 $depa    = $_REQUEST['depa'];
 $casa    = $_REQUEST['casa'];
-$fami    = $_REQUEST['fami'];
-$ci      = $_REQUEST['ci'];
-$recibo  = $_REQUEST['recibo'];
+$direccion    = $_REQUEST['direccion'];
 
-$update = ("UPDATE adoptante 
+
+$update = ("UPDATE solicitudadopcion 
 	SET 
 	nombre  ='" .$nombre. "',
-	apllpat  ='" .$especie. "',
-	apllmat ='" .$edad. "', 
-	edad ='" .$sexo. "', 
-	sexo ='" .$color. "', 
-	num='" .$tam. "', 
+	apllpat  ='" .$apllpat. "',
+	apllmat ='" .$apllmat. "', 
+	fechaNac ='" .$fechaNac. "', 
+	sexo ='" .$sexo. "', 
+	ci='" .$ci."',
+	num='" .$num. "', 
 	depa='" .$depa. "',
 	casa='" .$casa. "',
-	fami='" .$fami. "',
-	ci='" .$ci."',
-	recibo='" .$recibo. "'
+	direccion='" .$direccion. "'
 
 
 

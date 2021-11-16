@@ -80,9 +80,6 @@
       });
     }
   </script>
-
-
-
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -93,6 +90,9 @@
   $paginaAdotantes = "../adoptante/tablaAdoptante.php";
   $paginaSeguimientos = "../seguimiento/tablaSeguimiento.php";
   $paginaNotificaciones = "../notificacion/tablaNotificacion.php";
+
+
+
   ?>
   <div class="wrapper">
     <!-- Navbar -->
@@ -278,15 +278,13 @@
         <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.celular, S.edad, S.motivo, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info,I.imagen, M.fundaciones_id
+        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante',S.apllpat, S.apllmat, S.fechaNac, S.sexo, S.ci, S.num, S.depa, S.casa, S.direccion, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info,I.imagen, M.fundaciones_id
         FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
-        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND F.persona_id LEFT JOIN imagenes I ON I.idMascota=M.id =" . $_SESSION['idPersona'] . "
+        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND F.persona_id=" . $_SESSION["idPersona"] . " LEFT JOIN imagenes I ON I.idMascota=M.id =" . $_SESSION['idPersona'] . "
         ORDER BY S.id DESC ");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>
-
-
 
         <div class="row text-center" style="background-color: #ffc66c">
 
@@ -314,7 +312,7 @@
                               <th scope="col">Mascota</th>
                               <th scope="col">Nombre del Solicitante</th>
                               <th scope="col">Teléfono</th>
-                       <!--       <th scope="col">Teléfono</th>-->
+                              <!--       <th scope="col">Teléfono</th>-->
 
                             </tr>
                           </thead>
@@ -324,8 +322,8 @@
                               <tr>
                                 <td><?php echo $dataCliente['nombreMascota']; ?></td>
                                 <td><?php echo $dataCliente['nombreSolicitante']; ?></td>
-                                <td><?php echo $dataCliente['celular']; ?></td>
-                              <!--  <td><img src="../mascota/img/<?php echo $dataCliente['imagen']; ?>" height="60" > </td>-->
+                                <td><?php echo $dataCliente['num']; ?></td>
+                                <!--  <td><img src="../mascota/img/<?php echo $dataCliente['imagen']; ?>" height="60" > </td>-->
 
 
 
@@ -368,13 +366,13 @@
                                     <button type="button" class="btn btn-zz" data-toggle="modal" data-target="#solicitudChildresn<?php echo $dataCliente['id']; ?>">
                                       <i class="fa fa-envelope"></i>
                                     </button>
-                                  <?php
-                                  }else {
-                                    if ($dataCliente['aprobada'] == 2 || $dataCliente['aprobada'] == 3) { ?>
-                                      <button type="button" class="btn btn-ss" data-toggle="modal" >
-                                      <i class="fa fa-envelope-open" ></i>
-                                    </button>
                                     <?php
+                                  } else {
+                                    if ($dataCliente['aprobada'] == 2 || $dataCliente['aprobada'] == 3) { ?>
+                                      <button type="button" class="btn btn-ss" data-toggle="modal">
+                                        <i class="fa fa-envelope-open"></i>
+                                      </button>
+                                  <?php
                                     }
                                   }
                                   ?>
