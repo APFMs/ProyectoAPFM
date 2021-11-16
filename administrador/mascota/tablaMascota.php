@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -50,6 +49,19 @@
       border-color: #6f3dbf;
       box-shadow: none;
     }
+
+    .page-link {
+
+      color: #212529;
+      background-color: #f39c12;
+      border: 1 px solid #dee2e6;
+    }
+
+    .page-item.active .page-link {
+
+    background-color: #ff7705;
+    border-color: #ff7705;
+}
   </style>
 
   <script>
@@ -246,10 +258,10 @@
         if (isset($_GET["pagina"])) {
           $pagina = $_GET["pagina"];
         }
-        
+
         $limit = $elementosPorPagina;
         $offset = ($pagina - 1) * $elementosPorPagina;
-        
+
         $sqlQuery = "SELECT  M.id, M.nombre, M.especie, M.edad, M.sexo, M.color, M.tam,  M.descripcion, M.fechaCreacion, M.fechaActualizacion, M.fundaciones_id, F.nombre as 'nombreFundacion',I.imagen FROM mascota M INNER JOIN fundacion F ON F.id=M.fundaciones_id LEFT JOIN imagenes I ON I.idMascota=M.id ORDER BY id DESC";
         $pagination = " LIMIT " . $limit . " OFFSET " . $offset;
 
@@ -309,7 +321,7 @@
                                 <td><?php echo $dataCliente['fechaCreacion']; ?></td>
                                 <td><?php echo $dataCliente['fechaActualizacion']; ?></td>
                                 <td><?php echo $dataCliente['nombreFundacion']; ?></td>
-                                <td><img src="../../Fundacion/mascota/img/<?php echo $dataCliente['imagen']; ?>" height="60" > </td>
+                                <td><img src="../../Fundacion/mascota/img/<?php echo $dataCliente['imagen']; ?>" height="60"> </td>
 
 
                                 <td>
@@ -320,7 +332,7 @@
 
 
 
-                                 <!-- <button title="ELIMINAR" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
+                                  <!-- <button title="ELIMINAR" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fa fa-times"></i>
                                   </button>-->
                                 </td>
@@ -342,7 +354,7 @@
 
                         </table>
                         <?php
-                          include_once "../pagination.php";
+                        include_once "../pagination.php";
                         ?>
                       </div>
 
@@ -445,9 +457,8 @@
 
 
       });
-      
     </script>
-    
+
 
 </body>
 

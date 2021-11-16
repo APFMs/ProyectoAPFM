@@ -236,21 +236,17 @@
         <?php
         include('config.php');
 
-        /* $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.apllpat, S.apllmat, S.fechaNac, S.sexo, S.ci, S.num, S.depa, S.casa, S.direccion, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info, M.fundaciones_id,S.adoptante_id,A.fotoCi,A.fotoLuz,A.fotoCasa
-        FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
-        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 INNER JOIN adoptante A ON A.id=S.adoptante_id ORDER BY S.id DESC ");
-        $queryCliente = mysqli_query($con, $sqlCliente);
-        $cantidad     = mysqli_num_rows($queryCliente);
-        ?>*/
-
         $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante',S.apllpat, S.apllmat, S.fechaNac, S.sexo, S.ci, S.num, S.depa, S.casa, S.direccion, S.fotoCi, S.aprobada, M.nombre as 'nombreMascota', S.info
         FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
-        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 AND  M.idVoluntario=" . $_SESSION["idPersona"] . " LEFT JOIN imagenes I ON I.idMascota=M.id =" . $_SESSION['idPersona'] . "
+        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 LEFT JOIN imagenes I ON I.idMascota=M.id =" . $_SESSION['idPersona'] . "
         ORDER BY S.id DESC ");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
+
+        //$message = "id persona".$dataCliente['id']." id usuario".$dataCliente['idUsuario'];
+        //echo "<script type='text/javascript'>alert('$message');</script>";
         ?>
-        
+
         <div class="row text-center" style="background-color: #ffc66c">
 
           <div class="col-md-11">
@@ -287,13 +283,18 @@
                           </thead>
                           <tbody>
                             <?php
-                            while ($dataCliente = mysqli_fetch_array($queryCliente)) { ?>
+                            while ($dataCliente = mysqli_fetch_array($queryCliente)) {
+                              /*
+                              $message = "id persona".$dataCliente['id']." id usuario".$dataCliente['idUsuario'];
+                              echo "<script type='text/javascript'>alert('$message');</script>";
+*/
+                              ?>
                               <tr>
                                 <td><?php echo $dataCliente['nombreSolicitante']; ?></td>
                                 <td><?php echo $dataCliente['nombreMascota']; ?></td>
                                 <td><?php echo $dataCliente['num']; ?></td>
 
-                                <td> <button type="button" class="btn-HH" data-toggle="modal" data-target="#DCIChildresn<?php echo $dataCliente['id']; ?>">
+                                <td> <button type="button" class="btn-HH" data-toggle="modal" data-target="#DCIChildresn<?php 22 ?>">
                                     <img src="../../Fundacion/adoptante/img/<?php echo $dataCliente['fotoCi']; ?>" height="35"></i>
                                   </button></td>
 
@@ -309,9 +310,11 @@
                                   <button title="FOTO DE CI" type="button" class="btn btn-Q" data-toggle="modal" data-target="#foto2Childresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fas fa-address-card"></i>
                                   </button>
+
                                   <button title="FOTO DE BOLETA DE PAGO" type="button" class="btn btn-W" data-toggle="modal" data-target="#fotoChildresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fas fa-file-invoice-dollar"></i>
                                   </button>
+                                  
                                   <button title="FOTO DE LA CASA" type="button" class="btn btn-E" data-toggle="modal" data-target="#foto1Childresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fas fa-house-user"></i>
                                   </button>

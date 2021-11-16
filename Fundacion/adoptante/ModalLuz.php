@@ -15,7 +15,7 @@
             <div class="form-group">
               <label for="my-input">Seleccione una Imagen</label>
               <input id="my-input" type="file" name="imagen">
-              <input type="hidden" name="adoptante_id" value="<?php echo $dataCliente['adoptante_id']; ?>">
+              <input type="hidden" name="id" value="<?php echo $dataCliente['id']; ?>">
             </div>
             <input type="submit" value="Guardar" class="btn btn-primary" name="Guardar">
           </form>

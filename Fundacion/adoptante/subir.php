@@ -6,7 +6,8 @@ include('config.php');
 if (isset($_POST['Guardar'])) {
     $imagen = $_FILES['imagen']['name'];
     $id=$_REQUEST['id'];
-    $mascota_id=$_REQUEST['mascota_id'];
+   // $idMascota=$_REQUEST['mascota_id'];
+    
 
     if (isset($imagen) && $imagen != "") {
         $tipo = $_FILES['imagen']['type'];
@@ -17,8 +18,12 @@ if (isset($_POST['Guardar'])) {
             $_SESSION['tipo'] = 'danger';
             header("location:tablaAdoptante.php");
         } else {
-            /*$query = "UPDATE adoptante SET fotoCi='" . $imagen."' WHERE id=".$adoptante_id.";";*/
-            $query="UPDATE solicitudadopcion SET fotoCi = '".$imagen."' WHERE id = ".$id." and mascota_id = ".$mascota_id.";";
+            //$query = "UPDATE adoptante SET fotoCi='" . $imagen."' WHERE id=".$adoptante_id.";";
+           //$queryM="SELECT mascota_id FROM solicitudadopcion WHERE id = ".$id.";";
+           //$resultadoMascota = mysqli_query($con, $queryM);
+
+            $query="UPDATE solicitudadopcion SET fotoCi = '".$imagen."' WHERE id = ".$id.";";
+
             $resultado = mysqli_query($con, $query);
             if ($resultado) {
                 move_uploaded_file($temp, '../../Fundacion/adoptante/img/' . $imagen);
