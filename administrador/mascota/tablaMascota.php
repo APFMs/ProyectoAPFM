@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="adminlte1.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
   <style>
@@ -240,9 +241,27 @@
         <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT  M.id, M.nombre, M.especie, M.edad, M.sexo, M.color, M.tam,  M.descripcion, M.fechaCreacion, M.fechaActualizacion, M.fundaciones_id, F.nombre as 'nombreFundacion',I.imagen FROM mascota M INNER JOIN fundacion F ON F.id=M.fundaciones_id LEFT JOIN imagenes I ON I.idMascota=M.id ORDER BY id DESC ");
+        $elementosPorPagina = 10;
+        $pagina = 1;
+        if (isset($_GET["pagina"])) {
+          $pagina = $_GET["pagina"];
+        }
+        
+        $limit = $elementosPorPagina;
+        $offset = ($pagina - 1) * $elementosPorPagina;
+        
+        $sqlQuery = "SELECT  M.id, M.nombre, M.especie, M.edad, M.sexo, M.color, M.tam,  M.descripcion, M.fechaCreacion, M.fechaActualizacion, M.fundaciones_id, F.nombre as 'nombreFundacion',I.imagen FROM mascota M INNER JOIN fundacion F ON F.id=M.fundaciones_id LEFT JOIN imagenes I ON I.idMascota=M.id ORDER BY id DESC";
+        $pagination = " LIMIT " . $limit . " OFFSET " . $offset;
+
+        $sqlCantidadElementos = ($sqlQuery);
+        $queryCantidadElementos = mysqli_query($con, $sqlCantidadElementos);
+        $cantidad = mysqli_num_rows($queryCantidadElementos);
+
+        $paginas = ceil($cantidad / $elementosPorPagina);
+
+
+        $sqlCliente   = ($sqlQuery . $pagination);
         $queryCliente = mysqli_query($con, $sqlCliente);
-        $cantidad     = mysqli_num_rows($queryCliente);
         ?>
 
 
@@ -250,7 +269,7 @@
         <div class="row text-center" style="background-color: #ffc66c">
 
           <div class="col-md-11">
-            <strong>Lista de Mascotas <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
+            <strong>Mostrando <?php echo $elementosPorPagina ?> de <?php echo $cantidad ?> Mascotas</strong>
           </div>
         </div>
 
@@ -322,6 +341,9 @@
                             <?php } ?>
 
                         </table>
+                        <?php
+                          include_once "../pagination.php";
+                        ?>
                       </div>
 
 
