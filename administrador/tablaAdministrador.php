@@ -2,6 +2,7 @@
 <html>
 
 <?php
+$buscar="";
 if (isset($_GET["submit"])) {
     $buscar=$_GET["palabraBuscada"];
   //  $message = $buscar;
@@ -232,7 +233,6 @@ if (isset($_GET["submit"])) {
                 <?php
                 include('config.php');
 
-                
                 $sqlCliente   = ("SELECT P.id, P.nombre, P.apllpat, P.apllmat, P.sexo, P.ci, P.fechaNac, P.fechaCreacion, P.fechaActualizacion, U.nombreUsuario, P.idUsuarioMod, UU.nombreUsuario as 'usuarioMod',U.id as 'idUsuario' FROM persona P INNER JOIN usuario U ON P.id=U.persona_id and P.estado=1 and U.rol='administrador' and U.id!=" . $_SESSION["id"] . " INNER JOIN usuario UU on UU.id=P.idUsuarioMod where P.nombre like '%" . $buscar . "%';");
 
                 $queryCliente = mysqli_query($con, $sqlCliente);
