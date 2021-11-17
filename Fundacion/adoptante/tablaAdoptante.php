@@ -327,7 +327,7 @@
         <div class="row text-center" style="background-color: #ffc66c">
 
           <div class="col-md-11">
-            <strong>Lista de Adoptantes <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
+            <strong>Mostrando <?php echo $elementosPorPagina ?> de <?php echo $cantidad ?> Adopciones</strong>
           </div>
         </div>
 
