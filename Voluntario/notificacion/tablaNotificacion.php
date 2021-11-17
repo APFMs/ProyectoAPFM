@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="adminlte1.css">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <style>
     .navbar-light {
@@ -61,6 +61,20 @@
       background-color: #e30a6e;
       border-color: #e30a6e;
       box-shadow: none;
+    }
+
+
+    .page-link {
+
+      color: #212529;
+      background-color: #f39c12;
+      border: 1 px solid #dee2e6;
+    }
+
+    .page-item.active .page-link {
+
+      background-color: #ff7705;
+      border-color: #ff7705;
     }
   </style>
 
@@ -256,11 +270,29 @@
         <?php
         include('config.php');
 
-        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.apllpat, S.apllmat, S.fechaNac, S.sexo, S.ci, S.num, S.depa, S.casa, S.direccion, S.aprobada, M.nombre as 'nombreMascota', S.info
+        $elementosPorPagina = 10;
+        $pagina = 1;
+        if (isset($_GET["pagina"])) {
+          $pagina = $_GET["pagina"];
+        }
+
+        $limit = $elementosPorPagina;
+        $offset = ($pagina - 1) * $elementosPorPagina;
+
+        $sqlQuery = "SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.apllpat, S.apllmat, S.fechaNac, S.sexo, S.ci, S.num, S.depa, S.casa, S.direccion, S.aprobada, M.nombre as 'nombreMascota', S.info
         FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
-        INNER JOIN fundacion F ON F.id=M.fundaciones_id and M.idVoluntario=" . $_SESSION["idPersona"] . " ORDER BY S.id DESC ");
+        INNER JOIN fundacion F ON F.id=M.fundaciones_id and M.idVoluntario=" . $_SESSION["idPersona"] . " ORDER BY S.id DESC ";
+        $pagination = " LIMIT " . $limit . " OFFSET " . $offset;
+
+        $sqlCantidadElementos = ($sqlQuery);
+        $queryCantidadElementos = mysqli_query($con, $sqlCantidadElementos);
+        $cantidad = mysqli_num_rows($queryCantidadElementos);
+
+        $paginas = ceil($cantidad / $elementosPorPagina);
+
+
+        $sqlCliente   = ($sqlQuery . $pagination);
         $queryCliente = mysqli_query($con, $sqlCliente);
-        $cantidad     = mysqli_num_rows($queryCliente);
         ?>
 
 
@@ -365,9 +397,10 @@
                             <?php } ?>
 
                         </table>
+                        <?php
+                        include_once "../pagination.php";
+                        ?>
                       </div>
-
-
                     </div>
                   </div>
                 </div>

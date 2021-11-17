@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="adminlte1.css">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <style>
     .navbar-light {
@@ -75,6 +75,19 @@
       background-color: #19af9e;
       border-color: #19af9e;
       box-shadow: none;
+    }
+
+    .page-link {
+
+      color: #212529;
+      background-color: #f39c12;
+      border: 1 px solid #dee2e6;
+    }
+
+    .page-item.active .page-link {
+
+      background-color: #ff7705;
+      border-color: #ff7705;
     }
   </style>
 
@@ -282,19 +295,31 @@
         <?php
         include('config.php');
 
-        /* $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.apllpat, S.apllmat, S.fechaNac, S.sexo, S.ci, S.num, S.depa, S.casa, S.direccion, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info, M.fundaciones_id,S.adoptante_id,A.fotoCi,A.fotoLuz,A.fotoCasa
-        FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
-        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 INNER JOIN adoptante A ON A.id=S.adoptante_id ORDER BY S.id DESC ");
-        $queryCliente = mysqli_query($con, $sqlCliente);
-        $cantidad     = mysqli_num_rows($queryCliente);
-        ?>*/
+        $elementosPorPagina = 10;
+        $pagina = 1;
+        if (isset($_GET["pagina"])) {
+          $pagina = $_GET["pagina"];
+        }
 
-        $sqlCliente = ("SELECT S.id as 'id', S.mascota_id, S.nombre AS 'nombreSolicitante',S.apllpat, S.apllmat, S.fechaNac, S.sexo, S.ci, S.num, S.depa, S.casa, S.direccion, S.fotoCi, S.fotoLuz, S.fotoCasa, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info,I.imagen, M.fundaciones_id
+        $limit = $elementosPorPagina;
+        $offset = ($pagina - 1) * $elementosPorPagina;
+
+
+        $sqlQuery = "SELECT S.id as 'id', S.mascota_id, S.nombre AS 'nombreSolicitante',S.apllpat, S.apllmat, S.fechaNac, S.sexo, S.ci, S.num, S.depa, S.casa, S.direccion, S.fotoCi, S.fotoLuz, S.fotoCasa, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info,I.imagen, M.fundaciones_id
         FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
         INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 AND F.persona_id=" . $_SESSION["idPersona"] . " LEFT JOIN imagenes I ON I.idMascota=M.id =" . $_SESSION['idPersona'] . "
-        ORDER BY S.id DESC ");
+        ORDER BY S.id DESC ";
+        $pagination = " LIMIT " . $limit . " OFFSET " . $offset;
+
+        $sqlCantidadElementos = ($sqlQuery);
+        $queryCantidadElementos = mysqli_query($con, $sqlCantidadElementos);
+        $cantidad = mysqli_num_rows($queryCantidadElementos);
+
+        $paginas = ceil($cantidad / $elementosPorPagina);
+
+
+        $sqlCliente   = ($sqlQuery . $pagination);
         $queryCliente = mysqli_query($con, $sqlCliente);
-        $cantidad = mysqli_num_rows($queryCliente);
         ?>
 
 
@@ -348,7 +373,7 @@
                                 <td><?php echo $dataCliente['nombreMascota']; ?></td>
                                 <td><?php echo $dataCliente['num']; ?></td>
                                 <td><?php echo $dataCliente3['nombre']; ?></td>
-                                
+
                                 <td> <button type="button" class="btn-HH" data-toggle="modal" data-target="#DCIChildresn<?php echo $dataCliente['id']; ?>">
                                     <img src="img/<?php echo $dataCliente['fotoCi']; ?>" height="35"></i>
                                   </button></td>
@@ -384,14 +409,14 @@
                                     <i class="fas fa-house-user"></i>
                                   </button>
 
-                                <!--  <?php
-                                  if ($dataCliente['adoptante_id'] == null) { ?>
+                                  <!--  <?php
+                                        if ($dataCliente['adoptante_id'] == null) { ?>
                                     <button type="button" class="btn btn-yy" data-toggle="modal" data-target="#insertChildresn">
                                       Agregar Adoptante
                                     </button>-->
-                                  <?php
-                                  }
-                                  ?>
+                                <?php
+                                        }
+                                ?>
 
 
 
@@ -417,14 +442,15 @@
                               <?php include('ModalCasa.php'); ?>
                               <?php include('ModalDCASA.php'); ?>
 
- 
+
 
                             <?php } ?>
 
                         </table>
+                        <?php
+                        include_once "../pagination.php";
+                        ?>
                       </div>
-
-
                     </div>
                   </div>
                 </div>

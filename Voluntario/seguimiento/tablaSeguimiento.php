@@ -231,7 +231,7 @@
 
 
         $sqlCliente   = ("SELECT S.id, CONCAT(S.nombre, ' ',S.apllpat, ' ', S.apllmat) as 'Adoptante', M.nombre as 'Mascota', COUNT(SE.id) as 'Visitas'
-        FROM solicitudadopcion S INNER JOIN mascota M ON M.id=S.mascota_id LEFT JOIN seguimiento SE ON SE.solicitud_fk=S.id WHERE S.aprobada=2 AND M.idVoluntario=32 GROUP BY S.id;");
+        FROM solicitudadopcion S INNER JOIN mascota M ON M.id=S.mascota_id LEFT JOIN seguimiento SE ON SE.solicitud_fk=S.id WHERE S.aprobada=2 AND M.idVoluntario=" . $_SESSION["idPersona"] . " GROUP BY S.id;");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>

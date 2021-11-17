@@ -264,7 +264,6 @@
                               <th scope="col">Fecha Visita</th>
                               <th scope="col">Reporte</th>
                               <th scope="col">Foto</th>
-
                             </tr>
                           </thead>
                           <tbody>
@@ -274,64 +273,17 @@
                                 <td><?php echo $dataCliente['fechaVisita']; ?></td>
                                 <td><?php echo $dataCliente['reporte']; ?></td>
                                 <td><img src="img/<?php echo $dataCliente['fotoVisita']; ?>" height="60"> </td>
-
-                                <td>
-
-
-                                <td>
-
-                                  <!--   <button title="AGENDAR" type="button" class="btn btn-ss" data-toggle="modal" data-target="#agendarChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fas fa-calendar-alt"></i> </button>-->
-
-                                  <button title="REGISTRAR" type="button" class="btn btn-df" data-toggle="modal" data-target="#insertChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fas fa-keyboard"></i>
-                                  </button>
-
-                                  <button title="HISTORIAL" type="button" class="btn btn-ff" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fas fa-folder"></i>
-                                  </button>
-
-
-                                  <button title="bueno type=" button" class="btn btn-ss" data-toggle="modal" data-target="#agendarChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fas fa-calendar-alt"></i> </button>
-
-                                  <button title="malo" type="button" class="btn btn-ss" data-toggle="modal" data-target="#agendarChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fas fa-calendar-alt"></i> </button>
-                                </td>
-
                               </tr>
-
-                              <!--Ventana Modal para Actualizar--->
-                              <?php include('ModalEditar.php'); ?>
-
-                              <!--Ventana Modal para la Alerta de Eliminar--->
-                              <?php include('ModalEliminar.php'); ?>
-
-                              <!--Ventana Modal para la Alerta de Eliminar--->
-                              <?php include('ModalInsertar.php'); ?>
-
-                              <?php include('ModalAgendar.php'); ?>
-
-
                             <?php } ?>
-
                         </table>
                       </div>
-
-
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-
-
         </div>
-
-
-        <!-- /.content -->
       </div>
       <!-- /.content-wrapper
       <footer class="main-footer">
