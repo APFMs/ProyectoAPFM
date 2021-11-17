@@ -12,53 +12,67 @@
       </div>
 
 
-      <form method="POST" action="agendar.php">
+      <form method="POST" action="subir.php" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?php echo $dataCliente['id']; ?>">
 
         <div class="modal-body" id="cont_modal">
-        <div>
+          <div>
             <label for="start">Dia de Visita:</label>
-            <input type="date" id="start" name="fechaNac" value="2003-07-22" min="1960-01-01" max="2003-12-31">
+            <input type="date"  name="fechaVisita" >
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Condiciones :</label>
-            <input type="text" name="nombre" class="form-control" required="true">
+            <input type="text" name="reporte" class="form-control" required="true">
           </div>
-       
+
 
 
           <div class="modal-body">
-        <strong style="text-align: center !important">
-          <form action="subir.php" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="my-input">Agregar una foto de la mascota</label>
-              <input id="my-input" type="file" name="imagen">
-            </div>
+            <strong style="text-align: center !important">
 
-            <div class="form-group">              
-              <input id="my-input" class="form-control" type="hidden" name="titulo" value="<?php echo $dataCliente['id']?>">
-            </div>
-            
-            <?php if (isset($_SESSION['mensaje'])) { ?>
-              <div class="alert alert-<?php echo $_SESSION['tipo'] ?> alert-dismissible fade show" role="alert">
-                <strong><?php echo $_SESSION['mensaje']; ?></strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-            <?php session_unset();
-            } ?>
-            <input type="submit" value="Guardar" class="btn btn-primary" name="Guardar">
-          </form>
-        </strong>       
-      </div>
+
+              
+
+
+
+                <div class="form-group">
+                  <label for="my-input">Agregar una foto de la mascota</label>
+                  <input id="my-input" type="file" name="imagen">
+                </div>
+
+                
+             <!--   <div class="form-group">
+                  <input id="my-input" class="form-control" type="hidden" name="titulo" value="<?php echo $dataCliente['id'] ?>">
+                </div>-->
+
+                <?php if (isset($_SESSION['mensaje'])) { ?>
+                  <div class="alert alert-<?php echo $_SESSION['tipo'] ?> alert-dismissible fade show" role="alert">
+                    <strong><?php echo $_SESSION['mensaje']; ?></strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <?php session_unset();
+                } ?>
+                
+                
+                
+
+         
+
+
+
+
+
+            </strong>
+          </div>
 
 
 
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary">Agendar Visita</button>
+          <button type="submit" class="btn btn-primary" value="Guardar" name="Guardar">Agendar Visita</button>
         </div>
       </form>
 

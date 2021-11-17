@@ -238,10 +238,14 @@
 
         $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante',S.apllpat, S.apllmat, S.fechaNac, S.sexo, S.ci, S.num, S.depa, S.casa, S.direccion, S.fotoCi, S.aprobada, M.nombre as 'nombreMascota', S.info
         FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
-        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 LEFT JOIN imagenes I ON I.idMascota=M.id =" . $_SESSION['idPersona'] . "
+        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 AND M.idVoluntario=" . $_SESSION["idPersona"] . " LEFT JOIN imagenes I ON I.idMascota=M.id =" . $_SESSION['idPersona'] . "
         ORDER BY S.id DESC ");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
+
+
+
+
 
         //$message = "id persona".$dataCliente['id']." id usuario".$dataCliente['idUsuario'];
         //echo "<script type='text/javascript'>alert('$message');</script>";
