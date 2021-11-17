@@ -59,6 +59,7 @@
   $paginaFundaciones = "fundacion/tablaFundacion.php";
   $paginaMascota = "mascota/tablaMascota.php";
   $paginaVoluntario = "Voluntario/tablaVoluntario.php";
+  $paginaReportes = "reportes/reporteAdopciones.php";
 
   $buscar="";
   ?>
@@ -187,7 +188,14 @@
                 </p>
               </a>
             </li>
-
+            <li class="nav-item">
+              <a href=<?php echo $paginaReportes ?> class="nav-link">
+                <i class="fa fa-file"></i>
+                <p>
+                  Reporte de Adopciones
+                </p>
+              </a>
+            </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
