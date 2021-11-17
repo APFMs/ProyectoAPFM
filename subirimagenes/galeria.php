@@ -26,6 +26,7 @@ $resultado = mysqli_query($con, $query);
     <title>INICIO SOY TU VOZ</title>
 
     <link rel="canonical" href="../css/carousel/">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
 
@@ -146,42 +147,97 @@ $resultado = mysqli_query($con, $query);
             </div>
 
         </div>
+        <?php
+            $especies = array("Todos", "Perro", "Gato", "Otro");
+            $tams = array("Todos", "Grande", "Mediano", "Pequeño");
+            $colores = array("Todos", "Negro", "Blanco", "Café", "Plomo", "Naranja", "Blanco con Negro", "Blanco con café", "Otro");
+            $sexos = array("Todos", "Macho", "Hembra");
 
+            $where = array();
+            $selectedEspecie = "";
+            $selectedTam = "";
+            $selectedColor = "";
+            $selectedSexo = "";
+            if (!isset($_POST["id"])) {
+                $selectedEspecie = "Todos";
+                $selectedTam = "Todos";
+                $selectedColor = "Todos";
+                $selectedSexo = "Todos";
+            }
+            if (isset($_POST['especie']) && $_POST['especie'] != '' && $_POST['especie'] != 'Todos') {
+                $selectedEspecie = $_POST['especie'];
+                $where[] = " M.especie = '$selectedEspecie'";
+            }
+            if (isset($_POST['tam']) && $_POST['tam'] != '' && $_POST['tam'] != 'Todos') {
+                $selectedTam = $_POST['tam'];
+                $where[] = " M.tam = '$selectedTam'"; 
+            }
+            if (isset($_POST['color']) && $_POST['color'] != '' && $_POST['color'] != 'Todos') {
+                $selectedColor = $_POST['color'];
+                $where[] = " color = '$selectedColor'";
+            }
+            if (isset($_POST['sexo']) && $_POST['sexo'] != '' && $_POST['sexo'] != 'Todos') {
+                $selectedSexo = $_POST['sexo'];
+                $where[] = " sexo = '$selectedSexo'";
+            }
+        ?>
 
-        <form method="POST" action="galeria2.php">
-            <input type="hidden" name="id" value="">
+        <form method="POST" action="galeria.php">
+            <input type="hidden" name="id" value="1">
 
-            <div class="modal-body" id="cont_modal">
-                <div class="from-group" data-validate="Usuario incorrecto">
-                    <label for="">Especie:</label>
-                    <select class="input100" name="especie" id="especie">
-                        <option value="Perro">Perro</option>
-                        <option value="Gato">Gato</option>
-                        <option value="Otro">Otro</option>
-                        <option value="Todos">Todos</option>
-                    </select>
-
-                    <label for="">Tamaño:</label>
-                    <select class="input100" name="tam" id="tam">
-                        <option value="Grande">Grande </option>
-                        <option value="Mediano">Mediano</option>
-                        <option value="Pequeño">Pequeño</option>
-                        <option value="Todos">Todos</option>
-                    </select>
-
-                    <label for="">Color:</label>
-                    <select class="input100" name="color" id="color">
-                        <option value="Negro">Negro</option>
-                        <option value="Blanco">Blanco</option>
-                        <option value="Café">Café</option>
-                        <option value="Plomo">Plomo</option>
-                        <option value="Naranja">Naranja</option>
-                        <option value="Blanco con Negro">Blanco con Negro</option>
-                        <option value="Blanco con café">Blanco con café</option>
-                        <option value="Otro">Otro</option>
-                        <option value="Todos">Todos</option>
-                    </select>
-                    <button type="submit" class="btn btn-primary">Buscar</button>
+            <div class="container" id="cont_modal">
+                <div class="row align-items-end" data-validate="Usuario incorrecto">
+                    <div class="col-sm">
+                        <label for="especie"><strong>Especie:</strong></label>
+                        <select class="form-select form-select-sm" name="especie" id="especie">
+                        <?php
+                            foreach($especies as $especie) {
+                                $selected = ($especie == $selectedEspecie) ? "selected" : "";
+                                echo "<option value='$especie' $selected>$especie</option>";
+                            }
+                            unset($especies);
+                        ?>
+                        </select>
+                    </div>
+                    <div class="col-sm">
+                        <label for="tam"><strong>Tamaño:</strong></label>
+                        <select class="form-select form-select-sm" aria-label=".form-select-lg example" name="tam" id="tam">
+                        <?php
+                            foreach($tams as $tam) {
+                                $selected = ($tam == $selectedTam) ? "selected" : "";
+                                echo "<option value='$tam' $selected>$tam</option>";
+                            }
+                            unset($tams);
+                        ?>
+                        </select>
+                    </div>
+                    <div class="col-sm">
+                        <label for="color"><strong>Color:</strong></label>
+                        <select class="form-select form-select-sm" aria-label=".form-select-lg example" name="color" id="color">
+                        <?php
+                            foreach($colores as $color) {
+                                $selected = ($color == $selectedColor) ? "selected" : "";
+                                echo "<option value='$color' $selected>$color</option>";
+                            }
+                            unset($colores);
+                        ?>
+                        </select>
+                    </div>
+                    <div class="col-sm">
+                        <label for="sexo"><strong>Sexo:</strong></label>
+                        <select class="form-select form-select-sm" aria-label=".form-select-lg example" name="sexo" id="sexo">
+                        <?php
+                            foreach($sexos as $sexo) {
+                                $selected = ($sexo == $selectedSexo) ? "selected" : "";
+                                echo "<option value='$sexo' $selected>$sexo</option>";
+                            }
+                            unset($sexos);
+                        ?>
+                        </select>
+                    </div>
+                    <div class="col-sm">
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </div>
                 </div>
 
         </form>
@@ -192,6 +248,10 @@ $resultado = mysqli_query($con, $query);
             <div class="card-columns">
                 <?php
                 $query = "SELECT I.imagen, I.idMascota, M.id, M.nombre, M.especie, M.edad, M.sexo, M.color, M.tam,  M.descripcion FROM imagenes I INNER JOIN mascota M ON I.idMascota=M.id AND M.adoptable=1 and M.estado=1";
+
+                if (!empty($where)) {
+                    $query .= ' WHERE ' . implode(' AND ', $where);
+                }
                 $resultado = mysqli_query($con, $query);
                 foreach ($resultado as $dataCliente) { ?>
 
