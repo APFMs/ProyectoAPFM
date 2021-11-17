@@ -70,12 +70,11 @@ if ($startDate != "" && $endDate != "") {
     $where[] = " M.fechaAdopcion between '1800-01-01' AND '$endDate'";
 }
 
-$sqlCliente = "SELECT P.nombre, P.apllpat, P.apllmat, P.sexo, P.ci, P.fechaNac, P.fechaCreacion, P.fechaActualizacion, 
-    A.direccion, SA.celular, SA.aprobada, M.nombre as nombreMascota, M.especie, M.adoptable, M.sexo as sexoMascota, M.color, M.fechaAdopcion
-    FROM persona P 
-    INNER JOIN adoptante A ON P.id=A.persona_id and A.estado = 1
-    INNER JOIN solicitudadopcion SA on A.id = SA.adoptante_id
-    INNER JOIN mascota M ON M.id = SA.mascota_id";
+$sqlCliente   = 
+"SELECT SA.nombre, SA.apllpat, SA.apllmat, SA.sexo, SA.ci, SA.fechaNac, 
+    SA.direccion, SA.num, SA.aprobada, M.nombre as nombreMascota, M.especie, M.adoptable, M.sexo as sexoMascota, M.color, M.fechaAdopcion 
+    FROM solicitudadopcion SA
+    INNER JOIN mascota M ON M.id = SA.mascota_id AND SA.aprobada = 2";
 
 if (!empty($where)) {
     $sqlCliente .= ' WHERE ' . implode(' AND ', $where);
@@ -88,7 +87,7 @@ while ($dataCliente = mysqli_fetch_array($queryCliente)) {
     $pdf->Cell(20, 10, $dataCliente['ci'], 1, 0, 'L', 0);
     $pdf->Cell(20, 10, $dataCliente['sexo'], 1, 0, 'L', 0);
     $pdf->Cell(40, 10, $dataCliente['fechaNac'], 1, 0, 'L', 0);
-    $pdf->Cell(20, 10, $dataCliente['celular'], 1, 0, 'L', 0);
+    $pdf->Cell(20, 10, $dataCliente['num'], 1, 0, 'L', 0);
     $pdf->Cell(70, 10, $dataCliente['direccion'], 1, 0, 'L', 0);
     $pdf->Cell(40, 10, $dataCliente['nombreMascota'], 1, 0, 'L', 0);
     $pdf->Cell(30, 10, $dataCliente['especie'], 1, 0, 'L', 0);

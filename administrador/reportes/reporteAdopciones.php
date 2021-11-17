@@ -361,12 +361,10 @@
         <?php
 
                 $sqlCliente   = 
-                "SELECT P.nombre, P.apllpat, P.apllmat, P.sexo, P.ci, P.fechaNac, P.fechaCreacion, P.fechaActualizacion, 
-                    A.direccion, SA.celular, SA.aprobada, M.nombre as nombreMascota, M.especie, M.adoptable, M.sexo as sexoMascota, M.color, M.fechaAdopcion 
-                    FROM persona P 
-                    INNER JOIN adoptante A ON P.id=A.persona_id and A.estado = 1
-                    INNER JOIN solicitudadopcion SA on A.id = SA.adoptante_id AND SA.aprobada = 2
-                    INNER JOIN mascota M ON M.id = SA.mascota_id";
+                "SELECT SA.nombre, SA.apllpat, SA.apllmat, SA.sexo, SA.ci, SA.fechaNac, 
+                    SA.direccion, SA.num, SA.aprobada, M.nombre as nombreMascota, M.especie, M.adoptable, M.sexo as sexoMascota, M.color, M.fechaAdopcion 
+                    FROM solicitudadopcion SA
+                    INNER JOIN mascota M ON M.id = SA.mascota_id AND SA.aprobada = 2";
 
                 if (!empty($where)) {
                     $sqlCliente .= ' WHERE ' . implode(' AND ', $where);
@@ -414,7 +412,7 @@
                                                                 <td><?php echo $dataCliente['ci'];?></td>
                                                                 <td><?php echo $dataCliente['sexo']; ?></td>
                                                                 <td><?php echo $dataCliente['fechaNac']; ?></td>
-                                                                <td><?php echo $dataCliente['celular']; ?></td>
+                                                                <td><?php echo $dataCliente['num']; ?></td>
                                                                 <td><?php echo $dataCliente['direccion']; ?></td>
                                                                 <td><?php echo $dataCliente['nombreMascota']; ?></td>
                                                                 <td><?php echo $dataCliente['especie']; ?></td>
