@@ -273,12 +273,14 @@
 
       <?php
         include('config.php');
+        $sqlCliente2   ="SELECT id from Fundacion F where F.persona_id=".$_SESSION['idPersona'].";";
+        $queryCliente2 = mysqli_query($con, $sqlCliente2);
+        $dataCliente2 = mysqli_fetch_array($queryCliente2);
+        $fundacionID=$dataCliente2['id'];
 
 
-        $sqlCliente   = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante',S.apllpat, S.apllmat, S.fechaNac, S.sexo, S.ci, S.num, S.depa, S.casa, S.direccion, S.fotoCi, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info,I.imagen, M.fundaciones_id
-        FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
-        INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 AND F.persona_id=" . $_SESSION["idPersona"] . " LEFT JOIN imagenes I ON I.idMascota=M.id =" . $_SESSION['idPersona'] . "
-        ORDER BY S.id DESC ");
+        $sqlCliente   = ("SELECT S.id, CONCAT(S.nombre, ' ',S.apllpat, ' ', S.apllmat) as 'Adotante', M.nombre as 'Mascota', COUNT(SE.id) as 'Visitas',M.idVoluntario, P.nombre as 'Voluntario'
+        FROM solicitudadopcion S INNER JOIN mascota M ON M.id=S.mascota_id LEFT JOIN seguimiento SE ON SE.solicitud_fk=S.id INNER JOIN persona P ON P.id=M.idVoluntario WHERE S.aprobada=2 and M.fundaciones_id=".$fundacionID." GROUP BY S.id; ");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>
@@ -312,7 +314,7 @@
                               <th scope="col">Adoptante</th>
                               <th scope="col">Voluntario</th>
                               <th scope="col">Seguimientos</th>
-                              <th scope="col">Próxima Visita</th>
+
                           <!--    <th scope="col">Fecha de Actualización</th>-->
 
                             </tr>
@@ -321,23 +323,18 @@
                             <?php
                             while ($dataCliente = mysqli_fetch_array($queryCliente)) { ?>
                               <tr>
-                              <td><?php echo $dataCliente['nombreMascota']; ?></td>
-                                <td><?php echo $dataCliente['nombreSolicitante']; ?></td>
-                                <td><?php echo $dataCliente['nombreSolicitante']; ?></td>
-                                <td>0</td>
-                                <td>00/00/000</td>
+                              <td><?php echo $dataCliente['Mascota']; ?></td>
+                                <td><?php echo $dataCliente['Adotante']; ?></td>
+                                <td><?php echo $dataCliente['Voluntario']; ?></td>
+                                <td><?php echo $dataCliente['Visitas']; ?></td>
+
 
 
                                 <td>
 
 
-                                  <button title="HISTORIAL" type="button" class="btn btn-ff" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fas fa-folder"></i>
-                                  </button>
+                                <button  title="HISTORIAL" type="button" class="btn btn-ff" onclick="location.href='historial.php?id=<?php echo $dataCliente['id'];?>'"><i class="fas fa-folder"></i></button>
 
-                                  <button title="REGISTRAR" type="button" class="btn btn-df" data-toggle="modal" data-target="#insertChildresn<?php echo $dataCliente['id']; ?>">
-                                  <i class="fas fa-comment"></i>
-                                  </button>
 
                                 <!--  <button title="ELIMINAR" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fa fa-times"></i>

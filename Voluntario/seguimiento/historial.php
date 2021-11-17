@@ -229,9 +229,11 @@
         <?php
         include('config.php');
 
+        $id = $_GET['id'];
 
-        $sqlCliente   = ("SELECT S.id, CONCAT(S.nombre, ' ',S.apllpat, ' ', S.apllmat) as 'Adoptante', M.nombre as 'Mascota', COUNT(SE.id) as 'Visitas'
-        FROM solicitudadopcion S INNER JOIN mascota M ON M.id=S.mascota_id LEFT JOIN seguimiento SE ON SE.solicitud_fk=S.id WHERE S.aprobada=2 AND M.idVoluntario=32 GROUP BY S.id;");
+
+        $sqlCliente   = ("SELECT SE.fechaVisita, SE.reporte, SE.fotoVisita
+        FROM seguimiento SE WHERE SE.solicitud_fk=" . $id . ";");
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>
@@ -259,9 +261,9 @@
                         <table class="table table-bordered table-striped table-hover">
                           <thead>
                             <tr>
-                              <th scope="col">Mascota</th>
-                              <th scope="col">Adpotante</th>
-                              <th scope="col">Seguimientos</th>
+                              <th scope="col">Fecha Visita</th>
+                              <th scope="col">Reporte</th>
+                              <th scope="col">Foto</th>
 
                             </tr>
                           </thead>
@@ -269,9 +271,11 @@
                             <?php
                             while ($dataCliente = mysqli_fetch_array($queryCliente)) { ?>
                               <tr>
-                                <td><?php echo $dataCliente['Adoptante']; ?></td>
-                                <td><?php echo $dataCliente['Mascota']; ?></td>
-                                <td><?php echo $dataCliente['Visitas']; ?></td>
+                                <td><?php echo $dataCliente['fechaVisita']; ?></td>
+                                <td><?php echo $dataCliente['reporte']; ?></td>
+                                <td><img src="img/<?php echo $dataCliente['fotoVisita']; ?>" height="60"> </td>
+
+                                <td>
 
 
                                 <td>
@@ -283,10 +287,16 @@
                                     <i class="fas fa-keyboard"></i>
                                   </button>
 
+                                  <button title="HISTORIAL" type="button" class="btn btn-ff" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fas fa-folder"></i>
+                                  </button>
 
-                                  <button  title="HISTORIAL" type="button" class="btn btn-ff" onclick="location.href='historial.php?id=<?php echo $dataCliente['id'];?>'"><i class="fas fa-folder"></i></button>
 
+                                  <button title="bueno type=" button" class="btn btn-ss" data-toggle="modal" data-target="#agendarChildresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fas fa-calendar-alt"></i> </button>
 
+                                  <button title="malo" type="button" class="btn btn-ss" data-toggle="modal" data-target="#agendarChildresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fas fa-calendar-alt"></i> </button>
                                 </td>
 
                               </tr>
