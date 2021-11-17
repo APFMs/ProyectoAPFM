@@ -289,7 +289,7 @@
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>*/
 
-        $sqlCliente = ("SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante',S.apllpat, S.apllmat, S.fechaNac, S.sexo, S.ci, S.num, S.depa, S.casa, S.direccion, S.fotoCi, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info,I.imagen, M.fundaciones_id
+        $sqlCliente = ("SELECT S.id as 'id', S.mascota_id, S.nombre AS 'nombreSolicitante',S.apllpat, S.apllmat, S.fechaNac, S.sexo, S.ci, S.num, S.depa, S.casa, S.direccion, S.fotoCi, S.fotoLuz, S.fotoCasa, S.aprobada, M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info,I.imagen, M.fundaciones_id
         FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
         INNER JOIN fundacion F ON F.id=M.fundaciones_id AND S.aprobada=2 AND F.persona_id=" . $_SESSION["idPersona"] . " LEFT JOIN imagenes I ON I.idMascota=M.id =" . $_SESSION['idPersona'] . "
         ORDER BY S.id DESC ");
@@ -348,6 +348,7 @@
                                 <td><?php echo $dataCliente['nombreMascota']; ?></td>
                                 <td><?php echo $dataCliente['num']; ?></td>
                                 <td><?php echo $dataCliente3['nombre']; ?></td>
+                                
                                 <td> <button type="button" class="btn-HH" data-toggle="modal" data-target="#DCIChildresn<?php echo $dataCliente['id']; ?>">
                                     <img src="img/<?php echo $dataCliente['fotoCi']; ?>" height="35"></i>
                                   </button></td>
@@ -361,7 +362,7 @@
                                   </button></td>
                                 <td>
 
-                                  <button title="VER" type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
+                                  <button title="VER" type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo  $dataCliente['id']; ?>">
                                     <i class="fa fa-eye"></i>
                                   </button>
 
@@ -416,7 +417,7 @@
                               <?php include('ModalCasa.php'); ?>
                               <?php include('ModalDCASA.php'); ?>
 
-
+ 
 
                             <?php } ?>
 
@@ -441,7 +442,6 @@
       <!-- /.content-wrapper
       <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
-
         </div>
         <strong>Fundaciones de Cochabamba &copy; 2021 <a href="index.html">SomosTuVoz</a>.</strong> Por un mundo mejor.
       </footer>  -->

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Voluntario </title>
+  <title>Voluntarios </title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="adminlte1.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
   <style>
@@ -42,6 +43,18 @@
       box-shadow: none;
     }
 
+    .page-link {
+
+      color: #212529;
+      background-color: #f39c12;
+      border: 1 px solid #dee2e6;
+    }
+
+    .page-item.active .page-link {
+
+      background-color: #ff7705;
+      border-color: #ff7705;
+    }
   </style>
 
 
@@ -64,8 +77,8 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-        <a href="../Administrador.php" class="nav-link">Volver</a>
-      </li>
+          <a href="../Administrador.php" class="nav-link">Volver</a>
+        </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="../../index.html" class="nav-link">Cerrar sesión</a>
           <?php
@@ -142,7 +155,7 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-               <li class="nav-item">
+            <li class="nav-item">
               <a href=<?php echo $paginaAdministrador ?> class="nav-link">
                 <i class="fa fa-id-card"></i>
                 <p>
@@ -173,17 +186,17 @@
 
 
 
-           <li class="nav-item">
+            <li class="nav-item">
               <a href=<?php echo $paginaVoluntario ?> class="nav-link">
                 <i class="fa fa-users"></i>
                 <p>
                   Voluntarios
                 </p>
               </a>
-            </li>  
+            </li>
 
 
- 
+
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -215,18 +228,33 @@
         <?php
         include('config.php');
 
-        //$sqlCliente   = ("SELECT * FROM persona P INNER JOIN usuario U on U.persona_id=P.id and U.rol='voluntario';");
-        $sqlCliente   = ("SELECT P.id, P.nombre, P.apllpat,P.apllmat, P.sexo, P.ci, P.fechaNac,P.fechaCreacion, P.fechaActualizacion,P.estado, P.idUsuarioMod,F.nombre as 'nombreFundacion' FROM voluntario V INNER JOIN persona P on V.persona_idPERSONA=P.id INNER JOIN fundacion F on F.id=V.fundaciones_id");
+        $elementosPorPagina = 10;
+        $pagina = 1;
+        if (isset($_GET["pagina"])) {
+          $pagina = $_GET["pagina"];
+        }
+
+        $limit = $elementosPorPagina;
+        $offset = ($pagina - 1) * $elementosPorPagina;
+
+        $sqlQuery = "SELECT P.id, P.nombre, P.apllpat,P.apllmat, P.sexo, P.ci, P.fechaNac,P.fechaCreacion, P.fechaActualizacion,P.estado, P.idUsuarioMod,F.nombre as 'nombreFundacion' FROM voluntario V INNER JOIN persona P on V.persona_idPERSONA=P.id INNER JOIN fundacion F on F.id=V.fundaciones_id";
+        $pagination = " LIMIT " . $limit . " OFFSET " . $offset;
+
+        $sqlCantidadElementos = ($sqlQuery);
+        $queryCantidadElementos = mysqli_query($con, $sqlCantidadElementos);
+        $cantidad = mysqli_num_rows($queryCantidadElementos);
+
+        $paginas = ceil($cantidad / $elementosPorPagina);
+
+
+        $sqlCliente   = ($sqlQuery . $pagination);
         $queryCliente = mysqli_query($con, $sqlCliente);
-        $cantidad     = mysqli_num_rows($queryCliente);
         ?>
-
-
 
         <div class="row text-center" style="background-color: #ffc66c">
 
           <div class="col-md-11">
-            <strong>Lista de Voluntarios <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
+            <strong>Mostrando <?php echo $elementosPorPagina ?> de <?php echo $cantidad ?> Voluntarios</strong>
           </div>
         </div>
 
@@ -250,9 +278,9 @@
                               <th scope="col">Apellido Paterno</th>
                               <th scope="col">CI</th>
                               <th scope="col">Fecha de Creación</th>
-                             <th scope="col">Fecha de Actualización</th>
-                             <th scope="col">Fundacion</th>
-                    
+                              <th scope="col">Fecha de Actualización</th>
+                              <th scope="col">Fundacion</th>
+
                             </tr>
                           </thead>
                           <tbody>
@@ -265,15 +293,15 @@
                                 <td><?php echo $dataCliente['fechaCreacion']; ?></td>
                                 <td><?php echo $dataCliente['fechaActualizacion']; ?></td>
                                 <td><?php echo $dataCliente['nombreFundacion']; ?></td>
-                        
+
 
                                 <td>
 
-                                <button title="VER" type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
+                                  <button title="VER" type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fa fa-eye"></i>
                                   </button>
 
-                                <!--  <button title="ELIMINAR" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
+                                  <!--  <button title="ELIMINAR" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fa fa-times"></i>
                                   </button>-->
                                 </td>
@@ -282,7 +310,7 @@
 
                               <!--Ventana Modal para la Alerta de Eliminar--->
                               <?php include('ModalEliminar.php'); ?>
-                              
+
                               <!--Ventana Modal para la Alerta de Mostrar Información--->
                               <?php include('ModalDetalles.php'); ?>
 
@@ -291,6 +319,9 @@
                             <?php } ?>
 
                         </table>
+                        <?php
+                        include_once "../pagination.php";
+                        ?>
                       </div>
 
 

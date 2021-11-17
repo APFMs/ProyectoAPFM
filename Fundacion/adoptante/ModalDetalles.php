@@ -4,12 +4,14 @@
     <div class="modal-content">
       <div class="modal-header" style="background-color: #f39c12 !important;">
         <h6 class="modal-title" style="color: #fff; text-align: center;">
-          Actualizar Información
+          Solicitud del adoptante
         </h6>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+
+
       <form method="POST" action="recib_Update.php">
         <label type="hidden" name="id" value="<?php echo $dataCliente['id']; ?>">
 
@@ -37,6 +39,13 @@
               <br>
             </div>
 
+ 
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          </div>
+      </form>
 
     </div>
   </div>
