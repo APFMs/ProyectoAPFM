@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">
-          ¿La mascota esta lista para la adopción?
+          Ingresar foto de la mascota
         </h4>
       </div>
 
@@ -30,7 +30,7 @@
               </div>
             <?php session_unset();
             } ?>
-            <input type="submit" value="Guardar" class="btn btn-primary" name="Guardar">
+            <input type="submit" value="Agregar Foto" class="btn btn-primary" name="Guardar">
           </form>
         </strong>       
 

@@ -273,31 +273,9 @@
                               <tr>
                                 <td><?php echo $dataCliente['fechaVisita']; ?></td>
                                 <td><?php echo $dataCliente['reporte']; ?></td>
-                                <td><img src="../../Voluntario/seguimiento/img/<?php echo $dataCliente['fotoVisita']; ?>" height="60"> </td>
+                                <td><img src="../../Voluntario/seguimiento/img/<?php echo $dataCliente['fotoVisita']; ?>" height="200"> </td>
 
-                                <td>
-
-
-                                <td>
-
-                                  <!--   <button title="AGENDAR" type="button" class="btn btn-ss" data-toggle="modal" data-target="#agendarChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fas fa-calendar-alt"></i> </button>-->
-
-                                  <button title="REGISTRAR" type="button" class="btn btn-df" data-toggle="modal" data-target="#insertChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fas fa-keyboard"></i>
-                                  </button>
-
-                                  <button title="HISTORIAL" type="button" class="btn btn-ff" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fas fa-folder"></i>
-                                  </button>
-
-
-                                  <button title="bueno type=" button" class="btn btn-ss" data-toggle="modal" data-target="#agendarChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fas fa-calendar-alt"></i> </button>
-
-                                  <button title="malo" type="button" class="btn btn-ss" data-toggle="modal" data-target="#agendarChildresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fas fa-calendar-alt"></i> </button>
-                                </td>
+                                
 
                               </tr>
 

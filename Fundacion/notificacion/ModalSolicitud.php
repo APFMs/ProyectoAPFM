@@ -51,8 +51,12 @@
             <br>
             <label for="" class="form-label">Voluntario: <?php echo $dataCliente2['nombreVoluntario']; ?></label>
             <br>
-            <label for="">Información: <?php echo $dataCliente['info']; ?></label>
+            <label for="">*<?php echo $dataCliente['info']; ?></label>
             <br>
+            <label for="">*<?php echo $dataCliente['chx2']; ?></label><br>
+            <label for="">*<?php echo $dataCliente['chx3']; ?></label><br>
+            <label for="">*<?php echo $dataCliente['chx4']; ?></label><br>
+            <label for="">*<?php echo $dataCliente['chx5']; ?></label>
           </div>
         </div>
         <div class="modal-footer">

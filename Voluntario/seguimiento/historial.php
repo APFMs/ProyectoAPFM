@@ -79,7 +79,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="../Voluntario.php" class="nav-link">Volver</a>
+          <a href="tablaSeguimiento.php" class="nav-link">Volver</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="../../index.html" class="nav-link">Cerrar sesión</a>
@@ -241,7 +241,7 @@
         <div class="row text-center" style="background-color: #ffc66c">
 
           <div class="col-md-11">
-            <strong>Seguimientos <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
+            <strong>Historial de la Visita <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
           </div>
         </div>
 
@@ -272,7 +272,7 @@
                               <tr>
                                 <td><?php echo $dataCliente['fechaVisita']; ?></td>
                                 <td><?php echo $dataCliente['reporte']; ?></td>
-                                <td><img src="img/<?php echo $dataCliente['fotoVisita']; ?>" height="60"> </td>
+                                <td><img src="img/<?php echo $dataCliente['fotoVisita']; ?>" height="200"> </td>
                               </tr>
                             <?php } ?>
                         </table>

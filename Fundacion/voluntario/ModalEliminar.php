@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">
-          ¿Realmente deseas eliminar a ?
+          ¿Realmente deseas eliminar al Voluntario ?
         </h4>
       </div>
 

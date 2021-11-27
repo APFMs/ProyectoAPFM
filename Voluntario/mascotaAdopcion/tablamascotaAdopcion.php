@@ -255,8 +255,7 @@
                               <th scope="col">Edad</th>
                               <th scope="col">Sexo</th>
                               <th scope="col">Color</th>
-                              <th scope="col">Tamaño</th>
-                              <th scope="col">Descripción</th>
+
                             </tr>
                           </thead>
                           <tbody>
@@ -268,20 +267,16 @@
                                 <td><?php echo $dataCliente['edad']; ?></td>
                                 <td><?php echo $dataCliente['sexo']; ?></td>
                                 <td><?php echo $dataCliente['color']; ?></td>
-                                <td><?php echo $dataCliente['tam']; ?></td>
-                                <td><?php echo $dataCliente['descripcion']; ?></td>
 
                                 <td>
 
-
-                                  <button type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
-                                    Ver Detalles
+                                <button title="VER" type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fa fa-eye"></i>
                                   </button>
 
-                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataCliente['id']; ?>">
-                                    Modificar
+                                  <button title="EDITAR" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataCliente['id']; ?>">
+                                    <i class="fas fa-edit"></i>
                                   </button>
-
 
                                 </td>
                               </tr>

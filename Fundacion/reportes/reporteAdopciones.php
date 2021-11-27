@@ -106,10 +106,12 @@
 
 <body class="hold-transition sidebar-mini">
   <?php
-  $paginaAdministrador = "../tablaAdministrador.php";
-  $paginaFundaciones = "tablaFundacion.php";
-  $paginaMascota = "../mascota/tablaMascota.php";
   $paginaVoluntario = "../voluntario/tablaVoluntario.php";
+  $paginaMascota = "../mascota/tablaMascota.php";
+  $paginaMascotaEnAdopcion = "../mascotaAdopcion/tablamascotaAdopcion.php";
+  $paginaAdotantes = "../adoptante/tablaAdoptante.php";
+  $paginaSeguimientos = "../seguimiento/tablaSeguimiento.php";
+  $paginaNotificaciones = "../notificacion/tablaNotificacion.php";
   $paginaReportes = "reporteAdopciones.php";
   ?>
   <div class="wrapper">
@@ -201,24 +203,13 @@
 
 
                <li class="nav-item">
-              <a href=<?php echo $paginaAdministrador ?> class="nav-link">
-                <i class="fa fa-id-card"></i>
+              <a href=<?php echo $paginaVoluntario ?> class="nav-link">
+                <i class="fa fa-users"></i>
                 <p>
-                  Administradores
+                  Voluntarios
                 </p>
               </a>
             </li>
-
-
-            <li class="nav-item">
-              <a href=<?php echo $paginaFundaciones ?> class="nav-link">
-                <i class="fa fa-university"></i>
-                <p>
-                  Fundaciones
-                </p>
-              </a>
-            </li>
-
 
             <li class="nav-item">
               <a href=<?php echo $paginaMascota ?> class="nav-link">
@@ -231,11 +222,42 @@
 
 
 
+
             <li class="nav-item">
-              <a href=<?php echo $paginaVoluntario ?> class="nav-link">
-                <i class="fa fa-users"></i>
+              <a href=<?php echo $paginaMascotaEnAdopcion ?> class="nav-link">
+                <i class="fa fa-paw"></i>
                 <p>
-                  Voluntarios
+                  Mascotas en Adopción
+                </p>
+              </a>
+            </li>
+
+
+
+            <li class="nav-item">
+              <a href=<?php echo $paginaAdotantes ?> class="nav-link">
+                <i class="fa fa-address-book"></i>
+                <p>
+                  Adoptantes
+                </p>
+              </a>
+            </li>
+
+
+            <li class="nav-item">
+              <a href=<?php echo $paginaSeguimientos ?> class="nav-link">
+                <i class="fa fa-home"></i>
+                <p>
+                  Seguimientos
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href=<?php echo $paginaNotificaciones ?> class="nav-link">
+                <i class="fa fa-envelope"></i>
+                <p>
+                  Notificaciones
                 </p>
               </a>
             </li>
@@ -278,18 +300,18 @@
 
         $especies = array("Todos", "Perro", "Gato", "Otro");
         $sexos = array("Todos", "Macho", "Hembra");
-        $fundaciones = array("Todos", 'fundaciones_id');
+        $voluntarios = array("Todos", 'fundaciones_id');
 
         $where = array();
         $selectedEspecie = "";
         $selectedSexo = "";
-        $selectedFundacion = "";
+        $selectedVoluntario = "";
         $startDate = "";
         $endDate = "";
         if (!isset($_POST["id"])) {
           $selectedEspecie = "Todos";
           $selectedSexo = "Todos";
-          $selectedFundacion = "Todos";
+          $selectedVoluntario = "Todos";
         }
         if (isset($_POST['especie']) && $_POST['especie'] != '' && $_POST['especie'] != 'Todos') {
           $selectedEspecie = $_POST['especie'];
@@ -299,9 +321,9 @@
           $selectedSexo = $_POST['sexo'];
           $where[] = " M.sexo = '$selectedSexo'";
         }
-        if (isset($_POST['nombreFun']) && $_POST['nombreFun'] != '' && $_POST['nombreFun'] != 'Todos') {
-          $selectedFundacion = $_POST['nombreFun'];
-          $where[] = " M.nombreFun  = '$selectedFundacion'";
+        if (isset($_POST['voluntario']) && $_POST['voluntario'] != '' && $_POST['voluntario'] != 'Todos') {
+          $selectedVoluntario = $_POST['voluntario'];
+          $where[] = " M.voluntario  = '$selectedVoluntario'";
         }
         if (isset($_POST['startdate_datepicker']) && $_POST['startdate_datepicker'] != '') {
           $startDate = $_POST['startdate_datepicker'];
@@ -360,14 +382,14 @@
               </select>
             </div>
             <div class="col-sm">
-              <label for="nombreFun"><strong>Fundación:</strong></label>
-              <select class="form-select form-select-sm" name="nombreFun" id="nombreFun">
+              <label for="voluntario"><strong>Voluntario:</strong></label>
+              <select class="form-select form-select-sm" name="voluntario" id="voluntario">
                 <?php
-                foreach ($fundaciones as $fundacion) {
-                  $selected = ($fundacion == $selectedFundacion) ? "selected" : "";
-                  echo "<option value='$fundacion' $selected>$fundacion</option>";
+                foreach ($voluntarios as $voluntario) {
+                  $selected = ($voluntario == $selectedVoluntario) ? "selected" : "";
+                  echo "<option value='$voluntario' $selected>$voluntario</option>";
                 }
-                unset($fundaciones);
+                unset($voluntarios);
                 ?>
               </select>
             </div>
@@ -380,10 +402,10 @@
 
         $sqlCliente   =
           "SELECT SA.nombre, SA.apllpat, SA.apllmat, SA.sexo, SA.ci, SA.fechaNac, 
-                    SA.direccion, SA.num, SA.aprobada, M.nombre as nombreMascota, M.especie, M.adoptable, M.sexo as sexoMascota, M.color, M.fechaAdopcion, F.nombre as nombreFun 
+                    SA.direccion, SA.num, SA.aprobada, M.nombre as nombreMascota, M.especie, M.adoptable, M.sexo as sexoMascota, M.color, M.fechaAdopcion, P.nombre AS voluntario
                     FROM solicitudadopcion SA
                     INNER JOIN mascota M ON M.id = SA.mascota_id AND SA.aprobada = 2
-                    INNER JOIN fundacion F On F.id=M.fundaciones_id";
+                    INNER JOIN persona P ON P.id=M.idVoluntario;";
 
         if (!empty($where)) {
           $sqlCliente .= ' WHERE ' . implode(' AND ', $where);
@@ -419,7 +441,7 @@
                               <th scope="col">Sexo de la Mascota</th>
                               <th scope="col">Color</th>
                               <th scope="col">Fecha de Adopción</th>
-                              <th scope="col">Fundación</th>
+                              <th scope="col">Voluntarios</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -439,7 +461,7 @@
                                 <td><?php echo $dataCliente['sexoMascota']; ?></td>
                                 <td><?php echo $dataCliente['color']; ?></td>
                                 <td><?php echo $dataCliente['fechaAdopcion']; ?></td>
-                                <td><?php echo $dataCliente['nombreFun'];?></td>
+                                <td><?php echo $dataCliente['voluntario'];?></td>
                               </tr>
                             <?php } ?>
 
@@ -449,7 +471,7 @@
                         <form name="reportForm" id="reportForm" method="POST" target="_blank" action="reporteAdopcionesPDF.php">
                           <input type="hidden" name="rEspecie" id="rEspecie" value="">
                           <input type="hidden" name="rSexo" id="rSexo" value="">
-                          <input type="hidden" name="rnombreFun" id="rnombreFun" value="">
+                          <input type="hidden" name="rvoluntario" id="rvoluntario" value="">
                           <input type="hidden" name="rFechaInicio" id="rFechaInicio" value="">
                           <input type="hidden" name="rFechaFin" id="rFechaFin" value="">
 
@@ -531,7 +553,7 @@
           $("#rFechaFin").val($("#enddate_datepicker").val());
           $("#rEspecie").val($("#especie").val());
           $("#rSexo").val($("#sexo").val());
-          $("#rnombreFun").val($("#nombreFun").val());
+          $("#rvoluntario").val($("#voluntario").val());
           //event.preventDefault();
         });
       });

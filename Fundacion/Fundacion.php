@@ -54,7 +54,8 @@
   $paginaMascotaEnAdopcion = "mascotaAdopcion/tablamascotaAdopcion.php";
   $paginaAdotantes = "adoptante/tablaAdoptante.php";
   $paginaSeguimientos = "seguimiento/tablaSeguimiento.php";
-  $paginaNotificaciones = "notificacion/tablaNotificacion.php"
+  $paginaNotificaciones = "notificacion/tablaNotificacion.php";
+  $paginaReportes = "reportes/reporteAdopciones.php";
 
   ?>
   <div class="wrapper">
@@ -203,7 +204,14 @@
               </a>
             </li>
 
-
+            <li class="nav-item">
+              <a href=<?php echo $paginaReportes ?> class="nav-link">
+                <i class="fa fa-file"></i>
+                <p>
+                  Reporte de Adopciones
+                </p>
+              </a>
+            </li>
 
           </ul>
         </nav>

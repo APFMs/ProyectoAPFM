@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header" style="background-color: #f39c12 !important;">
         <h6 class="modal-title" style="color: #fff; text-align: center;">
-          Actualizar Información
+          Editar Mascota
         </h6>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>

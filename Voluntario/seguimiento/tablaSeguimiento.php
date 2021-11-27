@@ -269,8 +269,9 @@
                             <?php
                             while ($dataCliente = mysqli_fetch_array($queryCliente)) { ?>
                               <tr>
-                                <td><?php echo $dataCliente['Adoptante']; ?></td>
+
                                 <td><?php echo $dataCliente['Mascota']; ?></td>
+                                <td><?php echo $dataCliente['Adoptante']; ?></td>
                                 <td><?php echo $dataCliente['Visitas']; ?></td>
 
 

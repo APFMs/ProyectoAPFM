@@ -54,6 +54,7 @@ $resultado = mysqli_query($con, $query);
             border-color: #fca006;
             box-shadow: none;
         }
+
         .btn-ww {
             color: #fff;
             background-color: #ffb907;
@@ -78,7 +79,17 @@ $resultado = mysqli_query($con, $query);
                 width: 100%;
             }
         }
-
+        .form-select {
+        border:  solid #fca006 4px;
+        font-size: 1.1rem;
+        line-height: 2;
+        font-weight: 600;
+        font: oblique bold 120% cursive;
+        background-color: #ffb905;
+        color: #fff;
+        width: 70%;
+        border-radius: 16px;
+        }
         h6 {
             display: -webkit-box;
             -webkit-line-clamp: 3;
@@ -90,7 +101,7 @@ $resultado = mysqli_query($con, $query);
         }
 
         img {
- 
+
             max-width: 800px;
             height: 200px;
         }

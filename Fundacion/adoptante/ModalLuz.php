@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">
-          ¿La mascota esta lista para la adopción?
+          Agregar foto de boleta de pago del adoptante
         </h4>
       </div>
 
