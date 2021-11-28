@@ -21,16 +21,15 @@
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Nombre : <?php echo $dataCliente['nombreSolicitante']; ?> </label>
             <br>
-            <label for="">Macota:<?php echo $dataCliente['nombreMascota']; ?></label>
+            <label for="">Macota: <?php echo $dataCliente['nombreMascota']; ?></label>
             <br>
           </div>
 
-          <label><input type="checkbox" id="cbox1" value="Tiene casa propia" name="info"> Casa Propia</label><br>
-
-          <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">Boleta</label>
-
-
-
+          <h4>Información Adicional</h4>
+          <br/>
+          <input type="checkbox" id="TieneCasa" name="TieneCasa"> <label for="TieneCasa">Cuenta con casa propia?</label><br/>
+          <input type="checkbox" id="TieneBoleta" name="TieneBoleta"> <label for="TieneBoleta">Cuenta con boleta de luz?</label><br/>
+          <input type="checkbox" id="Seguimiento" name="Seguimiento"> <label for="Seguimiento">Está de acuerdo con el seguimiento a seguir?</label>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

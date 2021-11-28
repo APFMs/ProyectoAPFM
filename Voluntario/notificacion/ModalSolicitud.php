@@ -19,7 +19,7 @@
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Nombre : <?php echo $dataCliente['nombreSolicitante']; ?> </label>
               <br>
-              <label for="">Mascota:<?php echo $dataCliente['nombreMascota']; ?></label>
+              <label for="">Mascota: <?php echo $dataCliente['nombreMascota']; ?></label>
               <br>
               <label for="" class="form-label">Voluntario: <?php echo $dataCliente['nombreSolicitante']; ?></label>
               <br>

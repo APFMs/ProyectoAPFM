@@ -277,7 +277,8 @@ $resultado = mysqli_query($con, $query);
             <hr>
             <div class="card-columns">
                 <?php
-                $query = "SELECT I.imagen, I.idMascota, M.id, M.nombre, M.especie, M.edad, M.sexo, M.color, M.tam,  M.descripcion FROM imagenes I INNER JOIN mascota M ON I.idMascota=M.id AND M.adoptable=1 and M.estado=1";
+                $query = "SELECT I.imagen, I.idMascota, M.id, M.nombre, M.especie, M.edad, M.sexo, M.color, M.tam,  M.descripcion, M.adoptable 
+                FROM imagenes I INNER JOIN mascota M ON I.idMascota=M.id AND M.adoptable in (1,3) and M.estado=1";
 
                 if (!empty($where)) {
                     $query .= ' WHERE ' . implode(' AND ', $where);
@@ -288,7 +289,7 @@ $resultado = mysqli_query($con, $query);
                     <div class="card">
                         <img src="../fundacion/mascota/img/<?php echo $dataCliente['imagen']; ?>" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title"><strong><?php echo $dataCliente['nombre']; ?></strong></h5>
+                            <h5 class="card-title"><strong><?php echo $dataCliente['nombre']; ?></strong> <?php echo $dataCliente['adoptable'] == 3 ? "Reservado" : ""; ?> </h5>
                             <h6 class="card-subtitle mb-2 text-muted"><?php echo $dataCliente['descripcion']; ?></h6>
 
                             <!-- Button trigger modal -->
@@ -297,9 +298,11 @@ $resultado = mysqli_query($con, $query);
                             </button>
                             <?php include('ModalDetalles.php'); ?>
 
-                            <button type="button" class="btn btn-df" data-toggle="modal" data-target="#Formulario<?php echo $dataCliente['id']; ?>">
-                                Adoptar
-                            </button>
+                            <?php if ($dataCliente['adoptable'] == 1) { ?>
+                                <button type="button" class="btn btn-df" data-toggle="modal" data-target="#Formulario<?php echo $dataCliente['id']; ?>">
+                                    Adoptar
+                                </button>
+                            <?php } ?>
                             <?php include('ModalSolicitar.php'); ?>
 
                         </div>

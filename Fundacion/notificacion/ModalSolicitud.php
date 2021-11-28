@@ -50,13 +50,12 @@
             <label for="">Mascota:<?php echo $dataCliente['nombreMascota']; ?></label>
             <br>
             <label for="" class="form-label">Voluntario: <?php echo $dataCliente2['nombreVoluntario']; ?></label>
-            <br>
-            <label for="">*<?php echo $dataCliente['info']; ?></label>
-            <br>
-            <label for="">*<?php echo $dataCliente['chx2']; ?></label><br>
-            <label for="">*<?php echo $dataCliente['chx3']; ?></label><br>
-            <label for="">*<?php echo $dataCliente['chx4']; ?></label><br>
-            <label for="">*<?php echo $dataCliente['chx5']; ?></label>
+            <br/>
+            <h4>Invetigación Realizada</h4>
+            <br/>
+              * Cuenta con Casa Propia?: <strong><?php echo $dataCliente['TieneCasa'] == 1 ? "Si" : "No"; ?></strong><br>
+              * Cuenta con boleta de luz?: <strong><?php echo $dataCliente['TieneBoleta'] == 1 ? "Si" : "No"; ?></strong><br>
+              * Está de acuerdo con el seguimiento a seguir?: <strong><?php echo $dataCliente['Seguimiento'] == 1 ? "Si" : "No"; ?></strong><br>
           </div>
         </div>
         <div class="modal-footer">

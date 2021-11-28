@@ -2,6 +2,6 @@
 include('config.php');
 $idRegistros = $_REQUEST['id'];
 
-$DeleteRegistro = ("DELETE FROM mascotas1 WHERE id= '".$idRegistros."' ");
+$DeleteRegistro = ("UPDATE solicitudadopcion SET estado=1 WHERE id= '".$idRegistros."' ");
 mysqli_query($con, $DeleteRegistro);
 ?>

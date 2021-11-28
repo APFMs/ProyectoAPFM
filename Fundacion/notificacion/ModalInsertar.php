@@ -22,7 +22,7 @@
           <br>
           <div class="from-group" data-validate="Usuario incorrecto">
             <label for="">Especie:</label>
-            <select class="input100" name="especie" id="especie">
+            <select class="input100" name="especie" id="especie"> 
               <option value="Perro">Perro</option>
               <option value="Gato">Gato</option>
               <option value="Otro">Otro</option>

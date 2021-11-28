@@ -17,12 +17,13 @@ class reporteAdopcionesPDF extends FPDF {
         $this->Cell(20, 10, 'Sexo', 1, 0, 'C', 0);
         $this->Cell(40, 10, 'Fecha de Nacimiento', 1, 0, 'C', 0);
         $this->Cell(20, 10, 'Celular', 1, 0, 'C', 0);
-        $this->Cell(70, 10, utf8_decode('Dirección'), 1, 0, 'C', 0);
+        $this->Cell(60, 10, utf8_decode('Dirección'), 1, 0, 'C', 0);
         $this->Cell(40, 10, 'Nombre Mascota', 1, 0, 'C', 0);
         $this->Cell(30, 10, 'Especie', 1, 0, 'C', 0);
         $this->Cell(30, 10, 'Sexo Mascota', 1, 0, 'C', 0);
         $this->Cell(20, 10, 'Color', 1, 0, 'C', 0);
-        $this->Cell(40, 10, utf8_decode('Fecha de Adopción'), 1, 1, 'C', 0);
+        $this->Cell(40, 10, utf8_decode('Fecha de Adopción'), 1, 0, 'C', 0);
+        $this->Cell(30, 10, utf8_decode('Fundación'), 1, 1, 'C', 0);
     }
 
     function Footer() {
@@ -69,12 +70,18 @@ if ($startDate != "" && $endDate != "") {
 } else if ($endDate != "" && $startDate == "") {
     $where[] = " M.fechaAdopcion between '1800-01-01' AND '$endDate'";
 }
+if (isset($_POST['rFundacion']) && $_POST['rFundacion'] != '' && $_POST['rFundacion'] != 'Todos') {
+    $selectedFundacion = $_POST['rFundacion'];
+    $where[] = " F.id = $selectedFundacion";
+}
 
 $sqlCliente   = 
-"SELECT SA.nombre, SA.apllpat, SA.apllmat, SA.sexo, SA.ci, SA.fechaNac, 
-    SA.direccion, SA.num, SA.aprobada, M.nombre as nombreMascota, M.especie, M.adoptable, M.sexo as sexoMascota, M.color, M.fechaAdopcion 
+    "SELECT SA.nombre, SA.apllpat, SA.apllmat, SA.sexo, SA.ci, SA.fechaNac, 
+    SA.direccion, SA.num, SA.aprobada, M.nombre as nombreMascota, M.especie, M.adoptable, M.sexo as sexoMascota, M.color, M.fechaAdopcion, F.nombre as nombreFun 
     FROM solicitudadopcion SA
-    INNER JOIN mascota M ON M.id = SA.mascota_id AND SA.aprobada = 2";
+    INNER JOIN mascota M ON M.id = SA.mascota_id AND SA.aprobada = 2
+    INNER JOIN fundacion F On F.id=M.fundaciones_id AND F.estado=1";
+$where[] = " SA.estado=0";
 
 if (!empty($where)) {
     $sqlCliente .= ' WHERE ' . implode(' AND ', $where);
@@ -88,12 +95,13 @@ while ($dataCliente = mysqli_fetch_array($queryCliente)) {
     $pdf->Cell(20, 10, $dataCliente['sexo'], 1, 0, 'L', 0);
     $pdf->Cell(40, 10, $dataCliente['fechaNac'], 1, 0, 'L', 0);
     $pdf->Cell(20, 10, $dataCliente['num'], 1, 0, 'L', 0);
-    $pdf->Cell(70, 10, $dataCliente['direccion'], 1, 0, 'L', 0);
+    $pdf->Cell(60, 10, $dataCliente['direccion'], 1, 0, 'L', 0);
     $pdf->Cell(40, 10, $dataCliente['nombreMascota'], 1, 0, 'L', 0);
     $pdf->Cell(30, 10, $dataCliente['especie'], 1, 0, 'L', 0);
     $pdf->Cell(30, 10, $dataCliente['sexoMascota'], 1, 0, 'L', 0);
     $pdf->Cell(20, 10, $dataCliente['color'], 1, 0, 'L', 0);
-    $pdf->Cell(40, 10, $dataCliente['fechaAdopcion'], 1, 1, 'L', 0);
+    $pdf->Cell(40, 10, $dataCliente['fechaAdopcion'], 1, 0, 'L', 0);
+    $pdf->Cell(30, 10, $dataCliente['nombreFun'], 1, 1, 'L', 0);
 }
 
 $pdf->Output();
