@@ -69,6 +69,12 @@
       background-color: #ff7705;
       border-color: #ff7705;
     }
+
+    .btn-primary1 {
+      color: #fff447;
+      background-color: #9a71e4;
+      border-color: #9a71e4;
+    }
   </style>
 
   <script>
@@ -108,10 +114,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="../Administrador.php" class="nav-link">Volver</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="../../index.html" class="nav-link">Cerrar sesión</a>
+          <a style="color:RED; font-weight: bold;" href="../../index.html" class="nav-link">Cerrar sesión</a>
           <?php
           session_start(); // para usar las variables de sesion                 
           ?>
@@ -241,12 +244,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
+              <h1 style="color:#01a6a9; font-weight: bold;"><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
               <br>
 
               <tr>
                 <td>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insertChildresn">
+                  <button type="button" class="btn btn-primary1" data-toggle="modal" data-target="#insertChildresn">
                     Agregar Fundación
                   </button>
                   <?php include('ModalInsertar.php'); ?>
@@ -301,7 +304,7 @@
         <div class="row text-center" style="background-color: #ffc66c">
 
           <div class="col-md-11">
-            <strong>Mostrando <?php echo $elementosPorPagina ?> de <?php echo $cantidad ?> Fundaciones</strong>
+            <strong style="color:#ec4c4c; font-size: 21px">Mostrando <?php echo $elementosPorPagina ?> de <?php echo $cantidad ?> Fundaciones</strong>
           </div>
         </div>
 
@@ -321,10 +324,10 @@
                         <table class="table table-bordered table-striped table-hover">
                           <thead>
                             <tr>
-                              <th scope="col">Nombre de la Fundación</th>
-                              <th scope="col">Teléfono</th>
-                              <th scope="col">Fecha de Creación</th>
-                              <th scope="col">Fecha de Actualización</th>
+                              <th style="color:#115293;" scope="col">Nombre de la Fundación</th>
+                              <th style="color:#115293;" scope="col">Teléfono</th>
+                              <th style="color:#115293;" scope="col">Fecha de Creación</th>
+                              <th style="color:#115293;" scope="col">Fecha de Actualización</th>
 
                             </tr>
                           </thead>

@@ -41,19 +41,19 @@
 
           <div class="modal-body" id="cont_modal">
             <div class="form-group" id="izquierda">
-              <label for="recipient-name" class="col-form-label">Nombre : <?php echo $dataCliente['nombre']; ?> </label>
+              <label style="color:#ec4c4c;"for="recipient-name" class="col-form-label">Nombre : <label style="color:#115293;"><?php echo $dataCliente['nombre']; ?> </label>
               <br>
-              <label for="">Especie:<?php echo $dataCliente['especie']; ?></label>
+              <label style="color:#ec4c4c;"for="">Especie: <label style="color:#115293;"><?php echo $dataCliente['especie']; ?></label>
               <br>
-              <label for="celular" class="form-label">Edad: <?php echo $dataCliente['edad']; ?></label>
+              <label style="color:#ec4c4c;"for="celular" class="form-label">Edad: <label style="color:#115293;"> <?php echo $dataCliente['edad']; ?></label>
               <br>
-              <label for="">Sexo: <?php echo $dataCliente['sexo']; ?></label>
+              <label style="color:#ec4c4c;"for="">Sexo: <label style="color:#115293;"> <?php echo $dataCliente['sexo']; ?></label>
               <br>
-              <label for="">Color: <?php echo $dataCliente['color']; ?></label>
+              <label style="color:#ec4c4c;"for="">Color: <label style="color:#115293;"> <?php echo $dataCliente['color']; ?></label>
               <br>
-              <label for="">Tamaño: <?php echo $dataCliente['tam']; ?></label>
+              <label style="color:#ec4c4c;"for="">Tamaño: <label style="color:#115293;"> <?php echo $dataCliente['tam']; ?></label>
               <br>
-              <label for="">Descripción: <?php echo $dataCliente['descripcion']; ?></label>
+              <label style="color:#ec4c4c;"for="">Descripción: <label style="color:#115293;"> <?php echo $dataCliente['descripcion']; ?></label>
             </div>
             <div class="img-contenedor" id="derecha">
               <img src="../mascota/img/<?php echo $dataCliente['imagen']; ?>" class="card-img-top" alt="Image" height="20" width="26" class="img-rounded">

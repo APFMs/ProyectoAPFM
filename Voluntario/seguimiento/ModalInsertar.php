@@ -17,12 +17,12 @@
 
         <div class="modal-body" id="cont_modal">
           <div>
-            <label for="start">Dia de Visita:</label>
-            <input type="date"  name="fechaVisita" >
+            <label style="color:#ec4c4c;"for="start">Dia de Visita:</label>
+            <input style="color:#115293;" type="date"  name="fechaVisita" >
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Condiciones :</label>
-            <input type="text" name="reporte" class="form-control" required="true">
+            <label style="color:#ec4c4c;"for="recipient-name" class="col-form-label">Condiciones :</label>
+            <input style="color:#115293;" type="text" name="reporte" class="form-control" required="true">
           </div>
 
 

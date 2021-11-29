@@ -67,7 +67,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="../index.html" class="nav-link">Cerrar sesión</a>
+          <a style="color:RED; font-weight: bold;" href="../index.html" class="nav-link">Cerrar sesión</a>
           <?php
           session_start(); // para usar las variables de sesion                 
           ?>
@@ -227,7 +227,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
+              <h1 style="color:#01a6a9; font-weight: bold;"><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
               <br>
               </form>
             </div>
@@ -254,7 +254,7 @@
         <div class="row text-center" style="background-color: #ffc66c">
 
           <div class="col-md-11">
-            <strong>Datos Personales </strong>
+            <strong style="color:#ec4c4c; font-size: 21px" >Datos Personales </strong>
           </div>
         </div>
 
@@ -275,10 +275,10 @@
                           <thead>
                             <tr>
                             <tr>
-                              <th scope="col">Nombre Completo</th>
-                              <th scope="col">Rol</th>
-                              <th scope="col">Fecha de Creación</th>
-                              <th scope="col">Fecha de Actualización</th>
+                              <th style="color:#115293;" scope="col">Nombre Completo</th>
+                              <th style="color:#115293;" scope="col">Rol</th>
+                              <th  style="color:#115293;"scope="col">Fecha de Creación</th>
+                              <th  style="color:#115293;"scope="col">Fecha de Actualización</th>
                             </tr>
 
                             </tr>
@@ -287,8 +287,8 @@
                             <?php
                             while ($dataCliente = mysqli_fetch_array($queryCliente)) { ?>
                               <tr>
-                                <td><?php echo $dataCliente['nombre'] . " " . $dataCliente['apllpat'] . " " . $dataCliente['apllmat']; ?></td>
-                                <td><?php echo $dataCliente['rol']; ?></td>
+                                <td ><?php echo $dataCliente['nombre'] . " " . $dataCliente['apllpat'] . " " . $dataCliente['apllmat']; ?></td>
+                                <td ><?php echo $dataCliente['rol']; ?></td>
                                 <td><?php echo $dataCliente['fechaCreacion']; ?></td>
                                 <td><?php echo $dataCliente['fechaActualizacion']; ?></td>
 
@@ -344,7 +344,7 @@
           <div class="row text-center" style="background-color: #ffc66c">
 
             <div class="col-md-11">
-              <strong>Datos de la Fundación </strong>
+              <strong style="color:#ec4c4c; font-size: 21px">Datos de la Fundación </strong>
             </div>
           </div>
 
@@ -364,10 +364,10 @@
                           <table class="table table-bordered table-striped table-hover">
                             <thead>
                               <tr>
-                                <th scope="col">Nombre de la Fundación</th>
-                                <th scope="col">Teléfono</th>
-                                <th scope="col">Fecha de Creación</th>
-                                <th scope="col">Fecha de Actualización</th>
+                                <th style="color:#115293;" scope="col">Nombre de la Fundación</th>
+                                <th style="color:#115293;" scope="col">Teléfono</th>
+                                <th style="color:#115293;" scope="col">Fecha de Creación</th>
+                                <th style="color:#115293;" scope="col">Fecha de Actualización</th>
 
                               </tr>
                             </thead>
@@ -384,11 +384,11 @@
                                   <td>
 
 
-                                    <button title="VER" type="button" class="btn btn-df" data-toggle="modal" data-target="#detalleChildresn<?php echo $dataCliente['id']; ?>">
+                                    <button title="VER" type="button" class="btn btn-df" data-toggle="modal" data-target="#detalle1Childresn<?php echo $dataCliente['id']; ?>">
                                       <i class="fa fa-eye"></i>
                                     </button>
 
-                                    <button title="EDITAR" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataCliente['id']; ?>">
+                                    <button title="EDITAR" type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit1Childresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fas fa-edit"></i>
                                   </button>
 

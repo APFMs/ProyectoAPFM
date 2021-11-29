@@ -15,19 +15,19 @@
 
           <div class="modal-body" id="cont_modal">
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Nombre : <?php echo $dataCliente['nombre']; ?> </label>
+              <label style="color:#ec4c4c;"for="recipient-name" class="col-form-label">Nombre : <label style="color:#115293;"> <?php echo $dataCliente['nombre']; ?> </label>
               <br>
-              <label for="">Apellido Paterno : <?php echo $dataCliente['apllpat']; ?></label>
+              <label style="color:#ec4c4c;"for="">Apellido Paterno : <label style="color:#115293;"> <?php echo $dataCliente['apllpat']; ?></label>
               <br>
-              <label for="">Apellido Materno : <?php echo $dataCliente['apllmat']; ?></label>
+              <label style="color:#ec4c4c;"for="">Apellido Materno : <label style="color:#115293;"> <?php echo $dataCliente['apllmat']; ?></label>
               <br>
-              <label for="">Sexo : <?php echo $dataCliente['sexo']; ?></label>
+              <label style="color:#ec4c4c;"for="">Sexo : <label style="color:#115293;"> <?php echo $dataCliente['sexo']; ?></label>
               <br>
-              <label for="">CI : <?php echo $dataCliente['ci']; ?></label>
+              <label style="color:#ec4c4c;"for="">CI : <label style="color:#115293;"> <?php echo $dataCliente['ci']; ?></label>
               <br>
-              <label for="">Fecha de Nacimiento : <?php echo $dataCliente['fechaNac']; ?></label>
+              <label style="color:#ec4c4c;"for="">Fecha de Nacimiento : <label style="color:#115293;"> <?php echo $dataCliente['fechaNac']; ?></label>
               <br>
-              <label for="">Nombre de Usuario : <?php echo  $dataCliente['nombreUsuario'] ?></label>
+              <label style="color:#ec4c4c;"for="">Nombre de Usuario : <label style="color:#115293;"> <?php echo  $dataCliente['nombreUsuario'] ?></label>
               <br>              
             </div>
           </div>

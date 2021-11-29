@@ -17,13 +17,13 @@
 
           <div class="modal-body" id="cont_modal">
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Nombre : <?php echo $dataCliente['nombre']; ?> </label>
+              <label style="color:#ec4c4c;"for="recipient-name" class="col-form-label">Nombre : <label style="color:#115293;"> <?php echo $dataCliente['nombre']; ?> </label>
               <br>
-              <label for="">Dirección : <?php echo $dataCliente['direccion']; ?></label>
+              <label style="color:#ec4c4c;"for="">Dirección : <label style="color:#115293;"> <?php echo $dataCliente['direccion']; ?></label>
               <br>
-              <label for="" class="form-label">Numero de Teléfono : <?php echo $dataCliente['num']; ?></label>
+              <label style="color:#ec4c4c;"for="" class="form-label">Numero de Teléfono : <label style="color:#115293;"> <?php echo $dataCliente['num']; ?></label>
               <br>
-              <label for="">Acerca de la Fundación : <?php echo $dataCliente['acercaDe']; ?></label>
+              <label style="color:#ec4c4c;"for="">Acerca de la Fundación : <label style="color:#115293;"> <?php echo $dataCliente['acercaDe']; ?></label>
               <br>
 
             </div>

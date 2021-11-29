@@ -3,7 +3,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">
+        <h4 style="color:#ec4c4c;" class="modal-title">
         Agregar foto de C.I del adoptante
         </h4>
       </div>

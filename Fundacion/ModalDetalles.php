@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header" style="background-color: #f39c12 !important;">
         <h6 class="modal-title" style="color: #fff; text-align: center;">
-          Actualizar Información
+          Datos Personales
         </h6>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -17,22 +17,22 @@
 
           <div class="modal-body" id="cont_modal">
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Nombre : <?php echo $dataCliente['nombre']; ?> </label>
+              <label style="color:#ec4c4c;" for="recipient-name" class="col-form-label">Nombre :</label> <label style="color:#115293;"> <?php echo $dataCliente['nombre']; ?> </label>
               <br>
-              <label for="">Apellido Paterno:<?php echo $dataCliente['apllpat']; ?></label>
+              <label style="color:#ec4c4c;" for="">Apellido Paterno:</label> <label style="color:#115293;"><?php echo $dataCliente['apllpat']; ?></label>
               <br>
-              <label for="">Apellido Materno:<?php echo $dataCliente['apllmat']; ?></label>
+              <label style="color:#ec4c4c;" for="">Apellido Materno:</label> <label style="color:#115293;"><?php echo $dataCliente['apllmat']; ?></label>
               <br>
-              <label for="">Fecha de Nacimiento: <?php echo $dataCliente['fechaNac']; ?></label>
+              <label style="color:#ec4c4c;" for="">Fecha de Nacimiento:</label> <label style="color:#115293;"> <?php echo $dataCliente['fechaNac']; ?></label>
               <br>
-              <label for="">CI: <?php echo $dataCliente['ci']; ?></label>
+              <label style="color:#ec4c4c;" for="">CI:</label> <label style="color:#115293;"> <?php echo $dataCliente['ci']; ?></label>
               <br>
-              <label for="">Sexo: <?php echo $dataCliente['sexo']; ?></label>
+              <label style="color:#ec4c4c;" for="">Sexo: </label> <label style="color:#115293;"><?php echo $dataCliente['sexo']; ?></label>
               <br>
 
             </div>
 
- 
+
 
           </div>
           <div class="modal-footer">
@@ -53,7 +53,7 @@
     <div class="modal-content">
       <div class="modal-header" style="background-color: #f39c12 !important;">
         <h6 class="modal-title" style="color: #fff; text-align: center;">
-          Actualizar Información
+          Datos sobre la fundación
         </h6>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -61,24 +61,20 @@
       </div>
 
 
-      <form method="POST" action="recib_Update.php">
+      <form method="POST" action="recib_Update1.php">
         <label type="hidden" name="id" value="<?php echo $dataCliente['id']; ?>">
 
           <div class="modal-body" id="cont_modal">
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Nombre : <?php echo $dataCliente['nombre']; ?> </label>
+              <label style="color:#ec4c4c;" for="recipient-name" class="col-form-label">Nombre : </label> <label style="color:#115293;"> <?php echo $dataCliente['nombre']; ?> </label>
               <br>
-              <label for="">Apellido Paterno:<?php echo $dataCliente['direccion']; ?></label>
+              <label style="color:#ec4c4c;" for="">Dirección :</label> <label style="color:#115293;"> <?php echo $dataCliente['direccion']; ?></label>
               <br>
-              <label for="">Apellido Materno:<?php echo $dataCliente['num']; ?></label>
+              <label style="color:#ec4c4c;" for="" class="form-label">Numero de Teléfono :</label> <label style="color:#115293;"><?php echo $dataCliente['num']; ?></label>
               <br>
-              <label for="">Fecha de Nacimiento: <?php echo $dataCliente['acercaDe']; ?></label>
-              <br>
-
-
+              <label style="color:#ec4c4c;" for="">Acerca de la Fundación :</label><label style="color:#115293;"><?php echo $dataCliente['acercaDe']; ?></label>
             </div>
 
- 
 
           </div>
           <div class="modal-footer">

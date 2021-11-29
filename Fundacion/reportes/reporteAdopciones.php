@@ -202,7 +202,7 @@
 
 
 
-               <li class="nav-item">
+            <li class="nav-item">
               <a href=<?php echo $paginaVoluntario ?> class="nav-link">
                 <i class="fa fa-users"></i>
                 <p>
@@ -300,18 +300,20 @@
 
         $especies = array("Todos", "Perro", "Gato", "Otro");
         $sexos = array("Todos", "Macho", "Hembra");
-        $voluntarios = array("Todos", 'fundaciones_id');
+
+        $selectFundaciones = ("SELECT id, nombre FROM fundacion WHERE estado=1");
+        $queryFundaciones = mysqli_query($con, $selectFundaciones);
 
         $where = array();
         $selectedEspecie = "";
         $selectedSexo = "";
-        $selectedVoluntario = "";
+        $selectedFundacion = "";
         $startDate = "";
         $endDate = "";
         if (!isset($_POST["id"])) {
           $selectedEspecie = "Todos";
           $selectedSexo = "Todos";
-          $selectedVoluntario = "Todos";
+          $selectedFundacion = "Todos";
         }
         if (isset($_POST['especie']) && $_POST['especie'] != '' && $_POST['especie'] != 'Todos') {
           $selectedEspecie = $_POST['especie'];
@@ -320,10 +322,6 @@
         if (isset($_POST['sexo']) && $_POST['sexo'] != '' && $_POST['sexo'] != 'Todos') {
           $selectedSexo = $_POST['sexo'];
           $where[] = " M.sexo = '$selectedSexo'";
-        }
-        if (isset($_POST['voluntario']) && $_POST['voluntario'] != '' && $_POST['voluntario'] != 'Todos') {
-          $selectedVoluntario = $_POST['voluntario'];
-          $where[] = " M.voluntario  = '$selectedVoluntario'";
         }
         if (isset($_POST['startdate_datepicker']) && $_POST['startdate_datepicker'] != '') {
           $startDate = $_POST['startdate_datepicker'];
@@ -337,6 +335,10 @@
           $where[] = " M.fechaAdopcion between '$startDate' AND NOW()";
         } else if ($endDate != "" && $startDate == "") {
           $where[] = " M.fechaAdopcion between '1800-01-01' AND '$endDate'";
+        }
+        if (isset($_POST['fundacion']) && $_POST['fundacion'] != '' && $_POST['fundacion'] != 'Todos') {
+          $selectedFundacion = $_POST['fundacion'];
+          $where[] = " F.id = $selectedFundacion";
         }
         ?>
         <form method="POST" action="reporteAdopciones.php">
@@ -382,14 +384,16 @@
               </select>
             </div>
             <div class="col-sm">
-              <label for="voluntario"><strong>Voluntario:</strong></label>
-              <select class="form-select form-select-sm" name="voluntario" id="voluntario">
+              <label for="fundacion"><strong>Fundación:</strong></label>
+              <select class="form-select form-select-sm" name="fundacion" id="fundacion">
                 <?php
-                foreach ($voluntarios as $voluntario) {
-                  $selected = ($voluntario == $selectedVoluntario) ? "selected" : "";
-                  echo "<option value='$voluntario' $selected>$voluntario</option>";
+                echo "<option value='Todos'>Todos</option>";
+                while ($fundaciones = mysqli_fetch_array($queryFundaciones)) {
+                  $fundacionId = $fundaciones['id'];
+                  $fundacionName = $fundaciones['nombre'];
+                  $selected = ($fundacionId == $selectedFundacion) ? "selected" : "";
+                  echo "<option value='$fundacionId' $selected>$fundacionName</option>";
                 }
-                unset($voluntarios);
                 ?>
               </select>
             </div>
@@ -402,14 +406,15 @@
 
         $sqlCliente   =
           "SELECT SA.nombre, SA.apllpat, SA.apllmat, SA.sexo, SA.ci, SA.fechaNac, 
-                    SA.direccion, SA.num, SA.aprobada, M.nombre as nombreMascota, M.especie, M.adoptable, M.sexo as sexoMascota, M.color, M.fechaAdopcion, P.nombre AS voluntario
+                    SA.direccion, SA.num, SA.aprobada, M.nombre as nombreMascota, M.especie, M.adoptable, M.sexo as sexoMascota, M.color, M.fechaAdopcion, F.nombre as nombreFun 
                     FROM solicitudadopcion SA
-                    INNER JOIN mascota M ON M.id = SA.mascota_id AND SA.aprobada = 2
-                    INNER JOIN persona P ON P.id=M.idVoluntario;";
-
+                    INNER JOIN mascota M ON M.id = SA.mascota_id AND SA.aprobada = 2 AND SA.mascota_id
+                    INNER JOIN fundacion F On F.id=M.fundaciones_id AND F.estado=1 AND F.persona_id";
+        $where[] = " SA.estado=0";
         if (!empty($where)) {
           $sqlCliente .= ' WHERE ' . implode(' AND ', $where);
         }
+
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>
@@ -441,7 +446,7 @@
                               <th scope="col">Sexo de la Mascota</th>
                               <th scope="col">Color</th>
                               <th scope="col">Fecha de Adopción</th>
-                              <th scope="col">Voluntarios</th>
+                              <th scope="col">Fundación</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -461,7 +466,7 @@
                                 <td><?php echo $dataCliente['sexoMascota']; ?></td>
                                 <td><?php echo $dataCliente['color']; ?></td>
                                 <td><?php echo $dataCliente['fechaAdopcion']; ?></td>
-                                <td><?php echo $dataCliente['voluntario'];?></td>
+                                <td><?php echo $dataCliente['nombreFun']; ?></td>
                               </tr>
                             <?php } ?>
 
@@ -471,9 +476,10 @@
                         <form name="reportForm" id="reportForm" method="POST" target="_blank" action="reporteAdopcionesPDF.php">
                           <input type="hidden" name="rEspecie" id="rEspecie" value="">
                           <input type="hidden" name="rSexo" id="rSexo" value="">
-                          <input type="hidden" name="rvoluntario" id="rvoluntario" value="">
+                          <input type="hidden" name="rnombreFun" id="rnombreFun" value="">
                           <input type="hidden" name="rFechaInicio" id="rFechaInicio" value="">
                           <input type="hidden" name="rFechaFin" id="rFechaFin" value="">
+                          <input type="hidden" name="rFundacion" id="rFundacion" value="">
 
                           <button type="submit" class="btn btn-primary">Exportar Reporte</button>
                         </form>
@@ -553,7 +559,7 @@
           $("#rFechaFin").val($("#enddate_datepicker").val());
           $("#rEspecie").val($("#especie").val());
           $("#rSexo").val($("#sexo").val());
-          $("#rvoluntario").val($("#voluntario").val());
+          $("#rFundacion").val($("#fundacion").val());
           //event.preventDefault();
         });
       });

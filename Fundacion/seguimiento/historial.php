@@ -63,6 +63,7 @@
 
 <body class="hold-transition sidebar-mini">
   <?php
+  $paginaVoluntario = "../voluntario/tablaVoluntario.php";
   $paginaMascota = "../mascota/tablaMascota.php";
   $paginaMascotaEnAdopcion = "../mascotaAdopcion/tablamascotaAdopcion.php";
   $paginaAdotantes = "../adoptante/tablaAdoptante.php";
@@ -79,10 +80,10 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="../Voluntario.php" class="nav-link">Volver</a>
+          <a  style="color:RED; font-weight: bold;" href="tablaSeguimiento.php" class="nav-link">Volver</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="../../index.html" class="nav-link">Cerrar sesión</a>
+          <a href="../index.html" class="nav-link"></a>
           <?php
           session_start(); // para usar las variables de sesion                 
           ?>
@@ -155,6 +156,23 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               <li class="nav-item">
+              <a href=<?php echo $paginaVoluntario ?> class="nav-link">
+                <i class="fa fa-users"></i>
+                <p>
+                  Voluntarios
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href=<?php echo $paginaMascota ?> class="nav-link">
+                <i class="fa fa-paw"></i>
+                <p>
+                  Mascotas
+                </p>
+              </a>
+            </li>
 
 
 
@@ -212,7 +230,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
+              <h1 style="color:#01a6a9; font-weight: bold;"><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
               <br>
               </form>
             </div>
@@ -241,7 +259,7 @@
         <div class="row text-center" style="background-color: #ffc66c">
 
           <div class="col-md-11">
-            <strong>Seguimientos <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
+            <strong style="color:#ec4c4c; font-size: 21px" >Seguimientos <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
           </div>
         </div>
 
@@ -261,9 +279,9 @@
                         <table class="table table-bordered table-striped table-hover">
                           <thead>
                             <tr>
-                              <th scope="col">Fecha Visita</th>
-                              <th scope="col">Reporte</th>
-                              <th scope="col">Foto</th>
+                              <th style="color:#115293;" scope="col">Fecha Visita</th>
+                              <th style="color:#115293;" scope="col">Reporte</th>
+                              <th style="color:#115293;" scope="col">Foto</th>
 
                             </tr>
                           </thead>
@@ -271,7 +289,7 @@
                             <?php
                             while ($dataCliente = mysqli_fetch_array($queryCliente)) { ?>
                               <tr>
-                                <td><?php echo $dataCliente['fechaVisita']; ?></td>
+                                <td style="color:#0b932a;"><?php echo $dataCliente['fechaVisita']; ?></td>
                                 <td><?php echo $dataCliente['reporte']; ?></td>
                                 <td><img src="../../Voluntario/seguimiento/img/<?php echo $dataCliente['fotoVisita']; ?>" height="200"> </td>
 

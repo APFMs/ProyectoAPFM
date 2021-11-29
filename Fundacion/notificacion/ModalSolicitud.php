@@ -45,17 +45,17 @@
 
         <div class="modal-body" id="cont_modal">
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Nombre : <?php echo $dataCliente['nombreSolicitante']; ?> </label>
+            <label style="color:#ec4c4c;"for="recipient-name" class="col-form-label">Nombre : <?php echo $dataCliente['nombreSolicitante']; ?> </label>
             <br>
-            <label for="">Mascota:<?php echo $dataCliente['nombreMascota']; ?></label>
+            <label style="color:#ec4c4c;"for="">Mascota:<?php echo $dataCliente['nombreMascota']; ?></label>
             <br>
-            <label for="" class="form-label">Voluntario: <?php echo $dataCliente2['nombreVoluntario']; ?></label>
+            <label style="color:#ec4c4c;"for="" class="form-label">Voluntario: <?php echo $dataCliente2['nombreVoluntario']; ?></label>
             <br/>
-            <h4>Invetigación Realizada</h4>
+            <h4 style="color:#ec4c4c;">Invetigación Realizada</h4>
             <br/>
-              * Cuenta con Casa Propia?: <strong><?php echo $dataCliente['TieneCasa'] == 1 ? "Si" : "No"; ?></strong><br>
-              * Cuenta con boleta de luz?: <strong><?php echo $dataCliente['TieneBoleta'] == 1 ? "Si" : "No"; ?></strong><br>
-              * Está de acuerdo con el seguimiento a seguir?: <strong><?php echo $dataCliente['Seguimiento'] == 1 ? "Si" : "No"; ?></strong><br>
+              * Cuenta con Casa Propia?: <strong style="color:#ec4c4c;"><?php echo $dataCliente['TieneCasa'] == 1 ? "Si" : "No"; ?></strong><br>
+              * Cuenta con boleta de luz?: <strong style="color:#ec4c4c;"><?php echo $dataCliente['TieneBoleta'] == 1 ? "Si" : "No"; ?></strong><br>
+              * Está de acuerdo con el seguimiento a seguir?: <strong style="color:#ec4c4c;"><?php echo $dataCliente['Seguimiento'] == 1 ? "Si" : "No"; ?></strong><br>
           </div>
         </div>
         <div class="modal-footer">

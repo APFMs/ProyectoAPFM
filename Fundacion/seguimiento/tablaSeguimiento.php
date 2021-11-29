@@ -104,10 +104,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="../Fundacion.php" class="nav-link">Volver</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="../../index.html" class="nav-link">Cerrar sesión</a>
+          <a style="color:RED; font-weight: bold;"  href="../../index.html" class="nav-link">Cerrar sesión</a>
           <?php
           session_start(); // para usar las variables de sesion                 
           ?>
@@ -257,7 +254,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
+              <h1 style="color:#01a6a9; font-weight: bold;"><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
               <br>
               </form>
             </div>
@@ -290,7 +287,7 @@
         <div class="row text-center" style="background-color: #ffc66c">
 
           <div class="col-md-11">
-            <strong>Seguimientos <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
+            <strong style="color:#ec4c4c; font-size: 21px" >Seguimientos <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
           </div>
         </div>
 
@@ -310,10 +307,10 @@
                         <table class="table table-bordered table-striped table-hover">
                           <thead>
                             <tr>
-                              <th scope="col">Mascota</th>
-                              <th scope="col">Adoptante</th>
-                              <th scope="col">Voluntario</th>
-                              <th scope="col">Seguimientos</th>
+                              <th style="color:#115293;" scope="col">Mascota</th>
+                              <th style="color:#115293;" scope="col">Adoptante</th>
+                              <th style="color:#115293;" scope="col">Voluntario</th>
+                              <th style="color:#115293;" scope="col">Seguimientos</th>
 
                           <!--    <th scope="col">Fecha de Actualización</th>-->
 

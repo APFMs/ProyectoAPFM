@@ -17,11 +17,11 @@
 
           <div class="modal-body" id="cont_modal">
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Nombre : <?php echo $dataCliente['nombreSolicitante']; ?> </label>
+              <label style="color:#ec4c4c;"for="recipient-name" class="col-form-label">Nombre : <label style="color:#115293;"> <?php echo $dataCliente['nombreSolicitante']; ?> </label>
               <br>
-              <label for="">Mascota: <?php echo $dataCliente['nombreMascota']; ?></label>
+              <label style="color:#ec4c4c;"for="">Mascota: <label style="color:#115293;"> <?php echo $dataCliente['nombreMascota']; ?></label>
               <br>
-              <label for="" class="form-label">Voluntario: <?php echo $dataCliente['nombreSolicitante']; ?></label>
+              <label style="color:#ec4c4c;"for="" class="form-label">Voluntario: <?php echo $dataCliente['nombreSolicitante']; ?></label>
               <br>
               <label for="">Información: <?php echo $dataCliente['nombreSolicitante']; ?></label>
               <br>

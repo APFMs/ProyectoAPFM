@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Voluntario </title>
+  <title>Fundación/Adoptante</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -112,11 +112,9 @@
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
+
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="../Fundacion.php" class="nav-link">Volver</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="../../index.html" class="nav-link">Cerrar sesión</a>
+          <a style="color:RED; font-weight: bold;"href="../../index.html" class="nav-link">Cerrar sesión</a>
           <?php
           session_start(); // para usar las variables de sesion                 
           ?>
@@ -266,7 +264,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
+              <h1 style="color:#01a6a9; font-weight: bold;"><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
               <br>
 
               <tr>
@@ -327,7 +325,7 @@
         <div class="row text-center" style="background-color: #ffc66c">
 
           <div class="col-md-11">
-            <strong>Mostrando <?php echo $elementosPorPagina ?> de <?php echo $cantidad ?> Adopciones</strong>
+            <strong style="color:#ec4c4c; font-size: 21px">Mostrando <?php echo $elementosPorPagina ?> de <?php echo $cantidad ?> Adopciones</strong>
           </div>
         </div>
 
@@ -347,13 +345,13 @@
                         <table class="table table-bordered table-striped table-hover">
                           <thead>
                             <tr>
-                              <th scope="col">Adoptante</th>
-                              <th scope="col">Mascota</th>
-                              <th scope="col">Teléfono</th>
-                              <th scope="col">Voluntario</th>
-                              <th scope="col">CI</th>
-                              <th scope="col">Boleta de pago</th>
-                              <th scope="col">Casa</th>
+                              <th style="color:#115293;" scope="col">Adoptante</th>
+                              <th style="color:#115293;" scope="col">Mascota</th>
+                              <th style="color:#115293;" scope="col">Teléfono</th>
+                              <th style="color:#115293;" scope="col">Voluntario</th>
+                              <th style="color:#115293;" scope="col">CI</th>
+                              <th style="color:#115293;" scope="col">Boleta de pago</th>
+                              <th style="color:#115293;" scope="col">Casa</th>
                               <!--  <th scope="col">Fecha de Creación</th> -->
 
                             </tr>

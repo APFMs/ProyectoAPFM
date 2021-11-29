@@ -113,7 +113,7 @@
       </div>
 
 
-      <form method="POST" action="recib_Update.php">
+      <form method="POST" action="recib_Update1.php">
         <input type="hidden" name="id" value="<?php echo $dataCliente['id']; ?>">
 
         <div class="modal-body" id="cont_modal">

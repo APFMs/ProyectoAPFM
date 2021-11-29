@@ -19,17 +19,17 @@
 
         <div class="modal-body" id="cont_modal">
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Nombre : <?php echo $dataCliente['nombreSolicitante']; ?> </label>
+            <label style="color:#ec4c4c;"for="recipient-name" class="col-form-label">Nombre : <label style="color:#115293;"> <?php echo $dataCliente['nombreSolicitante']; ?> </label>
             <br>
-            <label for="">Macota: <?php echo $dataCliente['nombreMascota']; ?></label>
+            <label style="color:#ec4c4c;"for="">Macota: <label style="color:#115293;"> <?php echo $dataCliente['nombreMascota']; ?></label>
             <br>
           </div>
 
-          <h4>Información Adicional</h4>
+          <h4 style="color:#ec4c4c;">Información Adicional</h4>
           <br/>
-          <input type="checkbox" id="TieneCasa" name="TieneCasa"> <label for="TieneCasa">Cuenta con casa propia?</label><br/>
-          <input type="checkbox" id="TieneBoleta" name="TieneBoleta"> <label for="TieneBoleta">Cuenta con boleta de luz?</label><br/>
-          <input type="checkbox" id="Seguimiento" name="Seguimiento"> <label for="Seguimiento">Está de acuerdo con el seguimiento a seguir?</label>
+          <input type="checkbox" id="TieneCasa" name="TieneCasa"> <label style="color:#0b932a;"for="TieneCasa">Cuenta con casa propia?</label><br/>
+          <input type="checkbox" id="TieneBoleta" name="TieneBoleta"> <label style="color:#0b932a;"for="TieneBoleta">Cuenta con boleta de luz?</label><br/>
+          <input type="checkbox" id="Seguimiento" name="Seguimiento"> <label style="color:#0b932a;"for="Seguimiento">Está de acuerdo con el seguimiento a seguir?</label>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

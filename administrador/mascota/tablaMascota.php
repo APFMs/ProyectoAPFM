@@ -59,9 +59,9 @@
 
     .page-item.active .page-link {
 
-    background-color: #ff7705;
-    border-color: #ff7705;
-}
+      background-color: #ff7705;
+      border-color: #ff7705;
+    }
   </style>
 
   <script>
@@ -101,10 +101,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="../Administrador.php" class="nav-link">Volver</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="../../index.html" class="nav-link">Cerrar sesión</a>
+          <a style="color:RED; font-weight: bold;" href="../../index.html" class="nav-link">Cerrar sesión</a>
           <?php
           session_start(); // para usar las variables de sesion                 
           ?>
@@ -235,7 +232,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
+              <h1 style="color:#01a6a9; font-weight: bold;"><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
               <br>
 
               </form>
@@ -281,7 +278,7 @@
         <div class="row text-center" style="background-color: #ffc66c">
 
           <div class="col-md-11">
-            <strong>Mostrando <?php echo $elementosPorPagina ?> de <?php echo $cantidad ?> Mascotas</strong>
+            <strong style="color:#ec4c4c; font-size: 21px" >Mostrando <?php echo $elementosPorPagina ?> de <?php echo $cantidad ?> Mascotas</strong>
           </div>
         </div>
 
@@ -301,13 +298,13 @@
                         <table class="table table-bordered table-striped table-hover">
                           <thead>
                             <tr>
-                              <th scope="col">Nombre</th>
-                              <th scope="col">Especie</th>
-                              <th scope="col">Sexo</th>
-                              <th scope="col">Fecha Creacion</th>
-                              <th scope="col">Fecha Actualización</th>
-                              <th scope="col">Fundacion</th>
-                              <th scope="col">Fundacion</th>
+                              <th style="color:#115293;" scope="col">Nombre</th>
+                              <th style="color:#115293;" scope="col">Especie</th>
+                              <th style="color:#115293;" scope="col">Sexo</th>
+                              <th style="color:#115293;" scope="col">Fecha Creacion</th>
+                              <th style="color:#115293;" scope="col">Fecha Actualización</th>
+                              <th style="color:#115293;" scope="col">Fundacion</th>
+                              <th style="color:#115293;" scope="col">Fundacion</th>
 
                             </tr>
                           </thead>
