@@ -31,7 +31,7 @@
 
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Apellido Materno :</label>
-            <input type="text" name="apllmat" class="form-control" value="<?php echo $dataCliente['apllmat']; ?>" required="true">
+            <input type="text" name="apllmat" class="form-control" value="<?php echo $dataCliente['apllmat']; ?>" >
           </div>
           <br>
 
@@ -78,113 +78,7 @@
             <input type="number" class="form-control" name="num" value="<?php echo $dataCliente['num']; ?>" required='true'>
           </div>
           <br>
-          
-          <div class="from-group" data-validate="Usuario incorrecto">
-            <label for="">Departamento:</label>
-            <select class="input100" name="depa" value="<?php echo $dataCliente['depa']; ?>" id="depa">
-              <?php
-              if ($dataCliente['depa'] == "Cochabamba") {
-              ?>
-                <option value="Cochabamba" selected>Cochabamba</option>
-              <?php
-              } else {
-              ?>
-                <option value="Cochabamba">Cochabamba</option>
-              <?php
-              }
-              ?>
-              <?php
-              if ($dataCliente['depa'] == "La Paz") {
-              ?>
-                <option value="La Paz" selected>La Paz</option>
-              <?php
-              } else {
-              ?>
-                <option value="La Paz">La Paz</option>
-              <?php
-              }
-              ?>
-              <?php
-              if ($dataCliente['depa'] == "Santa Cruz") {
-              ?>
-                <option value="Santa Cruz" selected>Santa Cruz</option>
-              <?php
-              } else {
-              ?>
-                <option value="Santa Cruz">Santa Cruz</option>
-              <?php
-              }
-              ?>
-              <?php
-              if ($dataCliente['depa'] == "Oruro") {
-              ?>
-                <option value="Oruro" selected>Oruro</option>
-              <?php
-              } else {
-              ?>
-                <option value="Oruro">Oruro</option>
-              <?php
-              }
-              ?>
-             <?php
-              if ($dataCliente['depa'] == "Sucre") {
-              ?>
-                <option value="Sucre" selected>Sucre</option>
-              <?php
-              } else {
-              ?>
-                <option value="Sucre">Sucre</option>
-              <?php
-              }
-              ?>
-              <?php
-              if ($dataCliente['depa'] == "Tarija") {
-              ?>
-                <option value="Tarija" selected>Tarija</option>
-              <?php
-              } else {
-              ?>
-                <option value="Tarija">Tarija</option>
-              <?php
-              }
-              ?>
-              <?php
-              if ($dataCliente['depa'] == "Potosí") {
-              ?>
-                <option value="Potosí" selected>Potosí</option>
-              <?php
-              } else {
-              ?>
-                <option value="Potosí">Potosí</option>
-              <?php
-              }
-              ?>
-              <?php
-              if ($dataCliente['depa'] == "Pando") {
-              ?>
-                <option value="Pando" selected>Pando</option>
-              <?php
-              } else {
-              ?>
-                <option value="Pando">Pando</option>
-              <?php
-              }
-              ?>
-              <?php
-              if ($dataCliente['depa'] == "Beni") {
-              ?>
-                <option value="Beni" selected>Beni</option>
-              <?php
-              } else {
-              ?>
-                <option value="Beni">Beni</option>
-              <?php
-              }
-              ?>
-            </select>
 
-          </div>
-          <br>
 
 
           <div class="from-group" data-validate="Usuario incorrecto">

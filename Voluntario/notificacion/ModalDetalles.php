@@ -31,8 +31,6 @@
               <br>
               <label style="color:#ec4c4c;"for="">Teléfono : <label style="color:#115293;"><?php echo $dataCliente['num']; ?></label>
               <br>
-              <label style="color:#ec4c4c;"for="">Departamento : <label style="color:#115293;"><?php echo $dataCliente['depa']; ?></label>
-              <br>
               <label style="color:#ec4c4c;"for="">¿Cuenta con casa propia? : <label style="color:#115293;"><?php echo $dataCliente['casa']; ?></label>
               <br>
               <label style="color:#ec4c4c;"for="">Dirección : <label style="color:#115293;"> <?php echo $dataCliente['direccion']; ?></label>

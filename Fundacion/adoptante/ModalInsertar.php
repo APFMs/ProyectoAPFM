@@ -62,23 +62,6 @@
             <input type="number" class="form-control" name="num" required='true'>
           </div>
 
-          <div class="from-group" data-validate="Usuario incorrecto">
-            <label for="">Departamento:</label>
-            <select class="input100" name="depa" id="">
-              <option value="Cochabamba">Cochabamba</option>
-              <option value="La Paz">La Paz</option>
-              <option value="Santa Cruz">Santa Cruz</option>
-              <option value="Oruro">Oruro</option>
-              <option value="Sucre">Sucre</option>
-              <option value="Tarija">Tarija</option>
-              <option value="Potosí">Potosí</option>
-              <option value="Pando">Pando</option>
-              <option value="Beni">Beni</option>
-            </select>
-
-          </div>
-          <br>
-
 
           <div class="from-group" data-validate="Usuario incorrecto">
             <label for="">Tiene casa propia:</label>

@@ -9,7 +9,6 @@ $fechaNac    = $_REQUEST['fechaNac'];
 $sexo 	 = $_REQUEST['sexo'];
 $ci      = $_REQUEST['ci'];
 $num	 = $_REQUEST['num'];
-$depa    = $_REQUEST['depa'];
 $casa    = $_REQUEST['casa'];
 $direccion    = $_REQUEST['direccion'];
 
@@ -23,7 +22,6 @@ $update = ("UPDATE solicitudadopcion
 	sexo ='" .$sexo. "', 
 	ci='" .$ci."',
 	num='" .$num. "', 
-	depa='" .$depa. "',
 	casa='" .$casa. "',
 	direccion='" .$direccion. "'
 

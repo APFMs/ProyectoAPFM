@@ -388,7 +388,7 @@
                             while ($dataCliente = mysqli_fetch_array($queryCliente)) {
                               if ($dataCliente['voluntario'] != "nn") {
                                 $sqlCliente3   = ("SELECT P.nombre 
-                                FROM persona P WHERE P.id=" . $dataCliente['voluntario'] . ";");
+                                FROM persona P WHERE P.id=" . $dataCliente['voluntario'] ." and estado=1 ;");
                                 $queryCliente3 = mysqli_query($con, $sqlCliente3);
                                 $dataCliente3 = mysqli_fetch_array($queryCliente3);
                               } else {
@@ -414,16 +414,11 @@
                                   <button title="ELIMINAR" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataCliente['id']; ?>">
                                     <i class="fa fa-times"></i>
                                   </button>
-                                  <?php
 
-                                  if ($dataCliente['voluntario'] == "nn") {
-                                  ?>
-                                    <button title="ASIGNAR VOLUNTARIO" type="button" class="btn btn-yy" data-toggle="modal" data-target="#asignarChildresn<?php echo $dataCliente['id']; ?>">
+                                  <button title="ASIGNAR VOLUNTARIO" type="button" class="btn btn-yy" data-toggle="modal" data-target="#asignarChildresn<?php echo $dataCliente['id']; ?>">
                                       <i class="fa fa-user"></i>
                                     </button>
-                                  <?php
-                                  }
-                                  ?>
+
 
                                 </td>
                                 <td>

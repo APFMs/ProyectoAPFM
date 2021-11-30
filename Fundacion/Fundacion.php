@@ -41,6 +41,16 @@
       border-color: #53b311;
       box-shadow: none;
     }
+
+    .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active,
+    .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
+      background-color: #f39d12;
+      color: black;
+    }
+
+    [class*="sidebar-dark-"] .nav-treeview>.nav-item>.nav-link {
+      color: #212529;
+    }
   </style>
 
 
@@ -204,13 +214,25 @@
               </a>
             </li>
 
-            <li class="nav-item">
-              <a href=<?php echo $paginaReportes ?> class="nav-link">
-                <i class="fa fa-file"></i>
+
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link active">
+              <i class="fas fa-archive"></i>
                 <p>
-                  Reporte de Adopciones
+                  Reportes
+                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Adopciones
+                    </p>
+                  </a>
+                </li>
+              </ul>
             </li>
 
           </ul>
@@ -254,7 +276,7 @@
         <div class="row text-center" style="background-color: #ffc66c">
 
           <div class="col-md-11">
-            <strong style="color:#ec4c4c; font-size: 21px" >Datos Personales </strong>
+            <strong style="color:#ec4c4c; font-size: 21px">Datos Personales </strong>
           </div>
         </div>
 
@@ -277,8 +299,8 @@
                             <tr>
                               <th style="color:#115293;" scope="col">Nombre Completo</th>
                               <th style="color:#115293;" scope="col">Rol</th>
-                              <th  style="color:#115293;"scope="col">Fecha de Creación</th>
-                              <th  style="color:#115293;"scope="col">Fecha de Actualización</th>
+                              <th style="color:#115293;" scope="col">Fecha de Creación</th>
+                              <th style="color:#115293;" scope="col">Fecha de Actualización</th>
                             </tr>
 
                             </tr>
@@ -287,8 +309,8 @@
                             <?php
                             while ($dataCliente = mysqli_fetch_array($queryCliente)) { ?>
                               <tr>
-                                <td ><?php echo $dataCliente['nombre'] . " " . $dataCliente['apllpat'] . " " . $dataCliente['apllmat']; ?></td>
-                                <td ><?php echo $dataCliente['rol']; ?></td>
+                                <td><?php echo $dataCliente['nombre'] . " " . $dataCliente['apllpat'] . " " . $dataCliente['apllmat']; ?></td>
+                                <td><?php echo $dataCliente['rol']; ?></td>
                                 <td><?php echo $dataCliente['fechaCreacion']; ?></td>
                                 <td><?php echo $dataCliente['fechaActualizacion']; ?></td>
 
@@ -389,8 +411,8 @@
                                     </button>
 
                                     <button title="EDITAR" type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit1Childresn<?php echo $dataCliente['id']; ?>">
-                                    <i class="fas fa-edit"></i>
-                                  </button>
+                                      <i class="fas fa-edit"></i>
+                                    </button>
 
                                   </td>
 

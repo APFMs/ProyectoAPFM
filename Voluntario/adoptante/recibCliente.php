@@ -6,7 +6,6 @@ $apllmat = $_REQUEST['apllmat'];
 $edad    = $_REQUEST['edad'];
 $sexo 	 = $_REQUEST['sexo'];
 $num	 = $_REQUEST['num'];
-$depa    = $_REQUEST['depa'];
 $casa    = $_REQUEST['casa'];
 $fami    = $_REQUEST['fami'];
 $ci      = $_REQUEST['ci'];
@@ -19,7 +18,6 @@ $QueryInsert = ("INSERT INTO adoptante(
     edad,
     sexo,
     num,
-    depa,
     casa,
     fami,
     ci,
@@ -32,7 +30,6 @@ VALUES (
     '".$edad."',
     '".$sexo."',
     '".$num."',
-    '".$depa."',
     '".$casa."',
     '".$fami."',
     '".$ci."',

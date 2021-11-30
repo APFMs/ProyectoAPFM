@@ -276,7 +276,7 @@
         $limit = $elementosPorPagina;
         $offset = ($pagina - 1) * $elementosPorPagina;
 
-        $sqlQuery = "SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.apllpat, S.apllmat, S.fechaNac, S.sexo, S.ci, S.num, S.depa, S.casa, 
+        $sqlQuery = "SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante', S.apllpat, S.apllmat, S.fechaNac, S.sexo, S.ci, S.num, S.casa, 
           S.direccion, S.aprobada, M.nombre as 'nombreMascota', S.info, S.TieneCasa, S.TieneBoleta, S.Seguimiento
         FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
         INNER JOIN fundacion F ON F.id=M.fundaciones_id and M.idVoluntario=" . $_SESSION["idPersona"] . 

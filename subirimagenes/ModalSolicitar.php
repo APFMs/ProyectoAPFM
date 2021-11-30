@@ -19,18 +19,18 @@
 
 
         <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Nombre :</label>
+            <label for="recipient-name" class="col-form-label">Nombre del solicitante:</label>
             <input type="text" name="nombre" class="form-control" required="true">
           </div>
 
 
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Apellido Paterno :</label>
+            <label for="recipient-name" class="col-form-label">Primer Apellido :</label>
             <input type="text" name="apllpat" class="form-control" required="true">
           </div>
 
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Apellido Materno :</label>
+            <label for="recipient-name" class="col-form-label"> Segundo Apellido :</label>
             <input type="text" name="apllmat" class="form-control">
           </div>
 
@@ -56,23 +56,6 @@
           <div class="col-md-12 mt-2">
             <label for="celular" class="form-label">Teléfono</label>
             <input type="number" class="form-control" name="num" required='true'>
-          </div>
-          <br>
-
-          <div class="from-group" data-validate="Usuario incorrecto">
-            <label for="">Departamento:</label>
-            <select class="input100" name="depa" id="">
-              <option value="Cochabamba">Cochabamba</option>
-              <option value="La Paz">La Paz</option>
-              <option value="Santa Cruz">Santa Cruz</option>
-              <option value="Oruro">Oruro</option>
-              <option value="Sucre">Sucre</option>
-              <option value="Tarija">Tarija</option>
-              <option value="Potosí">Potosí</option>
-              <option value="Pando">Pando</option>
-              <option value="Beni">Beni</option>
-            </select>
-
           </div>
           <br>
 

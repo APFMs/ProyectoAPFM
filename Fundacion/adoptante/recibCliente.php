@@ -8,7 +8,6 @@ $sexo           = $_REQUEST['sexo'];
 $ci             = $_REQUEST['ci'];
 $fechaNac       = $_REQUEST['fechaNac'];
 $idUsuarioMod   = $_SESSION['id'];
-$depa           = $_REQUEST['depa'];
 $casa           = $_REQUEST['casa'];
 $fami           = $_REQUEST['fami'];
 $num            = $_REQUEST['num'];
@@ -41,7 +40,7 @@ $idPersona = mysqli_insert_id($con);
 $_SESSION['idPersonaAdop']=$idPersona;
 
 $QueryInsert = ("INSERT INTO adoptante (
-    depa, 
+
     casa, 
     fami, 
     num,
@@ -49,7 +48,7 @@ $QueryInsert = ("INSERT INTO adoptante (
     persona_id
     ) 
     VALUES (
-        '".$depa."',
+   
         '".$casa."', 
         '".$fami."',
         ".$num.",

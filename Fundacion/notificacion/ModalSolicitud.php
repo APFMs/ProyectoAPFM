@@ -45,17 +45,18 @@
 
         <div class="modal-body" id="cont_modal">
           <div class="form-group">
-            <label style="color:#ec4c4c;"for="recipient-name" class="col-form-label">Nombre : <?php echo $dataCliente['nombreSolicitante']; ?> </label>
+            <label style="color:#ec4c4c;"for="recipient-name" class="col-form-label">Nombre : <label style="color:#115293;"> <?php echo $dataCliente['nombreSolicitante']; ?> </label>
             <br>
-            <label style="color:#ec4c4c;"for="">Mascota:<?php echo $dataCliente['nombreMascota']; ?></label>
+            <label style="color:#ec4c4c;"for="">Mascota: <label style="color:#115293;"><?php echo $dataCliente['nombreMascota']; ?></label>
             <br>
-            <label style="color:#ec4c4c;"for="" class="form-label">Voluntario: <?php echo $dataCliente2['nombreVoluntario']; ?></label>
+            <label style="color:#ec4c4c;"for="" class="form-label">Voluntario: <label style="color:#115293;"> <?php echo $dataCliente2['nombreVoluntario']; ?></label>
             <br/>
-            <h4 style="color:#ec4c4c;">Invetigación Realizada</h4>
+            <br>
+            <h4 style="color:#eda501;">Invetigación Realizada</h4>
             <br/>
-              * Cuenta con Casa Propia?: <strong style="color:#ec4c4c;"><?php echo $dataCliente['TieneCasa'] == 1 ? "Si" : "No"; ?></strong><br>
-              * Cuenta con boleta de luz?: <strong style="color:#ec4c4c;"><?php echo $dataCliente['TieneBoleta'] == 1 ? "Si" : "No"; ?></strong><br>
-              * Está de acuerdo con el seguimiento a seguir?: <strong style="color:#ec4c4c;"><?php echo $dataCliente['Seguimiento'] == 1 ? "Si" : "No"; ?></strong><br>
+            <label style="color:#11937b;">* Cuenta con Casa Propia?: </label> <strong style="color:#e83ecb;"><?php echo $dataCliente['TieneCasa'] == 1 ? "Si" : "No"; ?></strong><br>
+            <label style="color:#11937b;">* Cuenta con boleta de luz?: <strong style="color:#e83ecb;"><?php echo $dataCliente['TieneBoleta'] == 1 ? "Si" : "No"; ?></strong><br>
+            <label style="color:#11937b;">* Está de acuerdo con el seguimiento a seguir?: <strong style="color:#e83ecb;"><?php echo $dataCliente['Seguimiento'] == 1 ? "Si" : "No"; ?></strong><br>
           </div>
         </div>
         <div class="modal-footer">

@@ -12,8 +12,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Página web AlexCG</title>
-    <link rel="shortcut icon" href="img/alexcgdesign.png" type="image/x-icon">
+    <title></title>
+    <link rel="shortcut icon" href="" type="image/x-icon">
     <link rel="stylesheet" href="estilos0.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
     
@@ -30,6 +30,35 @@
 .element.style {
     stroke: none;
     fill: #c03030;
+
+    
+}
+.contenido-textos h3 span {
+    background: #fbb026;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+
+}
+.titulo {
+    color: #dc3545;
+    font-size: 80px;
+    text-align: center;
+    margin-bottom: 60px;
+    font-family: Caveat;
+     font-weight: bold;
+}
+body {
+    color: #007a6b;
+    background: #d4962442;
+}
+footer {
+    background: #f1dca0;
+    padding: 60px 0 30px 0;
+    margin: auto;
+    overflow: hidden;
 }
 </style>
   </head>
@@ -74,30 +103,20 @@
     </header>
     <main>
         <section class="contenedor sobre-nosotros">
-            <h2 class="titulo">Requisitos de Adopción</h2>
+            <h6  class="titulo">Requisitos de Adopción</h6>
             <div class="contenedor-sobre-nosotros">
                 <img src="img/123.png" alt="" class="imagen-about-us">
                 <div class="contenido-textos">
-                    <h3><span>1</span>Casa Propia</h3>
+                  
+                    <h3 style="font-family: Caveat; font-weight: bold; font-size: 45px"><span >1</span>Casa Propia</h3>
  
-                    <h3><span>2</span>Toda la familia debe estar de acuerdo con la adopción</h3>
-  
-                    <h3><span>3</span>Fotocopia C.I.</h3>
+                    <h3 style="font-family: Caveat; font-weight: bold; font-size: 45px"><span>2</span>Fotocopia C.I.</h3>
 
-                    <h3><span>4</span>Fotocopia de recibo de luz</h3>
+                    <h3 style="font-family: Caveat; font-weight: bold; font-size: 45px"><span>3</span>Fotocopia de recibo de luz</h3>
    
-                    <h3><span>5</span>Verificación del domicilio</h3>
+                    <h3 style="font-family: Caveat; font-weight: bold; font-size: 45px"><span>4</span>Verificación del domicilio</h3>
 
-                    <h3><span>6</span>Entrega del adoptado en domicilio</h3>
-
-                    <h3><span>7</span>Seguimiento</h3>
-
-                    <h3><span>8</span>Esterilización o Castración</h3>
-
-                    <h3><span>9</span>Control de Vacunas</h3>
-
-      
-
+                    <h3 style="font-family: Caveat; font-weight: bold; font-size: 45px"><span>5</span>Seguimiento</h3>
                 </div>
             </div>
         </section>
@@ -106,21 +125,7 @@
        
     </main>
     <footer>
-        <div class="contenedor-footer">
-            <div class="content-foo">
-                <h4>Phone</h4>
-                <p>8296312</p>
-            </div>
-            <div class="content-foo">
-                <h4>Email</h4>
-                <p>8296312</p>
-            </div>
-            <div class="content-foo">
-                <h4>Location</h4>
-                <p>8296312</p>
-            </div>
-        </div>
-        <h2 class="titulo-final">&copy; AlexCG Design | Jordan Alexander</h2>
+        <h2 class="titulo-final">&copy;Soy Tú Voz</h2>
     </footer>
 </body>
 
