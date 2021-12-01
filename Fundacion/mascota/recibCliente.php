@@ -12,7 +12,6 @@ $idUsuarioMod   = $_SESSION['id'];
 //$idFundacion = $_REQUEST['idFundacion'];
 $idFundacion = $_SESSION['idFundacion'];
 
-
 $QueryInsert = ("INSERT INTO mascota (
     nombre, 
     especie, 

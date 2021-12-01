@@ -33,7 +33,11 @@
 
           <div class="from-group">
             <label for="" class="form-label">Edad</label>
-            <input type="text" class="form-control" name="edad" required='true'>
+            <select class="input100" name="edad" id="edad">
+              <option value="Cachorro">Cachorro</option>
+              <option value="Mediano">Mediano</option>
+              <option value="Adulto">Adulto</option>
+            </select>
           </div>
           <br>
 

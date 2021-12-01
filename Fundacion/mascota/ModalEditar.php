@@ -65,7 +65,11 @@
 
           <div class="col-md-12 mt-2">
             <label for="celular" class="form-label">Edad</label>
-            <input type="text" class="form-control" name="edad" value="<?php echo $dataCliente['edad']; ?>" required='true'>
+            <select class="input100" name="edad" id="edad">
+              <option value="Cachorro" <?php echo $dataCliente['edad'] == "Cachorro" ? "selected" : ""?>>Cachorro</option>
+              <option value="Mediano" <?php echo $dataCliente['edad'] == "Mediano" ? "selected" : ""?>>Mediano</option>
+              <option value="Adulto" <?php echo $dataCliente['edad'] == "Adulto" ? "selected" : ""?>>Adulto</option>
+            </select>
           </div>
           <br>
 
