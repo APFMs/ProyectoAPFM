@@ -16,8 +16,11 @@
             <?php
             include('config.php');
 
+            $idFundacion = $dataCliente['idFundacion'];
             $sqlCliente2   = ("SELECT V.persona_idPERSONA, P.nombre as 'nombreVoluntario', F.nombre as 'nombreFundacion '
-            FROM voluntario V  INNER JOIN persona P ON P.id=V.persona_idPERSONA INNER JOIN fundacion F ON F.id=V.fundaciones_id and F.id=" . $dataCliente['idFundacion']);
+            FROM voluntario V  INNER JOIN persona P ON P.id=V.persona_idPERSONA 
+            INNER JOIN fundacion F ON F.id=V.fundaciones_id and F.id=$idFundacion 
+            WHERE P.estado=1");
             $queryCliente2 = mysqli_query($con, $sqlCliente2);            
 
             ?>

@@ -305,20 +305,25 @@
 
         $selectVoluntarios = (
             "SELECT p.id, p.nombre, p.apllpat, apllmat FROM voluntario v
-            INNER JOIN persona p ON v.persona_idPERSONA=p.id 
-            WHERE v.estado=1 AND v.fundaciones_id=$funId");
+            JOIN persona p ON v.persona_idPERSONA=p.id 
+            WHERE v.estado=1 AND v.fundaciones_id=$funId ORDER BY p.apllpat");
 
         $queryVoluntarios = mysqli_query($con, $selectVoluntarios);
 
         $selectMascotas = (
             "SELECT m.id, m.nombre FROM mascota m
-            WHERE m.adoptable=2 AND m.estado=1 AND m.fundaciones_id=$funId");
+            INNER JOIN solicitudadopcion S ON m.id=S.mascota_id 
+            WHERE S.aprobada=2 AND m.estado=1 AND m.fundaciones_id=$funId
+            GROUP BY m.id
+            ORDER BY m.nombre");
         $queryMascotas = mysqli_query($con, $selectMascotas);
 
         $where = array();
         $selectedMascota = "";
         $selectedVoluntario = "";
         $selectedFechaVisita = "";
+        $startDate = "";
+        $endDate = "";
 
         if (!isset($_POST["id"])) {
           $selectedMascota = "Todos";
@@ -327,11 +332,11 @@
         }
         if (isset($_POST['mascota']) && $_POST['mascota'] != '' && $_POST['mascota'] != 'Todos') {
           $selectedMascota = $_POST['mascota'];
-          $where[] = " M.especie = '$selectedEspecie'";
+          $where[] = " S.mascota_id = '$selectedMascota'";
         }
         if (isset($_POST['voluntario']) && $_POST['voluntario'] != '' && $_POST['voluntario'] != 'Todos') {
           $selectedVoluntario = $_POST['voluntario'];
-          $where[] = " M.voluntario = '$selectedVoluntario'";
+          $where[] = " M.idVoluntario = '$selectedVoluntario'";
         }
         if (isset($_POST['startdate_datepicker']) && $_POST['startdate_datepicker'] != '') {
             $startDate = $_POST['startdate_datepicker'];
@@ -340,61 +345,43 @@
             $endDate = $_POST['enddate_datepicker'];
         }
         if ($startDate != "" && $endDate != "") {
-            $where[] = " M.fechaAdopcion between '$startDate' AND '$endDate'";
+            $where[] = " SE.fechaVisita between '$startDate' AND '$endDate'";
         } else if ($startDate != "" && $endDate == "") {
-            $where[] = " M.fechaAdopcion between '$startDate' AND NOW()";
+            $where[] = " SE.fechaVisita between '$startDate' AND NOW()";
         } else if ($endDate != "" && $startDate == "") {
-            $where[] = " M.fechaAdopcion between '1800-01-01' AND '$endDate'";
+            $where[] = " SE.fechaVisita between '1800-01-01' AND '$endDate'";
         }
 
         ?>
-        <form method="POST" action="reporteMascotas.php">
+        <form method="POST" action="reporteSeguimientos.php">
           <input type="hidden" name="id" value="1">
           <div class="row align-items-end mb-3">
             <div class="col-sm">
-              <label for="especie"><strong>Especie:</strong></label>
-              <select class="form-select form-select-sm" name="especie" id="especie">
-                <?php
-                foreach ($especies as $especie) {
-                  $selected = ($especie == $selectedEspecie) ? "selected" : "";
-                  echo "<option value='$especie' $selected>$especie</option>";
-                }
-                unset($especies);
-                ?>
-              </select>
+              <label for="startdate_datepicker"><strong>Fecha de Seguimiento:</strong></label>
+              <div class="start_date input-group mb-2">
+                <input class="form-control start_date" type="text" placeholder="Fecha Inicio" id="startdate_datepicker" name="startdate_datepicker" value="<?php echo $startDate ?>">
+                <div class="input-group-append">
+                  <span class="fa fa-calendar input-group-text start_date_calendar" aria-hidden="true "></span>
+                </div>
+              </div>
+              <div class="end_date input-group">
+                <input class="form-control end_date" type="text" placeholder="Fecha Fin" id="enddate_datepicker" name="enddate_datepicker" value="<?php echo $endDate ?>">
+                <div class="input-group-append">
+                  <span class="fa fa-calendar input-group-text end_date_calendar" aria-hidden="true "></span>
+                </div>
+              </div>
             </div>
             <div class="col-sm">
-              <label for="sexo"><strong>Sexo:</strong></label>
-              <select class="form-select form-select-sm" aria-label=".form-select-lg example" name="sexo" id="sexo">
+              <label for="fundacion"><strong>Mascota:</strong></label>
+              <select class="form-select form-select-sm" name="mascota" id="mascota">
                 <?php
-                foreach ($sexos as $sexo) {
-                  $selected = ($sexo == $selectedSexo) ? "selected" : "";
-                  echo "<option value='$sexo' $selected>$sexo</option>";
-                }
-                unset($sexos);
-                ?>
-              </select>
-            </div>
-            <div class="col-sm">
-              <label for="edad"><strong>Edad:</strong></label>
-              <select class="form-select form-select-sm" aria-label=".form-select-lg example" name="edad" id="edad">
-                <?php
-                foreach ($edades as $edad) {
-                  $selected = ($edad == $selectedEdad) ? "selected" : "";
-                  echo "<option value='$edad' $selected>$edad</option>";
-                }
-                unset($edades);
-                ?>
-              </select>
-            </div>
-            <div class="col-sm">
-              <label for="adoptable"><strong>Estado de Adopción:</strong></label>
-              <select class="form-select form-select-sm" aria-label=".form-select-lg example" name="adoptable" id="adoptable">
-                <?php
-                foreach ($adoptables as $adoptable_key=>$adoptable_val) {
-                  $selected = ($adoptable_key == $selectedAdoptable) ? "selected" : "";
-                  echo "<option value='$adoptable_key' $selected>$adoptable_val</option>";
-                }
+                  echo "<option value='Todos'>Todos</option>";
+                  while($mascotas = mysqli_fetch_array($queryMascotas)) {
+                    $mascotaId = $mascotas['id'];
+                    $mascotaName = $mascotas['nombre'];
+                    $selected = ($mascotaId == $selectedMascota) ? "selected" : "";
+                    echo "<option value='$mascotaId' $selected>$mascotaName</option>";
+                  }
                 ?>
               </select>
             </div>
@@ -405,7 +392,7 @@
                   echo "<option value='Todos'>Todos</option>";
                   while($voluntarios = mysqli_fetch_array($queryVoluntarios)) {
                     $voluntarioId = $voluntarios['id'];
-                    $voluntarioName = $voluntarios['apllpat'] . " " . $voluntarios['apllmat'] . " " . $voluntarios['nombre'];;
+                    $voluntarioName = $voluntarios['apllpat'] . " " . $voluntarios['apllmat'] . " " . $voluntarios['nombre'];
                     $selected = ($voluntarioId == $selectedVoluntario) ? "selected" : "";
                     echo "<option value='$voluntarioId' $selected>$voluntarioName</option>";
                   }
@@ -420,25 +407,27 @@
         <?php
         
         $sqlCliente   =
-            "SELECT S.id, CONCAT(S.nombre, ' ',S.apllpat, ' ', S.apllmat) as 'Adotante', M.nombre as 'Mascota', COUNT(SE.id) as 'Visitas',M.idVoluntario, P.nombre as 'Voluntario'
+            "SELECT S.id, CONCAT(S.nombre, ' ',S.apllpat, ' ', S.apllmat) as 'Adoptante', M.nombre as 'Mascota',
+                M.idVoluntario, P.nombre as 'Voluntario', M.id as mascotaId, SE.fechaVisita, SE.reporte
             FROM solicitudadopcion S 
             INNER JOIN mascota M ON M.id=S.mascota_id 
             LEFT JOIN seguimiento SE ON SE.solicitud_fk=S.id 
-            INNER JOIN persona P ON P.id=M.idVoluntario 
-            WHERE S.aprobada=2 and M.fundaciones_id=$funId");
+            INNER JOIN persona P ON P.id=M.idVoluntario";
         
-        $where[] = " M.fundaciones_id=$funId";
+        $where[] = " S.aprobada=2 AND M.fundaciones_id=$funId";
 
         if (!empty($where)) {
           $sqlCliente .= ' WHERE ' . implode(' AND ', $where);
         }
+
+        $sqlCliente .= " ORDER BY Mascota, SE.fechaVisita";
 
         $queryCliente = mysqli_query($con, $sqlCliente);
         $cantidad     = mysqli_num_rows($queryCliente);
         ?>
         <div class="row text-center" style="background-color: #ffc66c">
           <div class="col-md-11">
-            <strong>Reporte de Mascotas <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
+            <strong>Reporte de Seguimientos <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
           </div>
         </div>
 
@@ -454,36 +443,23 @@
                           <thead>
                             <tr>
                               <th scope="col">Nombre Mascota</th>
-                              <th scope="col">Especie</th>
-                              <th scope="col">Edad</th>
-                              <th scope="col">Sexo</th>
-                              <th scope="col">Color</th>
-                              <th scope="col">Tamaño</th>
-                              <th scope="col">Estado Adopción</th>
-                              <th scope="col">Nombre Voluntario</th>
+                              <th scope="col">Adoptante</th>
+                              <th scope="col">Voluntario</th>
+                              <th scope="col">Fecha de Visita</th>
+                              <th scope="col">Reporte</th>
                               <th scope="col">Fundación</th>
                             </tr>
                           </thead>
                           <tbody>
                             <?php
                             while ($dataCliente = mysqli_fetch_array($queryCliente)) {
-                              $nombreVoluntario = $dataCliente['apellidoV1'] . " " . $dataCliente['apellidoV2'] . " " . $dataCliente['nombreVoluntario'];
-                              $estadoAdopción = "";
-                              foreach ($adoptables as $adoptable_key=>$adoptable_val) {
-                                  if ($adoptable_key == $dataCliente['adoptable']) {
-                                      $estadoAdopción = $adoptable_val;
-                                  }
-                              }
                             ?>
                               <tr>
-                                <td><?php echo $dataCliente['nombre']; ?></td>
-                                <td><?php echo $dataCliente['especie']; ?></td>
-                                <td><?php echo $dataCliente['edad']; ?></td>
-                                <td><?php echo $dataCliente['sexo']; ?></td>
-                                <td><?php echo $dataCliente['color']; ?></td>
-                                <td><?php echo $dataCliente['tam']; ?></td>
-                                <td><?php echo $estadoAdopción; ?></td>
-                                <td><?php echo $nombreVoluntario; ?></td>
+                                <td><?php echo $dataCliente['Mascota']; ?></td>
+                                <td><?php echo $dataCliente['Adoptante']; ?></td>
+                                <td><?php echo $dataCliente['Voluntario']; ?></td>
+                                <td><?php echo $dataCliente['fechaVisita']; ?></td>
+                                <td><?php echo $dataCliente['reporte']; ?></td>
                                 <td><?php echo $funName; ?></td>
                               </tr>
                             <?php } ?>
@@ -491,14 +467,13 @@
                         </table>
                       </div>
                       <div>
-                        <form name="reportForm" id="reportForm" method="POST" target="_blank" action="reporteMascotasPDF.php">
-                          <input type="hidden" name="rEspecie" id="rEspecie" value="">
-                          <input type="hidden" name="rEdad" id="rEdad" value="">
-                          <input type="hidden" name="rSexo" id="rSexo" value="">
-                          <input type="hidden" name="rAdoptable" id="rAdoptable" value="">
+                        <form name="reportForm" id="reportForm" method="POST" target="_blank" action="reporteSeguimientosPDF.php">
+                          <input type="hidden" name="rMascota" id="rMascota" value="">
+                          <input type="hidden" name="rVoluntario" id="rVoluntario" value="">
+                          <input type="hidden" name="rFechaInicio" id="rFechaInicio" value="">
+                          <input type="hidden" name="rFechaFin" id="rFechaFin" value="">
                           <input type="hidden" name="rFundId" id="rFundId" value="">
                           <input type="hidden" name="rFundName" id="rFundName" value="">
-                          <input type="hidden" name="rVoluntario" id="rVoluntario" value="">
                           <button type="submit" class="btn btn-primary">Exportar Reporte</button>
                         </form>
                       </div>
@@ -573,13 +548,12 @@
         }, 3000);
 
         $("#reportForm").submit(function(event) {
-          $("#rEspecie").val($("#especie").val());
-          $("#rEdad").val($("#edad").val());
-          $("#rSexo").val($("#sexo").val());
-          $("#rAdoptable").val($("#adoptable").val());
+          $("#rMascota").val($("#mascota").val());
+          $("#rVoluntario").val($("#voluntario").val());
+          $("#rFechaInicio").val($("#startdate_datepicker").val());
+          $("#rFechaFin").val($("#enddate_datepicker").val());
           $("#rFundId").val(<?php echo $funId; ?>);
           $("#rFundName").val("<?php echo $funName; ?>");
-          $("#rVoluntario").val($("#voluntario").val());
           //event.preventDefault();
         });
       });
