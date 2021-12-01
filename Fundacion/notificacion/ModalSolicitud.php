@@ -54,9 +54,11 @@
             <br>
             <h4 style="color:#eda501;">Invetigación Realizada</h4>
             <br/>
-            <label style="color:#11937b;">* Cuenta con Casa Propia?: </label> <strong style="color:#e83ecb;"><?php echo $dataCliente['TieneCasa'] == 1 ? "Si" : "No"; ?></strong><br>
-            <label style="color:#11937b;">* Cuenta con boleta de luz?: <strong style="color:#e83ecb;"><?php echo $dataCliente['TieneBoleta'] == 1 ? "Si" : "No"; ?></strong><br>
-            <label style="color:#11937b;">* Está de acuerdo con el seguimiento a seguir?: <strong style="color:#e83ecb;"><?php echo $dataCliente['Seguimiento'] == 1 ? "Si" : "No"; ?></strong><br>
+            <label style="color:#11937b;">*¿Se realizó la verificación del domicilio?: </label> <strong style="color:#e83ecb;"><?php echo $dataCliente['Verificacion'] == 1 ? "Si" : "No"; ?></strong><br>
+            <label style="color:#11937b;">*¿Cuenta con Casa Propia?: </label> <strong style="color:#e83ecb;"><?php echo $dataCliente['TieneCasa'] == 1 ? "Si" : "No"; ?></strong><br>
+            <label style="color:#11937b;">*¿Cuenta con boleta de luz?: <strong style="color:#e83ecb;"><?php echo $dataCliente['TieneBoleta'] == 1 ? "Si" : "No"; ?></strong><br>
+            <label style="color:#11937b;">*¿Cuenta con C.I.?: </label> <strong style="color:#e83ecb;"><?php echo $dataCliente['TieneCi'] == 1 ? "Si" : "No"; ?></strong><br>
+            <label style="color:#11937b;">*¿Está de acuerdo con el seguimiento a seguir?: <strong style="color:#e83ecb;"><?php echo $dataCliente['Seguimiento'] == 1 ? "Si" : "No"; ?></strong><br>
           </div>
         </div>
         <div class="modal-footer">

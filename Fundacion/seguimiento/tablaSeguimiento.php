@@ -63,6 +63,16 @@
       border-color: #ebb812;
       box-shadow: none;
     }
+
+    .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active,
+    .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
+      background-color: #f39d12;
+      color: black;
+    }
+
+    [class*="sidebar-dark-"] .nav-treeview>.nav-item>.nav-link {
+      color: #212529;
+    }
   </style>
 
   <script>
@@ -94,6 +104,9 @@
   $paginaAdotantes = "../adoptante/tablaAdoptante.php";
   $paginaSeguimientos = "tablaSeguimiento.php";
   $paginaNotificaciones = "../notificacion/tablaNotificacion.php";
+  $paginaReportes = "../reportes/reporteAdopciones.php";
+  $paginaReportes1 = "../reportes/reporteMascotas.php";
+  $paginaReportes2 = "../reportes/reporteSeguimientos.php";
   ?>
   <div class="wrapper">
     <!-- Navbar -->
@@ -239,7 +252,43 @@
                 </p>
               </a>
             </li>
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link active">
+              <i class="fas fa-archive"></i>
+                <p>
+                  Reportes
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Adopciones
+                    </p>
+                  </a>
+                </li>
 
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes1 ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Mascotas
+                    </p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes2 ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Seguimientos
+                    </p>
+                  </a>
+                </li>
+              </ul>
+            </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->

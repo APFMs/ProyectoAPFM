@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Administrador </title>
+    <title>Fundación/Voluntario </title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -53,6 +53,16 @@
             background-color: #9a71e4;
             border-color: #9a71e4;
         }
+
+        .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active,
+        .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
+            background-color: #f39d12;
+            color: black;
+        }
+
+        [class*="sidebar-dark-"] .nav-treeview>.nav-item>.nav-link {
+            color: #212529;
+        }
     </style>
 
 
@@ -68,6 +78,9 @@
     $paginaAdotantes = "../adoptante/tablaAdoptante.php";
     $paginaSeguimientos = "../seguimiento/tablaSeguimiento.php";
     $paginaNotificaciones = "../notificacion/tablaNotificacion.php";
+    $paginaReportes = "../reportes/reporteAdopciones.php";
+    $paginaReportes1 = "../reportes/reporteMascotas.php";
+    $paginaReportes2 = "../reportes/reporteSeguimientos.php";
     ?>
 
 
@@ -213,7 +226,43 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item menu-open">
+              <a href="#" class="nav-link active">
+              <i class="fas fa-archive"></i>
+                <p>
+                  Reportes
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Adopciones
+                    </p>
+                  </a>
+                </li>
 
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes1 ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Mascotas
+                    </p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes2 ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Seguimientos
+                    </p>
+                  </a>
+                </li>
+              </ul>
+            </li>
 
                     </ul>
                 </nav>

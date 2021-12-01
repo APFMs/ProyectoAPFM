@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fundacion </title>
+  <title>Fundación </title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -66,6 +66,8 @@
   $paginaSeguimientos = "seguimiento/tablaSeguimiento.php";
   $paginaNotificaciones = "notificacion/tablaNotificacion.php";
   $paginaReportes = "reportes/reporteAdopciones.php";
+  $paginaReportes1 = "reportes/reporteMascotas.php";
+  $paginaReportes2 = "reportes/reporteSeguimientos.php";
 
   ?>
   <div class="wrapper">
@@ -229,6 +231,24 @@
                     <i class="fa fa-file"></i>
                     <p>
                       Reporte de Adopciones
+                    </p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes1 ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Mascotas
+                    </p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes2 ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Seguimientos
                     </p>
                   </a>
                 </li>

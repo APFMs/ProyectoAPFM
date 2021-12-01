@@ -27,9 +27,11 @@
 
           <h4 style="color:#ec4c4c;">Información Adicional</h4>
           <br/>
-          <input type="checkbox" id="TieneCasa" name="TieneCasa"> <label style="color:#0b932a;"for="TieneCasa">Cuenta con casa propia?</label><br/>
-          <input type="checkbox" id="TieneBoleta" name="TieneBoleta"> <label style="color:#0b932a;"for="TieneBoleta">Cuenta con boleta de luz?</label><br/>
-          <input type="checkbox" id="Seguimiento" name="Seguimiento"> <label style="color:#0b932a;"for="Seguimiento">Está de acuerdo con el seguimiento a seguir?</label>
+          <input type="checkbox" id="Verificacion" name="Verificacion"> <label style="color:#0b932a;"for="Verificacion">¿Se hizo la verificación del domicilio?</label><br/>
+          <input type="checkbox" id="TieneCasa" name="TieneCasa"> <label style="color:#0b932a;"for="TieneCasa">¿Cuenta con casa propia?</label><br/>
+          <input type="checkbox" id="TieneBoleta" name="TieneBoleta"> <label style="color:#0b932a;"for="TieneBoleta">¿Cuenta con boleta de luz?</label><br/>
+          <input type="checkbox" id="TieneCi" name="TieneCi"> <label style="color:#0b932a;"for="TieneCi">¿Cuenta con C.I.?</label><br/>
+          <input type="checkbox" id="Seguimiento" name="Seguimiento"> <label style="color:#0b932a;"for="Seguimiento">¿Está de acuerdo con el seguimiento a seguir?</label>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

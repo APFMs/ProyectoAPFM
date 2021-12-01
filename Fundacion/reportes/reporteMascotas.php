@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Administrador/Reportes </title>
+  <title>Fundación/Reportes </title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -73,6 +73,16 @@
       background-color: #ff7705;
       border-color: #ff7705;
     }
+
+    .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active,
+    .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
+      background-color: #f39d12;
+      color: black;
+    }
+
+    [class*="sidebar-dark-"] .nav-treeview>.nav-item>.nav-link {
+      color: #212529;
+    }
   </style>
 
   <script>
@@ -113,6 +123,8 @@
   $paginaSeguimientos = "../seguimiento/tablaSeguimiento.php";
   $paginaNotificaciones = "../notificacion/tablaNotificacion.php";
   $paginaReportes = "reporteAdopciones.php";
+  $paginaReportes1 = "reporteMascotas.php";
+  $paginaReportes2 = "reporteSeguimientos.php";
   ?>
   <div class="wrapper">
     <!-- Navbar -->
@@ -122,11 +134,9 @@
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
+
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="../Administrador.php" class="nav-link">Volver</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="../../index.html" class="nav-link">Cerrar sesión</a>
+          <a style="color:RED; font-weight: bold;" href="../../index.html" class="nav-link">Cerrar sesión</a>
           <?php
           session_start(); // para usar las variables de sesion                 
           ?>
@@ -261,13 +271,42 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href=<?php echo $paginaReportes ?> class="nav-link">
-                <i class="fa fa-file"></i>
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link active">
+              <i class="fas fa-archive"></i>
                 <p>
-                  Reporte de Adopciones
+                  Reportes
+                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Adopciones
+                    </p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes1 ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Mascotas
+                    </p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes2 ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Seguimientos
+                    </p>
+                  </a>
+                </li>
+              </ul>
             </li>
 
           </ul>
@@ -284,7 +323,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
+              <h1 style="color:#01a6a9; font-weight: bold;"><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
             </div>
           </div>
         </div><!-- /.container-fluid -->
@@ -354,7 +393,7 @@
           <input type="hidden" name="id" value="1">
           <div class="row align-items-end mb-3">
             <div class="col-sm">
-              <label for="especie"><strong>Especie:</strong></label>
+              <label for="especie"><strong style="color:#ec4c4c;">Especie:</strong></label>
               <select class="form-select form-select-sm" name="especie" id="especie">
                 <?php
                 foreach ($especies as $especie) {
@@ -366,7 +405,7 @@
               </select>
             </div>
             <div class="col-sm">
-              <label for="sexo"><strong>Sexo:</strong></label>
+              <label for="sexo"><strong style="color:#ec4c4c;">Sexo:</strong></label>
               <select class="form-select form-select-sm" aria-label=".form-select-lg example" name="sexo" id="sexo">
                 <?php
                 foreach ($sexos as $sexo) {
@@ -378,7 +417,7 @@
               </select>
             </div>
             <div class="col-sm">
-              <label for="edad"><strong>Edad:</strong></label>
+              <label for="edad"><strong style="color:#ec4c4c;">Edad:</strong></label>
               <select class="form-select form-select-sm" aria-label=".form-select-lg example" name="edad" id="edad">
                 <?php
                 foreach ($edades as $edad) {
@@ -390,7 +429,7 @@
               </select>
             </div>
             <div class="col-sm">
-              <label for="adoptable"><strong>Estado de Adopción:</strong></label>
+              <label for="adoptable"><strong style="color:#ec4c4c;">Estado de Adopción:</strong></label>
               <select class="form-select form-select-sm" aria-label=".form-select-lg example" name="adoptable" id="adoptable">
                 <?php
                 foreach ($adoptables as $adoptable_key=>$adoptable_val) {
@@ -401,7 +440,7 @@
               </select>
             </div>
             <div class="col-sm">
-              <label for="fundacion"><strong>Voluntario:</strong></label>
+              <label for="fundacion"><strong style="color:#ec4c4c;">Voluntario:</strong></label>
               <select class="form-select form-select-sm" name="voluntario" id="voluntario">
                 <?php
                   echo "<option value='Todos'>Todos</option>";
@@ -436,7 +475,7 @@
         ?>
         <div class="row text-center" style="background-color: #ffc66c">
           <div class="col-md-11">
-            <strong>Reporte de Mascotas <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
+            <strong style="color:#ec4c4c; font-size: 21px">Reporte de Mascotas <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
           </div>
         </div>
 
@@ -451,15 +490,15 @@
                         <table class="table table-bordered table-striped table-hover">
                           <thead>
                             <tr>
-                              <th scope="col">Nombre Mascota</th>
-                              <th scope="col">Especie</th>
-                              <th scope="col">Edad</th>
-                              <th scope="col">Sexo</th>
-                              <th scope="col">Color</th>
-                              <th scope="col">Tamaño</th>
-                              <th scope="col">Estado Adopción</th>
-                              <th scope="col">Nombre Voluntario</th>
-                              <th scope="col">Fundación</th>
+                              <th style="color:#0e2fa7" scope="col">Nombre Mascota</th>
+                              <th style="color:#0e2fa7" scope="col">Especie</th>
+                              <th style="color:#0e2fa7" scope="col">Edad</th>
+                              <th style="color:#0e2fa7" scope="col">Sexo</th>
+                              <th style="color:#0e2fa7" scope="col">Color</th>
+                              <th style="color:#0e2fa7" scope="col">Tamaño</th>
+                              <th style="color:#0e2fa7" scope="col">Estado Adopción</th>
+                              <th style="color:#0e2fa7" scope="col">Nombre Voluntario</th>
+                              <th style="color:#0e2fa7" scope="col">Fundación</th>
                             </tr>
                           </thead>
                           <tbody>

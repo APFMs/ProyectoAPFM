@@ -29,7 +29,7 @@
             </select>
 
           </div>
-
+  <br/>
 
           <div class="from-group">
             <label for="" class="form-label">Edad</label>
@@ -39,7 +39,7 @@
               <option value="Adulto">Adulto</option>
             </select>
           </div>
-          <br>
+          <br/>
 
           <div class="from-group" data-validate="Usuario incorrecto">
             <label for="">Sexo:</label>
@@ -49,7 +49,7 @@
             </select>
 
           </div>
-
+          <br/>
 
           <div class="from-group" data-validate="Usuario incorrecto">
             <label for="">Color:</label>
@@ -65,7 +65,7 @@
             </select>
           </div>
 
-
+          <br/>
 
           <div class="from-group" data-validate="Usuario incorrecto">
             <label for="">Tamaño:</label>
@@ -76,7 +76,7 @@
             </select>
           </div>
 
-
+          <br/>
 
           <div class="from-group">
             <label for="" class="form-label">Descripción</label>

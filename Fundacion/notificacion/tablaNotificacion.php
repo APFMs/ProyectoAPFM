@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Voluntario </title>
+  <title>Fundación/Notificación</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -76,6 +76,16 @@
       background-color: #ff7705;
       border-color: #ff7705;
     }
+
+    .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active,
+    .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
+      background-color: #f39d12;
+      color: black;
+    }
+
+    [class*="sidebar-dark-"] .nav-treeview>.nav-item>.nav-link {
+      color: #212529;
+    }
   </style>
 
   <script>
@@ -104,7 +114,9 @@
   $paginaAdotantes = "../adoptante/tablaAdoptante.php";
   $paginaSeguimientos = "../seguimiento/tablaSeguimiento.php";
   $paginaNotificaciones = "../notificacion/tablaNotificacion.php";
-
+  $paginaReportes = "../reportes/reporteAdopciones.php";
+  $paginaReportes1 = "../reportes/reporteMascotas.php";
+  $paginaReportes2 = "../reportes/reporteSeguimientos.php";
 
 
   ?>
@@ -252,7 +264,43 @@
               </a>
             </li>
 
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link active">
+              <i class="fas fa-archive"></i>
+                <p>
+                  Reportes
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Adopciones
+                    </p>
+                  </a>
+                </li>
 
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes1 ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Mascotas
+                    </p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes2 ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Seguimientos
+                    </p>
+                  </a>
+                </li>
+              </ul>
+            </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -299,7 +347,7 @@
         $offset = ($pagina - 1) * $elementosPorPagina;
 
         $sqlQuery = "SELECT S.id, S.mascota_id, S.nombre AS 'nombreSolicitante',S.apllpat, S.apllmat, S.fechaNac, S.sexo, S.ci, S.num, S.casa, S.direccion, S.aprobada, 
-          M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info, S.TieneBoleta, S.TieneCasa, S.Seguimiento, I.imagen, M.fundaciones_id
+          M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info, S.TieneBoleta, S.TieneCasa, S.Verificacion, S.TieneCi, S.Seguimiento, I.imagen, M.fundaciones_id
         FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
         INNER JOIN fundacion F ON F.id=M.fundaciones_id AND F.persona_id=" . $_SESSION["idPersona"] . " LEFT JOIN imagenes I ON I.idMascota=M.id =" . $_SESSION['idPersona'] . "
         ORDER BY S.id DESC ";

@@ -83,11 +83,22 @@
       background-color: #ff7705;
       border-color: #ff7705;
     }
+
     .btn-primary1 {
-    color: #fff447;
-    background-color: #9a71e4;
-    border-color: #9a71e4;
-}
+      color: #fff447;
+      background-color: #9a71e4;
+      border-color: #9a71e4;
+    }
+
+    .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active,
+    .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
+      background-color: #f39d12;
+      color: black;
+    }
+
+    [class*="sidebar-dark-"] .nav-treeview>.nav-item>.nav-link {
+      color: #212529;
+    }
   </style>
 
   <script>
@@ -119,6 +130,9 @@
   $paginaAdotantes = "../adoptante/tablaAdoptante.php";
   $paginaSeguimientos = "../seguimiento/tablaSeguimiento.php";
   $paginaNotificaciones = "../notificacion/tablaNotificacion.php";
+  $paginaReportes = "../reportes/reporteAdopciones.php";
+  $paginaReportes1 = "../reportes/reporteMascotas.php";
+  $paginaReportes2 = "../reportes/reporteSeguimientos.php";
 
   ?>
   <div class="wrapper">
@@ -131,7 +145,7 @@
         </li>
 
         <li class="nav-item d-none d-sm-inline-block">
-          <a style="color:RED; font-weight: bold;"href="../../index.html" class="nav-link">Cerrar sesión</a>
+          <a style="color:RED; font-weight: bold;" href="../../index.html" class="nav-link">Cerrar sesión</a>
           <?php
           session_start(); // para usar las variables de sesion                 
           ?>
@@ -269,6 +283,43 @@
               </a>
             </li>
 
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link active">
+              <i class="fas fa-archive"></i>
+                <p>
+                  Reportes
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Adopciones
+                    </p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes1 ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Mascotas
+                    </p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes2 ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Seguimientos
+                    </p>
+                  </a>
+                </li>
+              </ul>
+            </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -321,7 +372,7 @@
         $sqlQuery   = "SELECT M.id, M.nombre, M.especie, M.edad, M.sexo, M.color, M.tam,  M.descripcion, M.fechaCreacion, M.fechaActualizacion, M.fundaciones_id, F.nombre as 'nombreFundacion', 
           I.imagen, F.id as 'idFundacion', IFNULL(M.idVoluntario, 'nn') as 'voluntario' 
           FROM mascota M 
-          INNER JOIN fundacion F ON F.id=M.fundaciones_id and adoptable=0 and F.persona_id=" . $_SESSION["idPersona"] . " LEFT JOIN imagenes I ON I.idMascota=M.id WHERE M.estado=1" ;
+          INNER JOIN fundacion F ON F.id=M.fundaciones_id and adoptable=0 and F.persona_id=" . $_SESSION["idPersona"] . " LEFT JOIN imagenes I ON I.idMascota=M.id WHERE M.estado=1";
         $pagination = " LIMIT " . $limit . " OFFSET " . $offset;
 
         $sqlCantidadElementos = ($sqlQuery);
@@ -388,7 +439,7 @@
                             while ($dataCliente = mysqli_fetch_array($queryCliente)) {
                               if ($dataCliente['voluntario'] != "nn") {
                                 $sqlCliente3   = ("SELECT P.nombre 
-                                FROM persona P WHERE P.id=" . $dataCliente['voluntario'] ." and estado=1 ;");
+                                FROM persona P WHERE P.id=" . $dataCliente['voluntario'] . " and estado=1 ;");
                                 $queryCliente3 = mysqli_query($con, $sqlCliente3);
                                 $dataCliente3 = mysqli_fetch_array($queryCliente3);
                               } else {
@@ -416,8 +467,8 @@
                                   </button>
 
                                   <button title="ASIGNAR VOLUNTARIO" type="button" class="btn btn-yy" data-toggle="modal" data-target="#asignarChildresn<?php echo $dataCliente['id']; ?>">
-                                      <i class="fa fa-user"></i>
-                                    </button>
+                                    <i class="fa fa-user"></i>
+                                  </button>
 
 
                                 </td>

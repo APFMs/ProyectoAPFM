@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Administrador/Reportes </title>
+  <title>Fundación/Reportes </title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -73,6 +73,16 @@
       background-color: #ff7705;
       border-color: #ff7705;
     }
+
+    .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active,
+    .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
+      background-color: #f39d12;
+      color: black;
+    }
+
+    [class*="sidebar-dark-"] .nav-treeview>.nav-item>.nav-link {
+      color: #212529;
+    }
   </style>
 
   <script>
@@ -113,6 +123,8 @@
   $paginaSeguimientos = "../seguimiento/tablaSeguimiento.php";
   $paginaNotificaciones = "../notificacion/tablaNotificacion.php";
   $paginaReportes = "reporteAdopciones.php";
+  $paginaReportes1 = "reporteMascotas.php";
+  $paginaReportes2 = "reporteSeguimientos.php";
   ?>
   <div class="wrapper">
     <!-- Navbar -->
@@ -123,10 +135,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="../Administrador.php" class="nav-link">Volver</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="../../index.html" class="nav-link">Cerrar sesión</a>
+          <a style="color:RED; font-weight: bold;" href="../../index.html" class="nav-link">Cerrar sesión</a>
           <?php
           session_start(); // para usar las variables de sesion                 
           ?>
@@ -187,7 +196,7 @@
             <img src="../img/user.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="../Administrador.php" class="d-block"><?php echo $_SESSION["nombreUsuario"] ?></a>
+            <a href="../Fundacion.php" class="d-block"><?php echo $_SESSION["nombreUsuario"] ?></a>
           </div>
         </div>
 
@@ -261,13 +270,42 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href=<?php echo $paginaReportes ?> class="nav-link">
-                <i class="fa fa-file"></i>
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link active">
+              <i class="fas fa-archive"></i>
                 <p>
-                  Reporte de Adopciones
+                  Reportes
+                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Adopciones
+                    </p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes1 ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Mascotas
+                    </p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href=<?php echo $paginaReportes2 ?> class="nav-link">
+                    <i class="fa fa-file"></i>
+                    <p>
+                      Reporte de Seguimientos
+                    </p>
+                  </a>
+                </li>
+              </ul>
             </li>
 
           </ul>
@@ -284,7 +322,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
+              <h1 style="color:#01a6a9; font-weight: bold;"><?php echo "BIENVENIDO " . strtoupper($_SESSION["nombreUsuario"]) ?></h1>
             </div>
           </div>
         </div><!-- /.container-fluid -->
@@ -357,7 +395,7 @@
           <input type="hidden" name="id" value="1">
           <div class="row align-items-end mb-3">
             <div class="col-sm">
-              <label for="startdate_datepicker"><strong>Fecha de Seguimiento:</strong></label>
+              <label for="startdate_datepicker"><strong style="color:#ec4c4c;">Fecha de Seguimiento:</strong></label>
               <div class="start_date input-group mb-2">
                 <input class="form-control start_date" type="text" placeholder="Fecha Inicio" id="startdate_datepicker" name="startdate_datepicker" value="<?php echo $startDate ?>">
                 <div class="input-group-append">
@@ -372,7 +410,7 @@
               </div>
             </div>
             <div class="col-sm">
-              <label for="fundacion"><strong>Mascota:</strong></label>
+              <label for="fundacion"><strong style="color:#ec4c4c;">Mascota:</strong></label>
               <select class="form-select form-select-sm" name="mascota" id="mascota">
                 <?php
                   echo "<option value='Todos'>Todos</option>";
@@ -386,7 +424,7 @@
               </select>
             </div>
             <div class="col-sm">
-              <label for="fundacion"><strong>Voluntario:</strong></label>
+              <label for="fundacion"><strong style="color:#ec4c4c;">Voluntario:</strong></label>
               <select class="form-select form-select-sm" name="voluntario" id="voluntario">
                 <?php
                   echo "<option value='Todos'>Todos</option>";
@@ -427,7 +465,7 @@
         ?>
         <div class="row text-center" style="background-color: #ffc66c">
           <div class="col-md-11">
-            <strong>Reporte de Seguimientos <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
+            <strong style="color:#ec4c4c; font-size: 21px">Reporte de Seguimientos <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
           </div>
         </div>
 
@@ -442,12 +480,12 @@
                         <table class="table table-bordered table-striped table-hover">
                           <thead>
                             <tr>
-                              <th scope="col">Nombre Mascota</th>
-                              <th scope="col">Adoptante</th>
-                              <th scope="col">Voluntario</th>
-                              <th scope="col">Fecha de Visita</th>
-                              <th scope="col">Reporte</th>
-                              <th scope="col">Fundación</th>
+                              <th style="color:#0e2fa7" scope="col">Nombre Mascota</th>
+                              <th style="color:#0e2fa7" scope="col">Adoptante</th>
+                              <th style="color:#0e2fa7" scope="col">Voluntario</th>
+                              <th style="color:#0e2fa7" scope="col">Fecha de Visita</th>
+                              <th style="color:#0e2fa7" scope="col">Reporte</th>
+                              <th style="color:#0e2fa7" scope="col">Fundación</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -455,7 +493,7 @@
                             while ($dataCliente = mysqli_fetch_array($queryCliente)) {
                             ?>
                               <tr>
-                                <td><?php echo $dataCliente['Mascota']; ?></td>
+                                <td ><?php echo $dataCliente['Mascota']; ?></td>
                                 <td><?php echo $dataCliente['Adoptante']; ?></td>
                                 <td><?php echo $dataCliente['Voluntario']; ?></td>
                                 <td><?php echo $dataCliente['fechaVisita']; ?></td>
