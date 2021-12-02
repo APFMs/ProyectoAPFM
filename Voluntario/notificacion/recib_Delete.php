@@ -5,9 +5,16 @@ $idRegistros = $_REQUEST['id'];
 $DeleteRegistro = ("UPDATE solicitudadopcion SET estado=1 WHERE id= '".$idRegistros."' ");
 mysqli_query($con, $DeleteRegistro);
 
-$sqlGetMascotaId = mysqli_fetch_assoc(mysqli_query($con, "SELECT mascota_id FROM solicitudadopcion WHERE id = $idRegistros"));
-$mascotaId = $sqlGetMascotaId["mascota_id"];
+$sqlGetMascota = mysqli_fetch_assoc(mysqli_query($con, 
+    "SELECT SA.mascota_id, M.adoptable FROM solicitudadopcion SA 
+    INNER JOIN Mascota M on M.id=SA.mascota_id 
+    WHERE SA.id=$idRegistros"));
 
-$updateMascota = ("UPDATE mascota SET adoptable=1 WHERE id= '".$mascotaId."' ");
-mysqli_query($con, $updateMascota);
+$mascotaId = $sqlGetMascota["mascota_id"];
+$adoptable = $sqlGetMascota["adoptable"];
+
+if ($adoptable != 2) {
+    $updateMascota = ("UPDATE mascota SET adoptable=1 WHERE id=$mascotaId");
+    mysqli_query($con, $updateMascota);
+}
 ?>

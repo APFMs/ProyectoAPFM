@@ -350,7 +350,7 @@
           M.nombre as 'nombreMascota',S.info, M.idVoluntario, S.info, S.TieneBoleta, S.TieneCasa, S.Verificacion, S.TieneCi, S.Seguimiento, I.imagen, M.fundaciones_id
         FROM solicitudadopcion S INNER JOIN mascota M ON S.mascota_id=M.id
         INNER JOIN fundacion F ON F.id=M.fundaciones_id AND F.persona_id=" . $_SESSION["idPersona"] . " LEFT JOIN imagenes I ON I.idMascota=M.id =" . $_SESSION['idPersona'] . "
-        ORDER BY S.id DESC ";
+        WHERE S.estado=0 ORDER BY S.id DESC ";
         $pagination = " LIMIT " . $limit . " OFFSET " . $offset;
 
         $sqlCantidadElementos = ($sqlQuery);

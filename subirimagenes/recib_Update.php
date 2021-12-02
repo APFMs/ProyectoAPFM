@@ -10,9 +10,8 @@ $sexo 	 = $_REQUEST['sexo'];
 $ci	     = $_REQUEST['ci'];
 $num	 = $_REQUEST['num'];
 $casa	 = $_REQUEST['casa'];
-$direccion	 = $_REQUEST['direccion'];
+$direccion	 = addslashes($_REQUEST['direccion']);
 
-echo "IDMASCOTA: " . $idRegistros;
 $insertar = ("INSERT INTO solicitudadopcion (nombre, apllpat, apllmat, fechaNac, sexo, ci, num, casa, direccion, mascota_id) 
     VALUES ('$nombre ', '$apllpat', '$apllmat ', '$fechaNac', '$sexo', '$ci', '$num ', '$casa ', '$direccion', '$idRegistros');");
 $result_insertar = mysqli_query($con, $insertar);
